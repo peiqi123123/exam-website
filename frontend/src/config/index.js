@@ -14,6 +14,9 @@ const config = {
       value: "manager",
     },
   ],
+  dev: {
+    baseURL: "http://api",
+  },
 };
 
 export default config;

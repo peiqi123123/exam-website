@@ -40,7 +40,9 @@
 import { ref, inject } from "vue";
 import { useRouter } from "vue-router";
 //导入登录方式相关配置
-import config from "../../config";
+import config from "@/config";
+//导入登录相关请求
+import { studentLogin } from "@/network/api/user";
 //表单数据
 const loginForm = ref({
   username: "",
@@ -73,15 +75,19 @@ const isLoading = ref(false);
 //提交表单
 const Router = useRouter();
 function submitForm() {
-  formRef.value.validate((valid) => {
+  formRef.value.validate(async (valid) => {
     if (valid) {
       isLoading.value = true;
-      //模拟登陆
-      setTimeout(() => {
+      const res = await studentLogin(
+        loginForm.value.username,
+        loginForm.value.username
+      );
+      console.log(res);
+      if (res.status === 201) {
         isLoading.value = false;
         message.success("登录成功");
         Router.push("/" + loginMode.value);
-      }, 300);
+      }
     } else {
       message.error("登陆失败");
     }
@@ -104,7 +110,8 @@ function resetForm() {
     margin: 15% auto;
     position: relative;
     border-radius: 20px;
-    border: 1px solid #000;
+    background-color: #fff;
+    box-shadow: 5px 0px 10px rgb(66 75 174 / 10%);
     .login_mode {
       position: absolute;
       width: 93px;
