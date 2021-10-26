@@ -10,9 +10,16 @@
   </div>
 </template>
 <script setup>
-import ExamTabBar from "../../components/exam/ExamTabBar.vue";
-import ExamQues from "../../components/exam/ExamQues.vue";
-import ExamSideBar from "../../components/exam/ExamSideBar.vue";
+import ExamTabBar from "@/components/exam/ExamTabBar.vue";
+import ExamQues from "@/components/exam/ExamQues.vue";
+import ExamSideBar from "@/components/exam/ExamSideBar.vue";
+import { getExerciseQuestions } from "@/network/api/user";
+async function init() {
+  const res = await getExerciseQuestions();
+  console.log(res);
+}
+init()
+// 获取练习题目等相关信息
 </script>
 <style lang="less" scoped>
 .self_exercise {

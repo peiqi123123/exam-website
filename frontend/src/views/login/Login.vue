@@ -80,7 +80,8 @@ function submitForm() {
       isLoading.value = true;
       const res = await studentLogin(
         loginForm.value.username,
-        loginForm.value.username
+        loginForm.value.username,
+        loginMode.value
       );
       console.log(res);
       if (res.status === 201) {

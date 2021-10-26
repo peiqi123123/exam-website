@@ -15,17 +15,9 @@ interface ErrorInfo {
 
 # 登录验证
 
-1. 学生登录
+登录
 
-###   post`api/login/student`
-
-2. 教师登录
-
-###   post `api/login/teacher`
-
-3. 管理员登录
-
-###   post `api/login/manager`
+###   post `api/login`
 
 Request
 
@@ -33,6 +25,7 @@ Request
 interface login {
     username: String;
     password: String;
+    loginMode: String, // student teacher manager
 }
 ```
 
@@ -83,8 +76,18 @@ Response `200`
 ```jsx
 interface exerciseRandom {
     status: Number;
-    exercises: Array;
     size: NUmber; // 题目数量
+    examTime: String|Number // 考试时长
+    totalPoints: String|Number // 总分
+    passingScore: String|Number // 及格分数
+    questions: {
+        TFQuestions: Array // 判断题题目
+        ChoiceQuestions: Array // 选择题题目
+    }
+    answers: {
+        TFAnswers: Array //判断题答案
+        ChoiceAnswers: Array // 选择题答案（单选）
+    }
 } 
 ```
 
