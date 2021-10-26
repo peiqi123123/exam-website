@@ -7,7 +7,7 @@ import Router from "@/router";
 const message = ElMessage;
 
 const instance = axios.create({
-  baseURL: config.product.baseURL,
+  baseURL: config.dev.baseURL,
   timeout: 3000,
 });
 

@@ -21,9 +21,18 @@ const config = {
     baseURL: "http://localhost:8080",
   },
   // 练习的类别
-  contestCategory: ["网络系统管理", "大数据", "云计算"],
+  contestCategory: [
+    "网络系统管理",
+    "大数据",
+    "云计算",
+    "......",
+    "......",
+    "......",
+  ],
   // 试卷类型
   contestType: ["自主练习", "赛事模拟"],
+  // 自主练习的四个模块
+  selfExercise: ["随机组卷", "智能组卷", "针对训练", "错题专项"],
 };
 
 export default config;

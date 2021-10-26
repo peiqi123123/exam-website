@@ -12,7 +12,8 @@ provide("message", ElMessage);
 </script>
 <style lang="less">
 @import "@/assets/css/style.less";
-body {
+body,
+html {
   background-color: @primaty-color;
   margin: 0;
   padding: 0;
