@@ -9,4 +9,6 @@ public interface UserService {
     Integer addUser(User user);
 
     Result findUserByToken(String token);
+
+    Result selectAllStudentInfo(String token);
 }

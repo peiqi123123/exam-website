@@ -5,7 +5,7 @@ public enum ErrorCode {
     ACCOUNT_PWD_NOT_EXIST(400,"用户名或密码不存在"),
     TOKEN_ERROR(10003,"token不合法"),
     TOKEN_OVERDUE(401,"token已过期,身份已过期"),
-    NO_PERMISSION(70001,"无权限访问"),
+    NO_PERMISSION(400,"无权限访问"),
     ERROR_IDENTITY(400,"身份选择错误"),
     SESSION_TIME_OUT(90001,"未登录"),
     NO_LOGIN(401,"未登录，无权访问");

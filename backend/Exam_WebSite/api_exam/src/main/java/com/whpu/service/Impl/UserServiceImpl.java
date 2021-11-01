@@ -5,6 +5,7 @@ import com.whpu.dao.mapper.UserMapper;
 import com.whpu.dao.pojo.User;
 import com.whpu.service.LoginAndRegisterService;
 import com.whpu.service.UserService;
+import com.whpu.utils.JWTUtils;
 import com.whpu.vo.ErrorCode;
 import com.whpu.vo.LoginUserVo;
 import com.whpu.vo.Result;
@@ -12,6 +13,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 /**
  * @description
@@ -77,5 +80,19 @@ public class UserServiceImpl implements UserService {
         loginUserVo.setNickName(user.getNickName());
 
         return Result.success(loginUserVo);
+    }
+
+    @Override
+    public Result selectAllStudentInfo(String token) {
+        Result result = loginService.checkToken(token);
+        User user = (User) result.getData();
+        if((!user.getIdentity().equals("teacher"))&&(!user.getIdentity().equals("Manager")))
+        {
+            return Result.fail(ErrorCode.NO_PERMISSION.getCode(),ErrorCode.NO_PERMISSION.getMsg());
+        }
+        /**
+         * 未完成，目标:在获得学生列表，包含正确率分析，那么就要先将考试模块做完
+         */
+        return null;
     }
 }
