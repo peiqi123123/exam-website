@@ -5,6 +5,7 @@ const store = createStore({
     return {
       questionAnswers: [],
       questionStatus: [],
+      currentIndex: 1,
     };
   },
   getters: {
@@ -13,6 +14,9 @@ const store = createStore({
     },
     getQuestionStatus(state) {
       return state.questionStatus;
+    },
+    getCurrentIndex(state) {
+      return state.currentIndex;
     },
   },
   mutations: {
@@ -27,6 +31,17 @@ const store = createStore({
     },
     setOneStatus(state, payload) {
       state.questionStatus[payload.index] = payload.value;
+    },
+    setCurrentIndex(state, payload) {
+      state.currentIndex = payload;
+    },
+    setCurrentIndexBefore(state) {
+      if (state.currentIndex <= 1) return;
+      state.currentIndex -= 1;
+    },
+    setCurrentIndexAfter(state) {
+      if (state.currentIndex >= this.state.questionAnswers.length) return;
+      state.currentIndex += 1;
     },
   },
 });

@@ -9,7 +9,12 @@
             v-if="Object.keys(questions).length !== 0"
           ></ExamSideBar>
         </el-aside>
-        <el-main><ExamQues></ExamQues></el-main>
+        <el-main
+          ><ExamQues
+            :questions="questions"
+            v-if="Object.keys(questions).length !== 0"
+          ></ExamQues
+        ></el-main>
       </el-container>
     </el-container>
   </div>
@@ -26,8 +31,8 @@ const store = useStore();
 async function init() {
   const res = await getExerciseQuestions();
   const size = res.size;
-  const questionAnswers = new Array(size);
-  const questionStatus = new Array(size).fill(0);
+  const questionAnswers = new Array(size + 1);
+  const questionStatus = new Array(size + 1).fill(0);
   questions.value = res.questions;
   store.commit("setQuestionAnswers", questionAnswers);
   store.commit("setQuestionStatus", questionStatus);
@@ -40,5 +45,9 @@ init();
 .self_exercise {
   min-width: 1200px;
   position: relative;
+  .el-main {
+    background-color: #fff;
+    border-radius: 10px;
+  }
 }
 </style>

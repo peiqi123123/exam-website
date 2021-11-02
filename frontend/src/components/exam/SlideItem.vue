@@ -1,5 +1,5 @@
 <template>
-  <div class="slide_item">
+  <div class="slide_item" @click="toDetail">
     <div class="question_info">
       <div class="number">题 {{ props.number }}</div>
       <div class="score">({{ props.score }} 分)</div>
@@ -7,21 +7,22 @@
     <div
       class="status iconfont icon-xinxi"
       style="color: #909399"
-      v-if="props.status === 0"
+      v-if="store.getters.getQuestionStatus[props.number] === 0"
     ></div>
     <div
       class="status iconfont icon-zhengque"
       style="color: #1afa29"
-      v-if="props.status === 1"
+      v-if="store.getters.getQuestionStatus[props.number] === 1"
     ></div>
     <div
       class="status iconfont icon-jinggao"
       style="color: #faad14"
-      v-if="props.status === 2"
+      v-if="store.getters.getQuestionStatus[props.number] === 2"
     ></div>
   </div>
 </template>
 <script setup>
+import { useStore } from "vuex";
 const props = defineProps({
   number: Number || String,
   // 0代表未选 1代表选择 2代表存疑
@@ -31,6 +32,10 @@ const props = defineProps({
   },
   score: Number || String,
 });
+const store = useStore();
+function toDetail() {
+  store.commit("setCurrentIndex", props.number);
+}
 </script>
 <style lang="less" scoped>
 .slide_item {
