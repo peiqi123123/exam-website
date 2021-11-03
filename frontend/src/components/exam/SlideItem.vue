@@ -6,23 +6,24 @@
     </div>
     <div
       class="status iconfont icon-xinxi"
-      style="color: #909399"
+      :style="{ color: config.statusColor.info }"
       v-if="store.getters.getQuestionStatus[props.number] === 0"
     ></div>
     <div
       class="status iconfont icon-zhengque"
-      style="color: #1afa29"
+      :style="{ color: config.statusColor.finish }"
       v-if="store.getters.getQuestionStatus[props.number] === 1"
     ></div>
     <div
       class="status iconfont icon-jinggao"
-      style="color: #faad14"
+      :style="{ color: config.statusColor.warning }"
       v-if="store.getters.getQuestionStatus[props.number] === 2"
     ></div>
   </div>
 </template>
 <script setup>
 import { useStore } from "vuex";
+import config from "@/config";
 const props = defineProps({
   number: Number || String,
   // 0代表未选 1代表选择 2代表存疑
@@ -31,6 +32,7 @@ const props = defineProps({
     default: 0,
   },
   score: Number || String,
+  questionId: Number,
 });
 const store = useStore();
 function toDetail() {

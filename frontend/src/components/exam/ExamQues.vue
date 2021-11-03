@@ -54,8 +54,11 @@ const choiceQuestions = props.questions.choiceQuestions;
 const TFSize = TFQuestions.length;
 const choiceSize = choiceQuestions.length;
 const size = TFSize + choiceSize;
+// 题目描述
 let TFQuestionContext = ref("");
 let ChoiceQuestionContext = ref("");
+let questionId = ref(0);
+// 题目类型
 let questionType = ref("判断题");
 let questionNumber = ref(`第1 / ${size}题`);
 // 当前题目索引
@@ -80,10 +83,12 @@ function changeInfo(currentIndex) {
   if (isTF()) {
     questionType.value = "判断题";
     TFQuestionContext.value = TFQuestions[currentIndex - 1].questionContext;
+    questionId.value = TFQuestions[currentIndex - 1].questionId;
   } else if (isChoice()) {
     questionType.value = "单选题";
     ChoiceQuestionContext.value =
       choiceQuestions[currentIndex - 1 - TFSize].questionContext;
+    questionId.value = choiceQuestions[currentIndex - 1 - TFSize].questionId;
   } else if (isMoreChoice()) {
     questionType.value = "多选题";
   }
@@ -93,16 +98,18 @@ watch(
   () => store.getters.getCurrentIndex,
   (currentIndex) => {
     index.value = currentIndex;
-    radio.value = store.getters.getQuestionAnswers[currentIndex];
+    radio.value = store.getters.getQuestionAnswers[currentIndex].answer;
     changeInfo(currentIndex);
     questionNumber.value = `第${currentIndex} / ${size}题`;
   }
 );
 // 选中选项的回调
 function selectOption(value) {
+  console.log(value);
   store.commit("setOneAnswer", {
     index: index.value,
     value: value,
+    questionId: questionId.value
   });
   store.commit("setOneStatus", {
     index: index.value,
@@ -141,6 +148,10 @@ function after() {
   .question_detail {
     .question_describe {
       margin-bottom: 10px;
+    }
+    .el-radio-group {
+      display: flex;
+      flex-flow: column;
     }
   }
   .feedback {

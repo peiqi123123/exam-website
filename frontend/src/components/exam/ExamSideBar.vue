@@ -10,14 +10,17 @@
         <div class="tf_title solid">判断题</div>
         <SlideItem
           v-for="(item, i) in TFQuestions"
+          :key="item.questionId"
           :number="i + 1"
           :score="16"
+          :questionId="item.questionId"
         ></SlideItem>
       </div>
       <div class="select" v-if="choiceQuestions.length !== 0">
         <div class="select_title solid">选择题</div>
         <SlideItem
           v-for="(item, i) in choiceQuestions"
+          :key="item.questionId"
           :number="TFSize + i + 1"
           :score="16"
         ></SlideItem>
@@ -36,7 +39,7 @@ const props = defineProps({
 const TFQuestions = props.questions.TFQuestions;
 const choiceQuestions = props.questions.choiceQuestions;
 const TFSize = props.questions.TFQuestions.length;
-const choiceSize = props.questions.choiceQuestions.length;
+// const choiceSize = props.questions.choiceQuestions.length;
 </script>
 <style lang="less" scoped>
 .exam_slide_bar {
