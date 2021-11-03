@@ -31,8 +31,12 @@
       </div>
     </div>
     <div class="feedback">
-      <el-button type="info" round @click="before">上一题</el-button>
-      <el-button type="primary" round @click="after">下一题</el-button>
+      <el-button type="info" round @click="before" :disabled="!isBefore"
+        >上一题</el-button
+      >
+      <el-button type="primary" round @click="after" :disabled="!isAfter"
+        >下一题</el-button
+      >
       <el-button type="warning" round @click="impeach">存疑</el-button>
     </div>
   </div>
@@ -94,9 +98,18 @@ function changeInfo(currentIndex) {
   }
 }
 changeInfo(index.value);
+// 判断是否有上一题或者下一题
+const isBefore = ref(false);
+const isAfter = ref(true);
 watch(
   () => store.getters.getCurrentIndex,
   (currentIndex) => {
+    if (currentIndex <= 1) isBefore.value = false;
+    else if (currentIndex >= size) isAfter.value = false;
+    else {
+      isBefore.value = true;
+      isAfter.value = true;
+    }
     index.value = currentIndex;
     radio.value = store.getters.getQuestionAnswers[currentIndex].answer;
     changeInfo(currentIndex);
@@ -109,7 +122,7 @@ function selectOption(value) {
   store.commit("setOneAnswer", {
     index: index.value,
     value: value,
-    questionId: questionId.value
+    questionId: questionId.value,
   });
   store.commit("setOneStatus", {
     index: index.value,

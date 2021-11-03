@@ -47,7 +47,7 @@ const store = createStore({
       state.currentIndex -= 1;
     },
     setCurrentIndexAfter(state) {
-      if (state.currentIndex >= state.questionAnswers.length) return;
+      if (state.currentIndex >= state.questionAnswers.length - 1) return;
       state.currentIndex += 1;
     },
     clear(state) {
