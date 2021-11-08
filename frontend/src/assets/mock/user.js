@@ -5,7 +5,7 @@ Mock.setup({
 });
 
 Mock.mock(/api\/login\/student/, "post", {
-  status: 201,
+  code: 201,
   name: "@first @last",
 });
 
@@ -33,7 +33,7 @@ for (let i = 0; i < 40; i++) {
 }
 
 Mock.mock(/api\/exercise/, {
-  status: 200,
+  code: 200,
   size: 50,
   examTime: 120,
   totalPoints: 1000,
@@ -47,7 +47,12 @@ Mock.mock(/api\/exercise/, {
   },
 });
 
-Mock.mock(/api\/submit/, {
-  status: 201,
+Mock.mock(/api\/submit\/exercise/, {
+  code: 201,
   msg: "提交成功",
+});
+
+Mock.mock(/api\/submit\/exit/, {
+  code: 201,
+  msg: "收到请求",
 });

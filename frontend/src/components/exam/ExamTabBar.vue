@@ -16,7 +16,10 @@
         <template #footer>
           <span class="dialog-footer">
             <el-button @click="submitDialogVisible = false">取消</el-button>
-            <el-button type="primary" @click="confirmSubmit" :loading="isLoading"
+            <el-button
+              type="primary"
+              @click="confirmSubmit"
+              :loading="isLoading"
               >确定</el-button
             >
           </span>
@@ -36,9 +39,19 @@ const store = useStore();
 const Router = useRouter();
 const props = defineProps({
   size: Number,
+  endTime: {
+    type: Number,
+    default: Date.parse(new Date()) + 2 * 60 * 60 * 1000,
+  },
+  hasAnswer: {
+    type: Number,
+    default: 0,
+  },
 });
 const size = props.size;
-let hasAnswerContext = ref(`0/${size}`);
+let hasAnswerContext = ref(`${props.hasAnswer}/${size}`);
+// 初始化已做题目个数
+store.commit("setHasAnswer", props.hasAnswer);
 watch(
   () => store.getters.getHasAnswer,
   (hasAnser) => {
@@ -46,7 +59,8 @@ watch(
   }
 );
 // 设置倒计时
-const end = Date.parse(new Date()) + 2 * 60 * 60 * 1000;
+const end = props.endTime;
+store.commit("setEndTime", end);
 let hr = ref(0);
 let min = ref(0);
 let sec = ref(0);
@@ -79,9 +93,9 @@ function submit() {
   submitDialogVisible.value = true;
 }
 // 确定提交
-const isLoading = ref(false)
+const isLoading = ref(false);
 async function confirmSubmit() {
-  isLoading.value = true
+  isLoading.value = true;
   const res = await submitExercise(questionAnswers.value);
   console.log(questionAnswers.value);
   console.log(res);
@@ -90,7 +104,7 @@ async function confirmSubmit() {
     submitDialogVisible.value = false;
     Router.push("/student/category");
     store.commit("clear");
-    isLoading.value = false
+    isLoading.value = false;
   } else {
     message.error("网络超时");
   }

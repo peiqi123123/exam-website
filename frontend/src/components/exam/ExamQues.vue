@@ -7,7 +7,7 @@
     <div class="question_detail">
       <div class="tf_question" v-if="questionType === '判断题'">
         <div class="tf_question_describe question_describe">
-          {{ index }}. {{ TFQuestionContext }}
+          {{ index }}. {{ TFQuestionContent }}
         </div>
         <div class="tf_question_option">
           <el-radio-group v-model="radio" @change="selectOption">
@@ -18,14 +18,14 @@
       </div>
       <div class="choice_question" v-if="questionType === '单选题'">
         <div class="choice_question_describe question_describe">
-          {{ index }}. {{ ChoiceQuestionContext }}
+          {{ index }}. {{ ChoiceQuestionContent }}
         </div>
         <div class="choice_question_option">
           <el-radio-group v-model="radio" @change="selectOption">
-            <el-radio label="A">Option A</el-radio>
-            <el-radio label="B">Option B</el-radio>
-            <el-radio label="C">Option C</el-radio>
-            <el-radio label="D">Option D</el-radio>
+            <el-radio label="A">A. {{ currentQuestion.optionA }}</el-radio>
+            <el-radio label="B">B. {{ currentQuestion.optionB }}</el-radio>
+            <el-radio label="C">C. {{ currentQuestion.optionC }}</el-radio>
+            <el-radio label="D">D. {{ currentQuestion.optionD }}</el-radio>
           </el-radio-group>
         </div>
       </div>
@@ -53,14 +53,19 @@ const props = defineProps({
 // 选择答案
 const radio = ref(-1);
 const store = useStore();
-const TFQuestions = props.questions.TFQuestions;
-const choiceQuestions = props.questions.choiceQuestions;
+// 题目信息
+const TFQuestions = props.questions.TFQuestions || [];
+const choiceQuestions = props.questions.choiceQuestions || [];
+// 题目长度
 const TFSize = TFQuestions.length;
 const choiceSize = choiceQuestions.length;
+// 所有题目数量
 const size = TFSize + choiceSize;
+// 当前题目信息
+const currentQuestion = ref({});
 // 题目描述
-let TFQuestionContext = ref("");
-let ChoiceQuestionContext = ref("");
+let TFQuestionContent = ref("");
+let ChoiceQuestionContent = ref("");
 let questionId = ref(0);
 // 题目类型
 let questionType = ref("判断题");
@@ -86,13 +91,13 @@ function isMoreChoice() {}
 function changeInfo(currentIndex) {
   if (isTF()) {
     questionType.value = "判断题";
-    TFQuestionContext.value = TFQuestions[currentIndex - 1].questionContext;
+    TFQuestionContent.value = TFQuestions[currentIndex - 1].questionContent;
     questionId.value = TFQuestions[currentIndex - 1].questionId;
   } else if (isChoice()) {
+    currentQuestion.value = choiceQuestions[currentIndex - 1 - TFSize];
     questionType.value = "单选题";
-    ChoiceQuestionContext.value =
-      choiceQuestions[currentIndex - 1 - TFSize].questionContext;
-    questionId.value = choiceQuestions[currentIndex - 1 - TFSize].questionId;
+    ChoiceQuestionContent.value = currentQuestion.value.questionContent;
+    questionId.value = currentQuestion.value.questionId;
   } else if (isMoreChoice()) {
     questionType.value = "多选题";
   }

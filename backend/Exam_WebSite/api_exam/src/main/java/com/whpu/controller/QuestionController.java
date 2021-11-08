@@ -3,13 +3,12 @@ package com.whpu.controller;
 import com.whpu.service.QuestionService;
 import com.whpu.vo.QuestionVo;
 import com.whpu.vo.Result;
+import com.whpu.vo.params.RandomParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @description
@@ -22,10 +21,11 @@ public class QuestionController {
 
     @Autowired
     QuestionService questionService;
-    @GetMapping("Random")
-    public Result selectRandomQuestion(@RequestParam Integer QuestionNum)
+    @PostMapping("random")
+    public Result selectRandomQuestion(@RequestBody RandomParam randomParam)
     {
-        List<QuestionVo> questionVos = questionService.selectRandomQuestion(QuestionNum);
+        System.out.println(randomParam);
+        Map<String, List<QuestionVo>> questionVos = questionService.selectRandomQuestion(randomParam.getQuestionNum());
         return Result.success(questionVos);
     }
 }

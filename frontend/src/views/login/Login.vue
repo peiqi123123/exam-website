@@ -2,9 +2,9 @@
   <div class="login">
     <div class="box">
       <div class="login_mode">
-        <el-select v-model="loginMode" size="small">
+        <el-select v-model="identity" size="small">
           <el-option
-            v-for="item in config.loginMode"
+            v-for="item in config.identity"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -18,11 +18,11 @@
         ref="formRef"
         :rules="rules"
       >
-        <el-form-item label="账号" prop="username">
-          <el-input v-model="loginForm.username"></el-input>
+        <el-form-item label="账号" prop="account">
+          <el-input v-model="loginForm.account"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input v-model="loginForm.password"></el-input>
+          <el-input v-model="loginForm.password" type="password"></el-input>
         </el-form-item>
         <el-form-item class="btns">
           <el-button type="primary" @click="submitForm" :loading="isLoading"
@@ -45,14 +45,14 @@ import config from "@/config";
 import { studentLogin } from "@/network/api/user";
 //表单数据
 const loginForm = ref({
-  username: "",
+  account: "",
   password: "",
 });
 //选择登录方式
-const loginMode = ref("student");
+const identity = ref("student");
 //表单规则
 const rules = ref({
-  username: [
+  account: [
     {
       required: true,
       message: "请输入账号",
@@ -79,21 +79,23 @@ function submitForm() {
     if (valid) {
       isLoading.value = true;
       const res = await studentLogin(
-        loginForm.value.username,
-        loginForm.value.username,
-        loginMode.value
+        loginForm.value.account,
+        loginForm.value.password,
+        identity.value
       );
       console.log(res);
-      if (res.status === 201) {
-        isLoading.value = false;
+      isLoading.value = false;
+      if (res.code === 201) {
         message.success("登录成功");
-        if (loginMode.value === "student") Router.push("/student/category");
-        else if (loginMode.value === "teacher") Router.push("/teacher");
-        else if(loginMode.value === "manager") Router.push("/manager");
+        window.sessionStorage.setItem("token", res.data)
+        // window.
+        if (identity.value === "student") Router.push("/student/category");
+        else if (identity.value === "teacher") Router.push("/teacher");
+        else if (identity.value === "manager") Router.push("/manager");
+      } else {
+        message.error(res.msg);
       }
-    } else {
-      message.error("登陆失败");
-    }
+    } else message.error("登陆失败 请稍后重试");
   });
 }
 //重置表单

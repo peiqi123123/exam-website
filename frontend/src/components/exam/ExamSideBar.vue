@@ -36,10 +36,11 @@ const props = defineProps({
     default: {},
   },
 });
-const TFQuestions = props.questions.TFQuestions;
-const choiceQuestions = props.questions.choiceQuestions;
-const TFSize = props.questions.TFQuestions.length;
-// const choiceSize = props.questions.choiceQuestions.length;
+console.log(props.questions);
+const TFQuestions = props.questions.TFQuestions || [];
+const choiceQuestions = props.questions.choiceQuestions || [];
+const TFSize = TFQuestions.length;
+// const choiceSize = choiceQuestions.length;
 </script>
 <style lang="less" scoped>
 .exam_slide_bar {

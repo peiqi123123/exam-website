@@ -19,7 +19,7 @@ public class LoginController {
     private LoginAndRegisterService loginService;
 
     @PostMapping
-    public Result doLogin( LoginParam loginParam)
+    public Result doLogin(@RequestBody LoginParam loginParam)
     {
         return loginService.doLogin(loginParam);
     }

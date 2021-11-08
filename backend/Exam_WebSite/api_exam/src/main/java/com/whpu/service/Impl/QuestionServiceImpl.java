@@ -10,9 +10,7 @@ import org.apache.commons.lang3.builder.ToStringExclude;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @description
@@ -57,14 +55,15 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<QuestionVo> selectRandomQuestion(int QuestionNum) {
+    public Map<String, List<QuestionVo>> selectRandomQuestion(int QuestionNum) {
         LambdaQueryWrapper<Question> qw = new LambdaQueryWrapper<>();
         qw.select(Question::getQuestionContent,Question::getAnalyse,Question::getAnsNum,
                 Question::getOptionA,Question::getOptionB,Question::getOptionC,Question::getOptionD,Question::getOptionE
         ,Question::getOptionF,Question::getOptionG,Question::getAnswer,Question::getQuestionId);
         qw.last("ORDER BY RAND() LIMIT "+QuestionNum);
         List<Question> questions = questionMapper.selectList(qw);
-        List<QuestionVo> res = new ArrayList<>();
+        List<QuestionVo> choiceQuestions = new ArrayList<>();
+        HashMap<String, List<QuestionVo>> res = new HashMap<>();
         for(Question q:questions)
         {
             QuestionVo a = new QuestionVo();
@@ -80,8 +79,9 @@ public class QuestionServiceImpl implements QuestionService {
             a.setOptionE(q.getOptionE());
             a.setOptionF(q.getOptionF());
             a.setOptionG(q.getOptionG());
-            res.add(a);
+            choiceQuestions.add(a);
         }
+        res.put("choiceQuestions", choiceQuestions);
         return res;
         }
 

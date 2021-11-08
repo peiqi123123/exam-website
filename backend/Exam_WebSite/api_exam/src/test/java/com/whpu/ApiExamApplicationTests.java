@@ -26,9 +26,10 @@ class ApiExamApplicationTests {
     public void testDb()
     {
         User user= new User();
-        user.setAccount("123456");
+        user.setAccount("admin");
         user.setPassword("123456");
         user.setNickName("小明");
+        user.setIdentity("student");
         userService.addUser(user);
     }
 

@@ -1,17 +1,23 @@
 import axios from "../index";
 
-export function studentLogin(username, password, loginMode) {
-  return axios.post("/login/student", {
-    username,
+export function studentLogin(account, password, identity) {
+  return axios.post("/login", {
+    account,
     password,
-    loginMode,
+    identity,
   });
 }
 
-export function getExerciseQuestions() {
-  return axios.get("/exercise");
+export function getExerciseQuestions(questionNum = 100) {
+  return axios.post("/exercise/random", {
+    questionNum,
+  });
 }
 
 export function submitExercise(questionAnswers) {
   return axios.post("submit/exercise");
+}
+
+export function beforeunload() {
+  return axios.post("submit/exit");
 }

@@ -7,10 +7,12 @@ import Router from "@/router";
 const message = ElMessage;
 
 const instance = axios.create({
-  baseURL: config.dev.baseURL,
+  baseURL: config.product.baseURL,
   timeout: 3000,
 });
-
+// Authorization
+const token = window.sessionStorage.getItem("token") || null;
+instance.defaults.headers["Authorization"] = token;
 instance.interceptors.request.use(
   (config) => {
     return config;
@@ -22,8 +24,8 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (res) => {
-    const status = res.data.status;
-    if (status === 401) {
+    const code = res.data.statcodeus;
+    if (code === 401) {
       message.info("登录失效，请重新登录");
       // Router.push("/login");
       console.log(Router);

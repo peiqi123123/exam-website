@@ -1,6 +1,6 @@
 const config = {
   //登录方式，身份
-  loginMode: [
+  identity: [
     {
       label: "学生",
       value: "student",
@@ -18,7 +18,7 @@ const config = {
     baseURL: "http://api",
   },
   product: {
-    baseURL: "http://localhost:8080",
+    baseURL: "http://localhost:8080/api",
   },
   // 练习的类别
   contestCategory: [
