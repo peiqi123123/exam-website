@@ -11,3 +11,7 @@ export function studentLogin(username, password, loginMode) {
 export function getExerciseQuestions() {
   return axios.get("/exercise");
 }
+
+export function submitExercise(questionAnswers) {
+  return axios.post("submit/exercise");
+}

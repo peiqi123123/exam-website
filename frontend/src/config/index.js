@@ -33,6 +33,12 @@ const config = {
   contestType: ["自主练习", "赛事模拟"],
   // 自主练习的四个模块
   selfExercise: ["随机组卷", "智能组卷", "针对训练", "错题专项"],
+  // 做题状态颜色
+  statusColor: {
+    info: "#909399",
+    finish: "#1afa29",
+    warning: "#faad14",
+  },
 };
 
 export default config;

@@ -88,8 +88,8 @@ function submitForm() {
         isLoading.value = false;
         message.success("登录成功");
         if (loginMode.value === "student") Router.push("/student/category");
-        if (loginMode.value === "teacher") Router.push("/teacher");
-        if (loginMode.value === "manager") Router.push("/manager");
+        else if (loginMode.value === "teacher") Router.push("/teacher");
+        else if(loginMode.value === "manager") Router.push("/manager");
       }
     } else {
       message.error("登陆失败");

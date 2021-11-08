@@ -1,5 +1,9 @@
 import Mock, { Random } from "mockjs";
 
+Mock.setup({
+  timeout: "400-1000",
+});
+
 Mock.mock(/api\/login\/student/, "post", {
   status: 201,
   name: "@first @last",
@@ -7,21 +11,25 @@ Mock.mock(/api\/login\/student/, "post", {
 
 // 随机生成考试题目
 const TFQuestions = [];
-const ChoiceQuestions = [];
+const choiceQuestions = [];
 for (let i = 0; i < 10; i++) {
-  TFQuestions.push(Random.string("lower", 30, 100));
+  const question = {
+    questionId: Random.integer(),
+    questionContext: Random.string("lower", 30, 100),
+  };
+  TFQuestions.push(question);
 }
 for (let i = 0; i < 40; i++) {
-  ChoiceQuestions.push(Random.string("lower", 30, 100));
-}
-
-const TFAnswers = [];
-const ChoiceAnswers = [];
-for (let i = 0; i < 10; i++) {
-  TFAnswers.push(Random.boolean());
-}
-for (let i = 0; i < 40; i++) {
-  ChoiceAnswers.push(Random.string("ABCD", 1));
+  const question = {
+    questionId: Random.integer(),
+    questionContext: Random.string("lower", 50, 100),
+    optionA: Random.string("lower", 5, 10),
+    optionB: Random.string("lower", 5, 10),
+    optionC: Random.string("lower", 5, 10),
+    optionD: Random.string("lower", 5, 10),
+    answer: Random.string("ABCD", 1),
+  };
+  choiceQuestions.push(question);
 }
 
 Mock.mock(/api\/exercise/, {
@@ -34,11 +42,12 @@ Mock.mock(/api\/exercise/, {
     // 判断题
     TFQuestions,
     // 选择题 单选题
-    ChoiceQuestions,
+    choiceQuestions,
     //
   },
-  answers: {
-    TFAnswers,
-    ChoiceAnswers,
-  },
+});
+
+Mock.mock(/api\/submit/, {
+  status: 201,
+  msg: "提交成功",
 });
