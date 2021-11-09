@@ -4,10 +4,12 @@ import com.whpu.dao.mapper.ExamRecordingMapper;
 import com.whpu.dao.pojo.ExamRecording;
 import com.whpu.service.ExamRecordingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * 用于添加考试的记录
  */
+@Service
 public class ExamRecordingServiceImpl implements ExamRecordingService {
     @Autowired
     ExamRecordingMapper examRecordingMapper;

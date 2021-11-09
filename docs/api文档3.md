@@ -4,7 +4,7 @@
 
 ```
 interface ErrorInfo {
-    status: Number; // 401 未登录 403权限不够
+    code: Number; // 401 未登录 403权限不够
     message: string;
 }
 ```
@@ -33,7 +33,7 @@ Response `201`
 
 ```
 interface login {
-	status: Number;
+	code: Number;
     user: User,
     token: String; // 用于后序操作验证身份（JWT）
 }
@@ -43,7 +43,7 @@ Response `400`
 
 ```
 interface login {
-	status: Number;
+	code: Number;
     msg: String; // 错误信息（账号不存在，密码错误等）
 }
 ```
@@ -52,7 +52,7 @@ Response `401`
 
 ```
 interface login {
-	status: Number;
+	code: Number;
     msg: String; // 登录过期，重新登陆
 }
 ```
@@ -79,7 +79,7 @@ interface exerciseRandom {
         TFQuestions: Array // 判断题题目（暂时没有）
         ChoiceQuestions: Array<Question> {
         		int：questionId 题号
-        		string：questionContext 题目内容
+        		string：questionContent 题目内容
         		String:optionA  选项A的内容
         		String：optionB 选项B的内容
         		String: optionC 选项C的内容
@@ -91,6 +91,7 @@ interface exerciseRandom {
         		String:Answer 题目答案
         		String:Analyse 题目解析
         }// 选择题题目
+        examRecordingId:String 这次考试的主键 
     }
   
 } 
@@ -99,6 +100,43 @@ interface exerciseRandom {
 # 智能组卷
 
 暂时 不做
+
+
+
+## 提交卷子
+
+### post api/exercise/submit
+
+Request
+
+```
+ interface exerciseSubmit{
+ 		totleTime:int 学生用时，单位：分钟
+ 		examRecording:String 考试的id
+         List<AnsParam> ans;
+         其中 AnsParam中包含两个属性：
+         {
+             questionId:String 题目主键
+             stuAns:String  学生的答案
+         }
+  
+ }
+
+```
+
+Response
+
+~~~
+interface {
+   code:201;
+    msg:success;
+
+    
+}
+
+~~~
+
+
 
 # 获取学生列表
 
