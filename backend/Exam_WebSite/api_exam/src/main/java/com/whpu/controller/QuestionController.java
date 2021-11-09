@@ -1,6 +1,7 @@
 package com.whpu.controller;
 
 import com.whpu.service.QuestionService;
+import com.whpu.utils.JWTUtils;
 import com.whpu.vo.QuestionVo;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.RandomParam;
@@ -22,10 +23,11 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
     @PostMapping("random")
-    public Result selectRandomQuestion(@RequestBody RandomParam randomParam)
+    public Result selectRandomQuestion(@RequestBody RandomParam randomParam,@RequestHeader String token)
     {
-        System.out.println(randomParam);
-        Map<String, List<QuestionVo>> questionVos = questionService.selectRandomQuestion(randomParam.getQuestionNum());
-        return Result.success(questionVos);
+        Map<String, Object> stringObjectMap = JWTUtils.checkToken(token);
+        Object userId = stringObjectMap.get("userId");
+        Map<String,Object> res = questionService.selectRandomQuestion(randomParam.getQuestionNum(),(String)userId);
+        return Result.success(res);
     }
 }

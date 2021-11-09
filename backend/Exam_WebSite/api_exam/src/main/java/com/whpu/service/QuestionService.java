@@ -11,5 +11,5 @@ public interface QuestionService {
 
     int addTestQuestion();
 
-    Map<String, List<QuestionVo>> selectRandomQuestion(int QuestionNum);
+    Map<String,Object> selectRandomQuestion(int QuestionNum,String userId);
 }

@@ -3,12 +3,16 @@ package com.whpu.service.Impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.whpu.dao.mapper.QuestionMapper;
+import com.whpu.dao.mapper.StuAnsRecordingMapper;
 import com.whpu.dao.pojo.Question;
+import com.whpu.dao.pojo.StuAnsRecording;
+import com.whpu.service.ExamRecordingService;
 import com.whpu.service.QuestionService;
 import com.whpu.vo.QuestionVo;
 import org.apache.commons.lang3.builder.ToStringExclude;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -22,8 +26,10 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Autowired
     private QuestionMapper questionMapper;
-
-
+    @Autowired
+    private ExamRecordingService examRecordingService;
+    @Autowired
+    private StuAnsRecordingMapper stuAnsRecordingMapper;
     @Override
     /**
      * 用于添加随机的题目，随机的题目仅用于测试
@@ -55,15 +61,26 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Map<String, List<QuestionVo>> selectRandomQuestion(int QuestionNum) {
+    @Transactional
+    public Map<String,Object> selectRandomQuestion(int choiceQuestionNum,String userId) {
+        //添加考试的记录
+        String examRecordingId = examRecordingService.creatExamRecordingService();
+        //选择题模块
+        if(choiceQuestionNum==0)
+        {
+            choiceQuestionNum=100;
+        }
+        //随机查到对应的题目
         LambdaQueryWrapper<Question> qw = new LambdaQueryWrapper<>();
         qw.select(Question::getQuestionContent,Question::getAnalyse,Question::getAnsNum,
                 Question::getOptionA,Question::getOptionB,Question::getOptionC,Question::getOptionD,Question::getOptionE
         ,Question::getOptionF,Question::getOptionG,Question::getAnswer,Question::getQuestionId);
-        qw.last("ORDER BY RAND() LIMIT "+QuestionNum);
+        qw.last("ORDER BY RAND() LIMIT "+choiceQuestionNum);
         List<Question> questions = questionMapper.selectList(qw);
         List<QuestionVo> choiceQuestions = new ArrayList<>();
-        HashMap<String, List<QuestionVo>> res = new HashMap<>();
+
+
+        HashMap<String,Object> res = new HashMap<>();
         for(Question q:questions)
         {
             QuestionVo a = new QuestionVo();
@@ -80,8 +97,20 @@ public class QuestionServiceImpl implements QuestionService {
             a.setOptionF(q.getOptionF());
             a.setOptionG(q.getOptionG());
             choiceQuestions.add(a);
+
+            //将选出来的题发给前端的同时，将对应的题目给个记录
+            StuAnsRecording stuAnsRecording = new StuAnsRecording();
+            stuAnsRecording.setQuestionId(q.getQuestionId());
+            stuAnsRecording.setRecordingId(examRecordingId);
+            stuAnsRecording.setStudentId(userId);
+            stuAnsRecordingMapper.insert(stuAnsRecording);
         }
+        //将选出的题目放入到结果集当中
         res.put("choiceQuestions", choiceQuestions);
+        //判断题模块(还没做)
+
+        //告诉你这是哪次考试
+        res.put("examRecordingId",examRecordingId);
         return res;
         }
 
