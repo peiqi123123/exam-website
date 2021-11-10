@@ -1,8 +1,10 @@
 package com.whpu.controller;
 
+import com.whpu.dao.pojo.User;
 import com.whpu.service.Impl.StuSubmitServiceImpl;
 import com.whpu.service.StuSubmitService;
 import com.whpu.utils.JWTUtils;
+import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.SubmitParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,10 @@ public class SubmitExamController {
     @Autowired
     private StuSubmitService stuSubmitService;
     @PostMapping("submit")
-    public Result doSubmit(@RequestHeader("Authorization")String token,@RequestBody SubmitParam submitParam)
+    public Result doSubmit(@RequestBody SubmitParam submitParam)
     {
-        Map<String, Object> stringObjectMap = JWTUtils.checkToken(token);
-        Object userId = stringObjectMap.get("userId");
-        Result result = stuSubmitService.submit(submitParam,(String)userId);
+        User user = UserThreadLocal.get();
+        Result result = stuSubmitService.submit(submitParam,user.getUserId());
         return result;
     }
 
