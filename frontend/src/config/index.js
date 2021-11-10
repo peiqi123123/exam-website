@@ -39,6 +39,7 @@ const config = {
     finish: "#1afa29",
     warning: "#faad14",
   },
+  exerciseSize: 60,
 };
 
 export default config;

@@ -46,7 +46,6 @@ const store = createStore({
         state.hasAnswer++;
       state.questionAnswers[payload.index].answer = payload.value;
       state.questionAnswers[payload.index].questionId = payload.questionId;
-      console.log(state.questionAnswers);
     },
     setOneStatus(state, payload) {
       state.questionStatus[payload.index] = payload.value;
@@ -65,6 +64,7 @@ const store = createStore({
     clear(state) {
       state.currentIndex = 1;
       state.hasAnswer = 0;
+      state.questionStatus = [];
     },
   },
 });

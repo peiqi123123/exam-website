@@ -73,6 +73,7 @@ Response `200`
 
 ```
 interface exerciseRandom {
+	examId: String, // 考试ID
     status: Number;
     size: NUmber; // 题目数量
     questions: {
@@ -136,7 +137,7 @@ Response `200`
 
 ```
 interface studentInfo {
-    status: Number;
+    code: Number;
 	user: User // 学生的基本信息
     // 包括最近提交记录（练习时长，分数，练习类别），正确率分析（自主练习，赛事模拟）
 }
@@ -187,6 +188,46 @@ interface studentInfo {
 
 # 增加学生账号
 
-### post `api/student/add`
+###  post `api/student/add`
 
 同上
+
+# 考试提交
+
+### post ```api/exercise/submit```
+
+Request 
+
+```tsx
+interface exercise {
+    examId: String, // 考试ID
+	totleTime: int, // 考试总用时（单位：秒）
+    Array<AnsParam> questionAnswers,
+}
+interface AnsParam {
+	questionId: String,
+    answer: String,
+}
+```
+
+Response
+
+```tsx
+interface exercise {
+    code: 201,
+    msg: String, // 
+}
+```
+
+# 考试中途退出 
+
+Request
+
+```tsx
+interface exercise {
+    
+}
+```
+
+
+

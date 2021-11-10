@@ -32,7 +32,7 @@ const props = defineProps({
     default: 0,
   },
   score: Number || String,
-  questionId: Number,
+  // questionId: String,
 });
 const store = useStore();
 function toDetail() {

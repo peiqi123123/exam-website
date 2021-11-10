@@ -2,7 +2,7 @@
   <div class="self_exercise" v-if="Object.keys(questions).length !== 0">
     <el-container>
       <el-header
-        ><ExamTabBar :size="size" v-if="size > 0"></ExamTabBar
+        ><ExamTabBar :size="size" :examId="examId" v-if="size > 0"></ExamTabBar
       ></el-header>
       <el-container>
         <el-aside width="25%">
@@ -20,15 +20,18 @@ import { useStore } from "vuex";
 import ExamTabBar from "@/components/exam/ExamTabBar.vue";
 import ExamQues from "@/components/exam/ExamQues.vue";
 import ExamSideBar from "@/components/exam/ExamSideBar.vue";
-import { getExerciseQuestions } from "@/network/api/user";
+import { getExerciseQuestions, exerciseExit } from "@/network/api/user";
 import { beforeunload } from "@/network/api/user";
+import config from "@/config";
 let questions = ref({});
 const store = useStore();
 let size = ref(0);
+const examId = ref("");
 async function init() {
   const res = await getExerciseQuestions();
   console.log(res);
-  size.value = 100;
+  size.value = config.exerciseSize;
+  examId.value = res.data.examId;
   const questionAnswers = [];
   for (let i = 0; i < size.value + 1; i++) {
     questionAnswers[i] = {
@@ -40,7 +43,6 @@ async function init() {
   questions.value = res.data;
   store.commit("setQuestionAnswers", questionAnswers);
   store.commit("setQuestionStatus", questionStatus);
-  console.log("questions", res);
 }
 // 获取练习题目等相关信息
 init();
@@ -51,16 +53,8 @@ onMounted(() => {
   //   if (e) e.returnValue = "";
   //   return "";
   // });
-  window.addEventListener("unload", async (e) => {
-    fetch("http://localhost:8888/submit/exit", {
-      method: "POST",
-      body: JSON.stringify(questions.value),
-      headers: { "Content-Type": "application/json" },
-      keepalive: true,
-    });
-    // const formData = new FormData();
-    // formData.append("name", JSON.stringify(questions.value));
-    // window.navigator.sendBeacon("http://localhost:8888/submit/test", formData);
+  window.addEventListener("unload", (e) => {
+    exerciseExit(questions.value);
   });
 });
 </script>

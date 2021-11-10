@@ -21,6 +21,10 @@ const routes = [
     path: "/exercise",
     component: () => import("@/views/exercise/SelfExercise.vue"),
   },
+  {
+    path: "/review",
+    component: () => import("@/views/exercise/Review.vue"),
+  },
   { path: "/teacher", component: () => import("@/views/teacher/Teacher.vue") },
   { path: "/manager", component: () => import("@/views/manager/Manager.vue") },
 ];

@@ -47,6 +47,7 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+  examId: String,
 });
 const size = props.size;
 let hasAnswerContext = ref(`${props.hasAnswer}/${size}`);
@@ -96,13 +97,24 @@ function submit() {
 const isLoading = ref(false);
 async function confirmSubmit() {
   isLoading.value = true;
-  const res = await submitExercise(questionAnswers.value);
-  console.log(questionAnswers.value);
-  console.log(res);
-  if (res.status === 201) {
+  // 计算考试总用时
+  const totalTime =
+    parseInt(hr.value) * 60 * 60 +
+    parseInt(min.value) * 60 +
+    parseInt(sec.value);
+  const res = await submitExercise(
+    questionAnswers.value,
+    totalTime,
+    props.examId
+  );
+  // console.log(questionAnswers.value);
+  // console.log(totalTime);
+  // console.log(props.examId);
+  // console.log(res);
+  if (res.code === 201) {
     message.success("提交成功");
     submitDialogVisible.value = false;
-    Router.push("/student/category");
+    Router.push("/review");
     store.commit("clear");
     isLoading.value = false;
   } else {
