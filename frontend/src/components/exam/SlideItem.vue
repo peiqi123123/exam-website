@@ -19,6 +19,11 @@
       :style="{ color: config.statusColor.warning }"
       v-if="store.getters.getQuestionStatus[props.number] === 2"
     ></div>
+    <div
+      class="status iconfont icon-cuowu"
+      :style="{ color: config.statusColor.error }"
+      v-if="store.getters.getQuestionStatus[props.number] === 3"
+    ></div>
   </div>
 </template>
 <script setup>

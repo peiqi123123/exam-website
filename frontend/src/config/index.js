@@ -38,6 +38,7 @@ const config = {
     info: "#909399",
     finish: "#1afa29",
     warning: "#faad14",
+    error: "#FF0000",
   },
   exerciseSize: 60,
 };

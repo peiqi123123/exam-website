@@ -71,8 +71,8 @@
       </div>
     </div>
     <div class="exam_analy" v-if="type === 'review'">
-      <div class="radio">你的选择：{{ studentAnswer }}</div>
-      <div class="answer">正确答案：{{ answer }}</div>
+      <div class="radio">你的选择：{{ studentContext }}</div>
+      <div class="answer">正确答案：{{ answerContext }}</div>
       <div class="analy">解析：{{ "fasddddddddddfasdfasd" }}</div>
     </div>
     <div class="feedback">
@@ -195,7 +195,7 @@ watch(
 );
 // 选中选项的回调
 function selectOption(value) {
-  console.log(value);
+  // console.log(value);
   store.commit("setOneAnswer", {
     index: index.value,
     value: value,
@@ -206,13 +206,25 @@ function selectOption(value) {
     value: 1,
   });
 }
+// 将判断题1-0转化为对-错
+// 显示答案的文字
+const studentContext = ref("");
+const answerContext = ref("");
+function translateAnswer() {
+  if (studentAnswer.value === 0) studentContext.value = "错";
+  else if (studentAnswer.value === 1) studentContext.value = "对";
+  else studentContext.value = studentAnswer.value;
+  if (answer.value === 0) answerContext.value = "错";
+  else if (answer.value === 1) answerContext.value = "对";
+  else answerContext.value = answer.value;
+}
 // 查询当前题目ID所对应考生的答案
+// 获取学生回答信息
 const questions = store.getters.getQuestionAnswers;
 function findAnswerById() {
-  const id = questionId.value;
-  for (const question of questions)
-    if (question.questionId === id)
-      return (studentAnswer.value = question.answer);
+  studentAnswer.value = "";
+  studentAnswer.value = questions[index.value].answer;
+  translateAnswer();
 }
 findAnswerById();
 // 存疑按钮的回调

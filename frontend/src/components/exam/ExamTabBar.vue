@@ -32,7 +32,6 @@
 import { ref, watch, inject } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
-import SubmitConfirm from "./SubmitConfirm.vue";
 import { submitExercise } from "@/network/api/user";
 const message = inject("message");
 const store = useStore();

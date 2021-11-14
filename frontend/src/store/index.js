@@ -8,6 +8,9 @@ const store = createStore({
       currentIndex: 1,
       hasAnswer: 0,
       endTime: 0,
+      // 卷子回顾
+      // 当前题目正确与否
+      currentBoolean: null,
     };
   },
   getters: {
@@ -23,6 +26,9 @@ const store = createStore({
     getHasAnswer(state) {
       return state.hasAnswer;
     },
+    getCurrentBoolean(state) {
+      return state.currentBoolean;
+    },
   },
   mutations: {
     setEndTime(state, endTime) {
@@ -31,16 +37,16 @@ const store = createStore({
     setHasAnswer(state, hasAnswer) {
       state.hasAnswer = hasAnswer;
     },
-    setQuestionAnswers(state, payload) {
-      state.questionAnswers = payload;
-      console.log(state.questionAnswers);
+    setQuestionAnswers(state, questionAnswers) {
+      state.questionAnswers = questionAnswers;
+      // console.log(state.questionAnswers);
     },
-    setQuestionStatus(state, payload) {
-      state.questionStatus = payload;
+    setQuestionStatus(state, questionStatus) {
+      state.questionStatus = questionStatus;
     },
     setOneAnswer(state, payload) {
       if (
-        state.questionAnswers[payload.index].answer === -1 &&
+        state.questionAnswers[payload.index].answer === null &&
         state.hasAnswer < state.questionAnswers.length
       )
         state.hasAnswer++;
@@ -60,6 +66,10 @@ const store = createStore({
     setCurrentIndexAfter(state) {
       if (state.currentIndex >= state.questionAnswers.length - 1) return;
       state.currentIndex += 1;
+    },
+    setCurrentBoolean(state, currentBoolean) {
+      state.currentBoolean = currentBoolean;
+      console.log("currentBoolean", state.currentBoolean);
     },
     clear(state) {
       state.currentIndex = 1;

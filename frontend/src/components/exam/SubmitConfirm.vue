@@ -25,7 +25,7 @@ const props = defineProps({
 });
 const emit = defineEmits(["toDetail"]);
 const status = props.questionStatus;
-console.log(status);
+// console.log(status);
 function toDetail(i) {
   emit("toDetail", i);
 }

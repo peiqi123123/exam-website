@@ -17,11 +17,8 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
-import ExamTabBar from "@/components/exam/ExamTabBar.vue";
-import ExamQues from "@/components/exam/ExamQues.vue";
-import ExamSideBar from "@/components/exam/ExamSideBar.vue";
 import { getExerciseQuestions, exerciseExit } from "@/network/api/user";
-import { beforeunload } from "@/network/api/user";
+// import { beforeunload } from "@/network/api/user";
 import config from "@/config";
 let questions = ref({});
 const store = useStore();
@@ -36,7 +33,7 @@ async function init() {
   for (let i = 0; i < size.value + 1; i++) {
     questionAnswers[i] = {
       questionId: 0,
-      answer: -1,
+      answer: null,
     };
   }
   const questionStatus = new Array(size.value + 1).fill(0);
@@ -47,16 +44,16 @@ async function init() {
 // 获取练习题目等相关信息
 init();
 // 监听浏览器关闭与刷新
-onMounted(() => {
-  // window.addEventListener("beforeunload", (e) => {
-  //   e = e || window.event;
-  //   if (e) e.returnValue = "";
-  //   return "";
-  // });
-  window.addEventListener("unload", (e) => {
-    exerciseExit(questions.value);
-  });
-});
+// onMounted(() => {
+//   // window.addEventListener("beforeunload", (e) => {
+//   //   e = e || window.event;
+//   //   if (e) e.returnValue = "";
+//   //   return "";
+//   // });
+//   window.addEventListener("unload", (e) => {
+//     exerciseExit(questions.value);
+//   });
+// });
 </script>
 <style lang="less" scoped>
 .self_exercise {

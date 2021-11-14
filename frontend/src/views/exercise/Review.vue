@@ -3,7 +3,7 @@
     <el-container>
       <el-container>
         <el-aside width="25%">
-          <ExamSideBar :questions="questions"></ExamSideBar>
+          <ExamSideBar :questions="questions" type="review"></ExamSideBar>
         </el-aside>
         <el-main
           ><ExamQues :questions="questions" type="review"></ExamQues
@@ -18,6 +18,8 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 // import ExamQues from "@/components/exam/ExamQues.vue";
 import { getExerciseReview } from "@/network/api/user";
+// 导入更改卷子函数
+import { getGrades } from "../../utils/getGrades";
 let questions = ref({});
 // const store = useStore();
 // const Route = useRoute();
@@ -25,9 +27,11 @@ const store = useStore();
 async function init() {
   const res = await getExerciseReview();
   console.log("res", res);
-  store.commit("setQuestionAnswers", res.data.questionAnswers);
+  const grade = getGrades(res.data);
+  console.log(grade);
+  store.commit("setQuestionAnswers", grade.answers);
   questions.value = res.data;
-  // store.commit("setQuestionStatus", questionStatus);
+  store.commit("setQuestionStatus", grade.status);
 }
 // 获取练习题目等相关信息
 init();
