@@ -247,6 +247,7 @@ interface exercise {
 interface answer {
 	questionId: String,
     answer: String,
+    status: Number //状态 0未做 1已做 2存疑 
 }
 ```
 
@@ -261,7 +262,7 @@ interface exercise {
 
 # 获取考试后卷子信息
 
-### GET ```api/info/exercise{id}```
+### GET ```api/info/exercise/{id}```
 
 Request
 
@@ -276,37 +277,37 @@ interface examInfo {
     code: 200,
     data: {
         size: Nubmer // 题目数量
-        examTime: String, // 考试用时
+        examTime: Number, // 考试用时
         totalPoints: Number // 总分
+       	
         // 判断题
-        TFQuestions: Array<TFQuestion>
+        TFQuestions: Array<TFQuestionVo>
         // 选择题 单选题
-        choiceQuestions: Array<choiceQuestion>
+        choiceQuestions: Array<ChoiceQuesitonVo>
         // 考试ID
         examId: String,
-        questionAnswers: Array<answer>
     }
 }
-interface answer {
-    questionId: String // 题目ID
-    answer: Number || String // 学生答案
-}
-interface TFQuestion {
+
+interface TFQuestionVo {
     questionId: String, // 题目ID
     questionContent: String // 题目内容
     answer: Number // 题目答案 0 1
+    stuAnswer:String //默认是null 考生答案
     score: Number // 题目分值
+    status:
 }
-interface choiceQuestion {
+interface ChoiceQuestionVo {
     questionId: String, // 题目ID
     questionContent: String // 题目内容
-    answer: Number // 题目答案 A B C D
+    answer: String // 题目答案 A B C D
     // 选择题选项
     optionA: String,  
     optionB: String, 
     optionC: String, 
     optionD: String, 
     score: Number // 题目分值
+    stuAnswer:String //默认是null 考生答案
 }
 ```
 
@@ -322,5 +323,51 @@ interface exercise {
 }
 ```
 
+# 继续做题
 
+### get `api/exercise/random`
+
+Request
+
+```tsx
+interface exerciseRandom {
+    size: Number  //题目数量（默认···道）
+}  
+```
+
+Response `200`
+
+```tsx
+interface exerciseRandom {
+	code: 200,
+    data: {
+        size: Nubmer // 题目数量
+        examTime: String, // 考试用时
+        totalPoints: Number // 总分
+        // 判断题
+        TFQuestions: Array<TFQuestion>
+        // 选择题 单选题
+        choiceQuestions: Array<choiceQuestion>
+        // 考试ID
+        examId: String,
+    }
+} 
+interface TFQuestion {
+    questionId: String, // 题目ID
+    questionContent: String // 题目内容
+    answer: Number // 题目答案
+    score: Number // 题目分值
+}
+interface choiceQuestion {
+    questionId: String, // 题目ID
+    questionContent: String // 题目内容
+    answer: Number // 题目答案
+    // 选择题选项
+    optionA: String,  
+    optionB: String, 
+    optionC: String, 
+    optionD: String, 
+    score: Number // 题目分值
+}
+```
 
