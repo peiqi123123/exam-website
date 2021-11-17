@@ -8,8 +8,8 @@ import com.whpu.dao.mapper.ExamRecordingMapper;
 import com.whpu.dao.mapper.QuestionMapper;
 import com.whpu.dao.mapper.StuAnsRecordingMapper;
 import com.whpu.dao.mapper.StuWrongQueMapper;
+import com.whpu.dao.pojo.ChoiceQuestion;
 import com.whpu.dao.pojo.ExamRecording;
-import com.whpu.dao.pojo.Question;
 import com.whpu.dao.pojo.StuAnsRecording;
 import com.whpu.dao.pojo.StuWrongQue;
 import com.whpu.service.StuSubmitService;
@@ -59,30 +59,28 @@ public class StuSubmitServiceImpl implements StuSubmitService {
             //将对应的答案 找到对应的题目记录，如果是对的就将judgment改成1
             //如果是错的就将judgement 改成0
             //同时将学生的答案放进去
-            Question question = questionMapper.selectById(s.getQuestionId());
-
                 UpdateWrapper uw = new UpdateWrapper();
                 uw.eq("studentId",userId);
-                uw.eq("questionId",question.getQuestionId());
+                uw.eq("questionId",s.getQuestionId());
                 uw.eq("recordingId",examRecordingId);
                 StuAnsRecording stuAnsRecording = new StuAnsRecording();
-                if(question.getAnswer().equals(s.getStuAns())) {
-                    stuAnsRecording.setJudgment(1);
+                if(stuAnsRecording.getAnswer().equals(s.getAnswer())) {
+                    stuAnsRecording.setJudgment(1);//对了
                     trueNum++;
                 }
                 else
                 {
                     //将错题插入错题库中
-                    stuAnsRecording.setJudgment(0);
+                    stuAnsRecording.setJudgment(0);//错了
                     StuWrongQue stuWrongQue = new StuWrongQue();
-                    stuWrongQue.setQuestionId(question.getQuestionId());
+                    stuWrongQue.setQuestionId(s.getQuestionId());
                     stuWrongQue.setRecordingId(examRecordingId);
                     stuWrongQue.setStudentId(userId);
-                    stuWrongQue.setStudentAns(s.getStuAns());
+                    stuWrongQue.setStudentAns(s.getAnswer());
                     stuWrongQueMapper.insert(stuWrongQue);
                     falseNum++;
                 }
-                stuAnsRecording.setStuAnswer(question.getAnswer());
+                stuAnsRecording.setStuAnswer(s.getAnswer());
                 stuAnsRecordingMapper.update(stuAnsRecording,uw);
 
         });
@@ -96,6 +94,6 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                 .set("WrongAnsNum",falseNum)
                 .set("totalScore",trueNum*1.00/(falseNum+trueNum));
         examRecordingMapper.update(null,eruw);
-        return null;
+        return Result.success(null);
     }
 }

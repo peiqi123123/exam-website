@@ -1,10 +1,11 @@
 package com.whpu.controller;
 
 import com.whpu.dao.pojo.User;
-import com.whpu.service.QuestionService;
+import com.whpu.service.ChoiceQuestionService;
 import com.whpu.utils.JWTUtils;
 import com.whpu.utils.UserThreadLocal;
-import com.whpu.vo.QuestionVo;
+import com.whpu.vo.ChoiceQuestionVo;
+import com.whpu.vo.ExerciseRandomVo;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.RandomParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,12 @@ import java.util.Map;
 public class QuestionController {
 
     @Autowired
-    QuestionService questionService;
+    ChoiceQuestionService choicequestionService;
     @PostMapping("random")
     public Result selectRandomQuestion(@RequestBody RandomParam randomParam)
     {
         User user = UserThreadLocal.get();
-        Map<String,Object> res = questionService.selectRandomQuestion(randomParam.getQuestionNum(),user.getUserId());
-        return Result.success(res);
+        ExerciseRandomVo exerciseRandomVo = choicequestionService.selectRandomQuestion(randomParam.getQuestionNum(), user.getUserId());
+        return Result.success(exerciseRandomVo);
     }
 }

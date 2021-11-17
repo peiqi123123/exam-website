@@ -14,8 +14,13 @@ public class StuAnsRecording {
     @TableId(type = IdType.ID_WORKER_STR)
     private String id;
     private String StudentId;
-    private String recordingId;
+    private String examRecordingId;
     private String questionId;
     private String stuAnswer;
+    private String answer;
     private Integer judgment;
+    //考试类型，如果是判断题就是0，选择题就是1，默认是-1
+    private Integer questionType;
+
+
 }

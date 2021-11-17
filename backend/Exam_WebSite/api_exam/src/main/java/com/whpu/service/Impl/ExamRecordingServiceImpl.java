@@ -17,7 +17,7 @@ public class ExamRecordingServiceImpl implements ExamRecordingService {
      * 创建一条考试记录，一般用于在考生开始考试的时候
      */
     @Override
-    public String creatExamRecordingService() {
+    public String addExamRecordingService() {
         ExamRecording examRecording = new ExamRecording();
         examRecordingMapper.insert(examRecording);
         return examRecording.getRecordingId();

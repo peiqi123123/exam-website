@@ -1,7 +1,8 @@
 package com.whpu;
 
+
+
 import com.whpu.dao.pojo.User;
-import com.whpu.service.Impl.UserServiceImpl;
 import com.whpu.service.QuestionService;
 import com.whpu.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,7 @@ class ApiExamApplicationTests {
     public void addTestQuestion()
     {
         for (int i = 0; i <999 ; i++) {
-            questionService.addTestQuestion();
+            questionService.addTestChoiceQuestion();
         }
     }
 }

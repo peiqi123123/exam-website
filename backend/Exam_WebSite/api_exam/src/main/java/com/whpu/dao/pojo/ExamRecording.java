@@ -12,7 +12,8 @@ import lombok.Data;
 @Data
 public class ExamRecording {
     @TableId(type = IdType.ID_WORKER_STR)
-    private String recordingId;
+    private String examRecordingId;
+    private Integer questionNum;
     private String studentId;
     private Integer totalScore;
     private Integer wrongAnsNum;
