@@ -2,7 +2,7 @@ package com.whpu.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
-import com.whpu.dao.mapper.QuestionMapper;
+import com.whpu.dao.mapper.ChoiceQuestionMapper;
 import com.whpu.dao.mapper.StuAnsRecordingMapper;
 import com.whpu.dao.pojo.ChoiceQuestion;
 import com.whpu.dao.pojo.StuAnsRecording;
@@ -26,7 +26,7 @@ import java.util.*;
 public class ChoiceQuestionServiceImpl implements ChoiceQuestionService {
 
     @Autowired
-    private QuestionMapper questionMapper;
+    private ChoiceQuestionMapper questionMapper;
     @Autowired
     private ExamRecordingService examRecordingService;
     @Autowired

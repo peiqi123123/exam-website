@@ -1,7 +1,9 @@
 package com.whpu.controller;
 
+import com.whpu.dao.pojo.ExamRecording;
 import com.whpu.dao.pojo.StuAnsRecording;
 import com.whpu.dao.pojo.User;
+import com.whpu.service.ExamRecordingService;
 import com.whpu.service.Impl.StuSubmitServiceImpl;
 import com.whpu.service.StuAnsRecordingService;
 import com.whpu.service.StuSubmitService;
@@ -13,6 +15,7 @@ import com.whpu.vo.params.SubmitParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +30,8 @@ public class ExamController {
     private StuSubmitService stuSubmitService;
     @Autowired
     private StuAnsRecordingService stuAnsRecordingService;
+    @Autowired
+    private ExamRecordingService examRecordingService;
     @PostMapping("/exercise/submit")
     public Result doSubmit(@RequestBody SubmitParam submitParam)
     {
@@ -40,6 +45,13 @@ public class ExamController {
 
         ExamInfoVo examInfo = stuAnsRecordingService.getExamInfo(id);
         return Result.success(examInfo);
+    }
+    @RequestMapping("getAllExamRecording")
+    public Result getAllExamRecording()
+    {
+        User user = UserThreadLocal.get();
+        List<ExamRecording> allExamRecording = examRecordingService.getAllExamRecording(user.getUserId());
+        return Result.success(allExamRecording);
     }
 
 }

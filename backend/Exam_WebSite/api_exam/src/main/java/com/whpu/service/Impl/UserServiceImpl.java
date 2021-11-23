@@ -1,6 +1,8 @@
 package com.whpu.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.whpu.dao.mapper.UserMapper;
 import com.whpu.dao.pojo.User;
 import com.whpu.service.LoginAndRegisterService;
@@ -14,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
 import java.util.Map;
 
 /**
@@ -54,6 +57,16 @@ public class UserServiceImpl implements UserService {
         return userMapper.insert(user);
     }
 
+    @Override
+    public IPage<User> selectStudentInfo(int currentPage,int size) {
+        LambdaQueryWrapper lqw = new LambdaQueryWrapper();
+        lqw.eq("identity","Student");
+        Page<User> userPage = new Page<>(currentPage,size);
+
+        IPage<User> userIPage = userMapper.selectPage(userPage,lqw);
+        return userIPage;
+    }
+
     /**
      * @description: 根据token给的信息，查到user
      * @param
@@ -82,17 +95,5 @@ public class UserServiceImpl implements UserService {
         return Result.success(loginUserVo);
     }
 
-    @Override
-    public Result selectAllStudentInfo(String token) {
-        Result result = loginService.checkToken(token);
-        User user = (User) result.getData();
-        if((!user.getIdentity().equals("teacher"))&&(!user.getIdentity().equals("Manager")))
-        {
-            return Result.fail(ErrorCode.NO_PERMISSION.getCode(),ErrorCode.NO_PERMISSION.getMsg());
-        }
-        /**
-         * 未完成，目标:在获得学生列表，包含正确率分析，那么就要先将考试模块做完
-         */
-        return null;
-    }
+
 }

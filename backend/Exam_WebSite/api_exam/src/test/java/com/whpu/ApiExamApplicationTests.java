@@ -3,7 +3,7 @@ package com.whpu;
 
 
 import com.whpu.dao.pojo.User;
-import com.whpu.service.QuestionService;
+import com.whpu.service.ChoiceQuestionService;
 import com.whpu.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ class ApiExamApplicationTests {
     private UserService userService;
 
     @Autowired
-    private QuestionService questionService;
+    private ChoiceQuestionService questionService;
 
     @Test
     void contextLoads() {
