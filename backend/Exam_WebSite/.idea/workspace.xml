@@ -25,43 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c70510e-3d9c-4815-80bb-09a058eb2b52" name="Default Changelist" comment="后端提交和阅卷的实现">
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/question/AddQuestionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/question/GetQuestionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/mapper/SysQuestionMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/mapper/TeacherSelfQuestionMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/SysQuestion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/TeacherSelfQuestion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/QuestionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/TeacherSelfQuestionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/SysQuestionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/TeacherSelfQuestionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/TestMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/QuestionVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/AddUserParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/QuestionParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/QuestionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/mapper/ChoiceQuestionMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/mapper/TFQuestionMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/ChoiceQuestion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/ExamRecording.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/ExamRecording.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/StuAnsRecording.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/StuAnsRecording.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/StuWrongQue.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/StuWrongQue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/TFQuestion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/ChoiceQuestionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/ChoiceQuestionServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/StuAnsRecordingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/StuAnsRecordingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/StuSubmitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/StuSubmitServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/TFQuestionServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/TFQuestionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ChoiceQuestionVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ExamInfoVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ExamInfoVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ExerciseRandomVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ExerciseRandomVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/TFQuestionVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/test/java/com/whpu/ApiExamApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/test/java/com/whpu/ApiExamApplicationTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="6c70510e-3d9c-4815-80bb-09a058eb2b52" name="Default Changelist" comment="后端提交和阅卷的实现" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -245,7 +209,7 @@
       <workItem from="1637069544284" duration="26052000" />
       <workItem from="1637647938637" duration="10871000" />
       <workItem from="1637676751800" duration="1105000" />
-      <workItem from="1637721573925" duration="6138000" />
+      <workItem from="1637721573925" duration="7027000" />
     </task>
     <task id="LOCAL-00001" summary="后端提交和阅卷的实现">
       <created>1637153781773</created>
