@@ -1,18 +1,15 @@
 package com.whpu.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.whpu.dao.mapper.ChoiceQuestionMapper;
+import com.whpu.dao.mapper.SysQuestionMapper;
 import com.whpu.dao.mapper.ExamRecordingMapper;
 import com.whpu.dao.mapper.StuAnsRecordingMapper;
-import com.whpu.dao.mapper.TFQuestionMapper;
-import com.whpu.dao.pojo.ChoiceQuestion;
+import com.whpu.dao.pojo.SysQuestion;
 import com.whpu.dao.pojo.ExamRecording;
 import com.whpu.dao.pojo.StuAnsRecording;
-import com.whpu.dao.pojo.TFQuestion;
 import com.whpu.service.StuAnsRecordingService;
-import com.whpu.vo.ChoiceQuestionVo;
+import com.whpu.vo.QuestionVo;
 import com.whpu.vo.ExamInfoVo;
-import com.whpu.vo.TFQuestionVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +28,7 @@ public class StuAnsRecordingServiceImpl implements StuAnsRecordingService {
     @Autowired
     ExamRecordingMapper examRecordingMapper;
     @Autowired
-    ChoiceQuestionMapper choicequestionMapper;
-    @Autowired
-    TFQuestionMapper tfQuestionMapper;
+    SysQuestionMapper SysQuestionMapper;
     @Override
     public ExamInfoVo getExamInfo(String examId) {
         LambdaQueryWrapper lambdaQueryWrapper = new LambdaQueryWrapper();
@@ -42,44 +37,26 @@ public class StuAnsRecordingServiceImpl implements StuAnsRecordingService {
 
         ExamRecording examRecording = examRecordingMapper.selectById(examId);
 
-        ArrayList<TFQuestionVo> tFQuestionsList = new ArrayList<>();
-        ArrayList<ChoiceQuestionVo> choiceQuestionsList = new ArrayList<>();
+        ArrayList<QuestionVo> SysQuestionsList = new ArrayList<>();
        recordings.forEach(s->
        {
-           if(s.getQuestionType()==1)//选择题
-           {
-                ChoiceQuestionVo choiceQuestionVo = new ChoiceQuestionVo();
-               ChoiceQuestion choiceQuestion = choicequestionMapper.selectById(s.getQuestionId());
-               choiceQuestionVo.setQuestionId(choiceQuestion.getQuestionId());
-               choiceQuestionVo.setAnalyse(choiceQuestion.getAnalyse());
-               choiceQuestionVo.setQuestionContent(choiceQuestion.getQuestionContent());
-               choiceQuestionVo.setOptionA(choiceQuestion.getOptionA());
-               choiceQuestionVo.setOptionB(choiceQuestion.getOptionB());
-               choiceQuestionVo.setOptionC(choiceQuestion.getOptionC());
-               choiceQuestionVo.setOptionD(choiceQuestion.getOptionD());
-               choiceQuestionVo.setOptionE(choiceQuestion.getOptionE());
-               choiceQuestionVo.setOptionF(choiceQuestion.getOptionF());
-               choiceQuestionVo.setAnswer(choiceQuestion.getAnswer());
-               choiceQuestionVo.setStuAnswer(s.getStuAnswer());
-               choiceQuestionsList.add(choiceQuestionVo);
-           }
-           else if(s.getQuestionType()==0)
-           {
-               TFQuestionVo tfQuestionVo = new TFQuestionVo();
-               TFQuestion tfQuestion = tfQuestionMapper.selectById(s.getQuestionId());
-               tfQuestionVo.setAnalyse(tfQuestion.getAnalyse());
-               tfQuestionVo.setAnswer(tfQuestion.getAnswer());
-               tfQuestionVo.setQuestionContent(tfQuestion.getQuestionContent());
-               tfQuestionVo.setQuestionId(s.getQuestionId());
-               tfQuestionVo.setStuAnswer(s.getStuAnswer());
-
-               tFQuestionsList.add(tfQuestionVo);
-           }
-
+                QuestionVo SysQuestionVo = new QuestionVo();
+               SysQuestion SysQuestion = SysQuestionMapper.selectById(s.getQuestionId());
+               SysQuestionVo.setQuestionId(SysQuestion.getQuestionId());
+               SysQuestionVo.setAnalyse(SysQuestion.getAnalyse());
+               SysQuestionVo.setQuestionContent(SysQuestion.getQuestionContent());
+               SysQuestionVo.setOptionA(SysQuestion.getOptionA());
+               SysQuestionVo.setOptionB(SysQuestion.getOptionB());
+               SysQuestionVo.setOptionC(SysQuestion.getOptionC());
+               SysQuestionVo.setOptionD(SysQuestion.getOptionD());
+               SysQuestionVo.setOptionE(SysQuestion.getOptionE());
+               SysQuestionVo.setOptionF(SysQuestion.getOptionF());
+               SysQuestionVo.setAnswer(SysQuestion.getAnswer());
+               SysQuestionVo.setStuAnswer(s.getStuAnswer());
+               SysQuestionsList.add(SysQuestionVo);
        });
         ExamInfoVo examInfoVo = new ExamInfoVo();
-        examInfoVo.setChoiceQuestions(choiceQuestionsList);
-        examInfoVo.setTFQuestions(tFQuestionsList);
+        examInfoVo.setSysQuestions(SysQuestionsList);
         examInfoVo.setExamId(examId);
         examInfoVo.setExamTime(examRecording.getTotalTime());
         examInfoVo.setSize(examRecording.getQuestionNum());

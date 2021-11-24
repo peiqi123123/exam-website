@@ -4,11 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.whpu.dao.mapper.ChoiceQuestionMapper;
+import com.whpu.dao.mapper.SysQuestionMapper;
 import com.whpu.dao.mapper.ExamRecordingMapper;
 import com.whpu.dao.mapper.StuAnsRecordingMapper;
 import com.whpu.dao.mapper.StuWrongQueMapper;
-import com.whpu.dao.pojo.ChoiceQuestion;
+import com.whpu.dao.pojo.SysQuestion;
 import com.whpu.dao.pojo.ExamRecording;
 import com.whpu.dao.pojo.StuAnsRecording;
 import com.whpu.dao.pojo.StuWrongQue;
@@ -44,7 +44,7 @@ public class StuSubmitServiceImpl implements StuSubmitService {
     @Autowired
     StuWrongQueMapper stuWrongQueMapper;
     @Autowired
-    ChoiceQuestionMapper questionMapper;
+    SysQuestionMapper questionMapper;
     /**
      *用于提交试卷后，保存对应的内容
      * 所有操作通过事务完成，如果一旦出错就回滚

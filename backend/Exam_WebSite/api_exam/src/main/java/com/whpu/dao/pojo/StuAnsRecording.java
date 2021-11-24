@@ -2,6 +2,7 @@ package com.whpu.dao.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -10,6 +11,7 @@ import lombok.Data;
  * @time: 2021/11/8 15:00
  */
 @Data
+@TableName("stu_ans_recording")
 public class StuAnsRecording {
     @TableId(type = IdType.ID_WORKER_STR)
     private String id;

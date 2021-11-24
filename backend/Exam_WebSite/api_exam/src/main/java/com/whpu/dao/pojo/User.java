@@ -3,6 +3,7 @@ package com.whpu.dao.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -11,6 +12,7 @@ import lombok.Data;
  * @time: 2021/10/27 23:45
  */
 @Data
+@TableName("sys_user")
 public class User {
     //主键
     @TableId(value = "userId",type = IdType.ID_WORKER_STR)

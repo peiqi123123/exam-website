@@ -9,11 +9,28 @@ import lombok.Data;
 /**
  * @description
  * @author: 唉 烁
- * @time: 2021/10/29 20:03
+ * @time: 2021/11/24 11:13
  */
 @Data
-@TableName("choicequestion")
-public class ChoiceQuestion  {
+@TableName("teach_self_question")
+public class TeacherSelfQuestion {
+    public TeacherSelfQuestion(Integer ansNum, String questionContent, String optionA, String optionB, String optionC, String optionD, String optionE, String optionF, String optionG, String answer, String analyse, String teacherId) {
+        this.AnsNum = ansNum;
+        this.questionContent = questionContent;
+        this.optionA = optionA;
+        this.optionB = optionB;
+        this.optionC = optionC;
+        this.optionD = optionD;
+        this.optionE = optionE;
+        this.optionF = optionF;
+        this.optionG = optionG;
+        this.Answer = answer;
+        this.Analyse = analyse;
+        this.teacherId = teacherId;
+    }
+    public TeacherSelfQuestion()
+    {}
+
     @TableId(value = "questionId",type = IdType.ID_WORKER_STR)
     String questionId;
 
@@ -50,5 +67,6 @@ public class ChoiceQuestion  {
     @TableField(value = "Analyse")
     String Analyse;
 
-
+    @TableField("teacherId")
+    String teacherId;
 }
