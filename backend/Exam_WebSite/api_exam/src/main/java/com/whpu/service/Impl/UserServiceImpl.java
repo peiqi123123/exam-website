@@ -58,7 +58,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public IPage<User> selectStudentInfo(int currentPage,int size) {
+    public IPage<User> selectStudentInfo(int currentPage,int size,String teacherId) {
+
         LambdaQueryWrapper lqw = new LambdaQueryWrapper();
         lqw.eq("identity","Student");
         Page<User> userPage = new Page<>(currentPage,size);

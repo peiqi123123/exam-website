@@ -9,7 +9,7 @@ public interface UserService {
 
     Integer addUser(User user);
 
-    IPage<User> selectStudentInfo(int currentPage,int size);
+    IPage<User> selectStudentInfo(int currentPage,int size,String teacherId);
 
     Result findUserByToken(String token);
 

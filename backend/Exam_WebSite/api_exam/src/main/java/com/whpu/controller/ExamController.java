@@ -24,7 +24,7 @@ import java.util.Map;
  * @time: 2021/11/8 15:06
  */
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/exercise")
 public class ExamController {
     @Autowired
     private StuSubmitService stuSubmitService;
@@ -32,21 +32,21 @@ public class ExamController {
     private StuAnsRecordingService stuAnsRecordingService;
     @Autowired
     private ExamRecordingService examRecordingService;
-    @PostMapping("/exercise/submit")
+    @PostMapping("/submit")
     public Result doSubmit(@RequestBody SubmitParam submitParam)
     {
         User user = UserThreadLocal.get();
         Result result = stuSubmitService.submit(submitParam,user.getUserId());
         return result;
     }
-    @GetMapping("info/exercise/{id}")
+    @GetMapping("/question/info/{id}")
     public Result getExamInfo(@PathVariable String id)
     {
 
         ExamInfoVo examInfo = stuAnsRecordingService.getExamInfo(id);
         return Result.success(examInfo);
     }
-    @RequestMapping("getAllExamRecording")
+    @RequestMapping("/exam/info")
     public Result getAllExamRecording()
     {
         User user = UserThreadLocal.get();

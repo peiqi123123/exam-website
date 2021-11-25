@@ -58,7 +58,7 @@ public class StuAnsRecordingServiceImpl implements StuAnsRecordingService {
         ExamInfoVo examInfoVo = new ExamInfoVo();
         examInfoVo.setSysQuestions(SysQuestionsList);
         examInfoVo.setExamId(examId);
-        examInfoVo.setExamTime(examRecording.getTotalTime());
+        examInfoVo.setExamTime(examRecording.getSpendTime());
         examInfoVo.setSize(examRecording.getQuestionNum());
         examInfoVo.setTotalPoints(examRecording.getTotalScore());
        return examInfoVo;

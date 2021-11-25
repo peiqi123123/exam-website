@@ -23,6 +23,6 @@ public class StuAnsRecording {
     private Integer judgment;
     //考试类型，如果是判断题就是0，选择题就是1，默认是-1
     private Integer questionType;
-
+    private Integer status;
 
 }

@@ -75,11 +75,79 @@ interface login {
 
 - [x] 
 
-## 添加学生账号 （未做）
+## 添加学生账号 
+
+get api/add/addUser
+
+*request*
+
+~~~添加
+interface addUserParam{
+		account:String 账号
+		password:String 密码
+		nickName：String 昵称
+		identity：身份，有默认值
+		！！！！这里是添加学生账号，这里的身份必须是Student
+}
+~~~
+
+response
+
+~~~
+interface user{
+   "success": true,
+    "code": 201,
+    "msg": "success",
+    "data": {
+        "userId": String
+        "account": String
+        "password": String
+        "nickName": String
+        "identity": ,String
+
+    }
+}
+~~~
+
+
 
 ## 修改学生密码	（未做）
 
-## 添加教师账号	（未做）
+## 添加教师账号	
+
+get api/add/addUser
+
+*request*
+
+~~~添加
+interface addUserParam{
+		account:String 账号
+		password:String 密码
+		nickName：String 昵称
+		identity：身份，有默认值
+		！！！！这里是添加教师账号，这里的身份必须是Teacher
+}
+~~~
+
+response
+
+~~~
+interface user{
+   "success": true,
+    "code": 201,
+    "msg": "success",
+    "data": {
+        "userId": String
+        "account": String
+        "password": String
+        "nickName": String
+        "identity": ,String
+
+    }
+}
+~~~
+
+
 
 ## 修改教师密码	（未做）
 
@@ -89,7 +157,7 @@ interface login {
 
 ## 获取考试后卷子信息
 
-GET ```api/info/exercise/{id}```
+GET ```api/exercise/question/info/{id}```
 
 Request
 
@@ -107,22 +175,12 @@ interface examInfo {
         examTime: Number, // 考试用时
         totalPoints: Number // 总分
        	
-        // 判断题
-        TFQuestions: Array<TFQuestionVo>
+      
         // 选择题 单选题
         choiceQuestions: Array<ChoiceQuesitonVo>
         // 考试ID
         examId: String,
     }
-}
-
-interface TFQuestionVo {
-    questionId: String, // 题目ID
-    questionContent: String // 题目内容
-    answer: Number // 题目答案 0 1
-    stuAnswer:String //默认是null 考生答案
-    score: Number // 题目分值
-    status:
 }
 interface ChoiceQuestionVo {
     questionId: String, // 题目ID
@@ -138,13 +196,26 @@ interface ChoiceQuestionVo {
 }
 ```
 
-## 学生获取所有自己的考试记录	（未做）
+## 学生获取所有自己的考试记录	
+
+`api/exercise/exam/recording`
+
+```
+interface examRecording{
+	questionNum：integer 题目数量
+	totalScore:Integer  总分
+	WrongAnsNum:Integer 错题数
+	isFinish：Integer 是否完成 未完成是0 完成是1 默认是0
+	totalTime：所用时长 
+	submitTime：提交时间
+	examType:考试类型
+	
+}
+```
 
 
 
 
-
-# 
 
 # 教师模块
 

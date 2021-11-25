@@ -13,5 +13,6 @@ public class TestMain {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         String date = simpleDateFormat.format(System.currentTimeMillis());
         System.out.println(date);
+        System.out.println(System.currentTimeMillis());
     }
 }

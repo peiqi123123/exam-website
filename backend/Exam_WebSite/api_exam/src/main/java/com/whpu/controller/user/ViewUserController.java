@@ -3,6 +3,7 @@ package com.whpu.controller.user;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.whpu.dao.pojo.User;
 import com.whpu.service.UserService;
+import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,8 @@ public class ViewUserController {
     public Result viewStudent(@PathVariable("currentPage")int currentPage,
                               @PathVariable("size") int size)
     {
-        IPage<User> userIPage = userService.selectStudentInfo(currentPage, size);
+        User user = UserThreadLocal.get();
+        IPage<User> userIPage = userService.selectStudentInfo(currentPage, size,user.getUserId());
         return Result.success(userIPage);
     }
 }

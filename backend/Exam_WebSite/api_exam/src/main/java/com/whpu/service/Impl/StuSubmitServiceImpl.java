@@ -1,14 +1,10 @@
 package com.whpu.service.Impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.whpu.dao.mapper.SysQuestionMapper;
 import com.whpu.dao.mapper.ExamRecordingMapper;
 import com.whpu.dao.mapper.StuAnsRecordingMapper;
 import com.whpu.dao.mapper.StuWrongQueMapper;
-import com.whpu.dao.pojo.SysQuestion;
 import com.whpu.dao.pojo.ExamRecording;
 import com.whpu.dao.pojo.StuAnsRecording;
 import com.whpu.dao.pojo.StuWrongQue;
@@ -16,16 +12,11 @@ import com.whpu.service.StuSubmitService;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.AnsParam;
 import com.whpu.vo.params.SubmitParam;
-import javafx.scene.input.DataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * @description
@@ -89,15 +80,13 @@ public class StuSubmitServiceImpl implements StuSubmitService {
         });
         //对考试记录进行更改操作
         //将是否完成改为完成，添加用时时长，添加分数，添加错题数
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-        String date = simpleDateFormat.format(System.currentTimeMillis());
         UpdateWrapper<ExamRecording> eruw = new UpdateWrapper<>();
         eruw.eq("examRecordingId",examRecordingId)
                 .set("totalTime",submitParam.getTotalTime())
                 .set("isFinish",1)
                 .set("WrongAnsNum",falseNum)
                 .set("totalScore",trueNum*1.00/(falseNum+trueNum))
-                .set("submitTime",date);
+                .set("submitTime",System.currentTimeMillis());
         examRecordingMapper.update(null,eruw);
         return Result.success(null);
     }

@@ -12,4 +12,5 @@ public class AddUserParam {
     private String account;
     private String password;
     private String nickName;
+    private String identity;
 }

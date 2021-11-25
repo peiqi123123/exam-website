@@ -17,13 +17,14 @@ import java.sql.Date;
 public class ExamRecording {
     @TableId(type = IdType.ID_WORKER_STR)
     private String examRecordingId;
-    private Integer questionNum;
     private String studentId;
+    private Integer questionNum;
     private Integer totalScore;
     private Integer wrongAnsNum;
     private Integer availability;
     private Integer isFinish;
-    private Integer totalTime;
     private String examType;
+    private Integer spendTime;
     private String submitTime;
+    private Long limitTime;
 }
