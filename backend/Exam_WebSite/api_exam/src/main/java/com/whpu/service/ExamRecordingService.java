@@ -1,5 +1,9 @@
 package com.whpu.service;
 
+import com.whpu.dao.pojo.ExamRecording;
+
+import java.util.List;
+
 /**
  * @description
  * @author: 唉 烁
@@ -7,4 +11,5 @@ package com.whpu.service;
  */
 public interface ExamRecordingService {
     String addExamRecordingService();
+    List<ExamRecording> getAllExamRecording(String studentId);
 }

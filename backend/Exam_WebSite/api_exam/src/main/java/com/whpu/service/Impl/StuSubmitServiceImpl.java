@@ -1,14 +1,10 @@
 package com.whpu.service.Impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.whpu.dao.mapper.SysQuestionMapper;
 import com.whpu.dao.mapper.ExamRecordingMapper;
-import com.whpu.dao.mapper.QuestionMapper;
 import com.whpu.dao.mapper.StuAnsRecordingMapper;
 import com.whpu.dao.mapper.StuWrongQueMapper;
-import com.whpu.dao.pojo.ChoiceQuestion;
 import com.whpu.dao.pojo.ExamRecording;
 import com.whpu.dao.pojo.StuAnsRecording;
 import com.whpu.dao.pojo.StuWrongQue;
@@ -19,10 +15,8 @@ import com.whpu.vo.params.SubmitParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * @description
@@ -41,7 +35,7 @@ public class StuSubmitServiceImpl implements StuSubmitService {
     @Autowired
     StuWrongQueMapper stuWrongQueMapper;
     @Autowired
-    QuestionMapper questionMapper;
+    SysQuestionMapper questionMapper;
     /**
      *用于提交试卷后，保存对应的内容
      * 所有操作通过事务完成，如果一旦出错就回滚
@@ -84,7 +78,6 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                 stuAnsRecordingMapper.update(stuAnsRecording,uw);
 
         });
-
         //对考试记录进行更改操作
         //将是否完成改为完成，添加用时时长，添加分数，添加错题数
         UpdateWrapper<ExamRecording> eruw = new UpdateWrapper<>();
@@ -92,7 +85,8 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                 .set("totalTime",submitParam.getTotalTime())
                 .set("isFinish",1)
                 .set("WrongAnsNum",falseNum)
-                .set("totalScore",trueNum*1.00/(falseNum+trueNum));
+                .set("totalScore",trueNum*1.00/(falseNum+trueNum))
+                .set("submitTime",System.currentTimeMillis());
         examRecordingMapper.update(null,eruw);
         return Result.success(null);
     }

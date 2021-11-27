@@ -1,8 +1,7 @@
 package com.whpu.vo;
 
-import com.whpu.dao.pojo.ChoiceQuestion;
+import com.whpu.dao.pojo.SysQuestion;
 
-import com.whpu.dao.pojo.TFQuestion;
 import lombok.Data;
 
 import java.util.List;
@@ -14,8 +13,7 @@ import java.util.List;
  */
 @Data
 public class ExerciseRandomVo {
-    List<ChoiceQuestion> choiceQuestions;
-    List<TFQuestion> TFQuestions;
+    List<QuestionVo> SysQuestions;
     Integer size;
     String examTime;
     String examId;
