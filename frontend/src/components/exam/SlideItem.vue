@@ -7,22 +7,34 @@
     <div
       class="status iconfont icon-xinxi"
       :style="{ color: config.statusColor.info }"
-      v-if="store.getters.getQuestionStatus[props.number] === 0"
+      v-if="
+        store.getters.getQuestions[props.number - 1] &&
+        store.getters.getQuestions[props.number - 1].status === 0
+      "
     ></div>
     <div
       class="status iconfont icon-zhengque"
       :style="{ color: config.statusColor.finish }"
-      v-if="store.getters.getQuestionStatus[props.number] === 1"
+      v-if="
+        store.getters.getQuestions[props.number - 1] &&
+        store.getters.getQuestions[props.number - 1].status === 1
+      "
     ></div>
     <div
       class="status iconfont icon-jinggao"
       :style="{ color: config.statusColor.warning }"
-      v-if="store.getters.getQuestionStatus[props.number] === 2"
+      v-if="
+        store.getters.getQuestions[props.number - 1] &&
+        store.getters.getQuestions[props.number - 1].status === 2
+      "
     ></div>
     <div
       class="status iconfont icon-cuowu"
       :style="{ color: config.statusColor.error }"
-      v-if="store.getters.getQuestionStatus[props.number] === 3"
+      v-if="
+        store.getters.getQuestions[props.number - 1] &&
+        store.getters.getQuestions[props.number - 1].status === 3
+      "
     ></div>
   </div>
 </template>

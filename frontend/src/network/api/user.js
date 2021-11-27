@@ -41,6 +41,6 @@ export function exerciseExit(questions) {
 }
 
 // 获取更改后的卷子
-export function getExerciseReview() {
-  return axios.get(`exercise/review`);
+export function getExerciseReview(examId) {
+  return axios.get(`exercise/review/${examId}`);
 }

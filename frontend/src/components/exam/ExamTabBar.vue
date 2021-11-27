@@ -10,7 +10,7 @@
     <div class="submit-dialog">
       <el-dialog v-model="submitDialogVisible" title="交卷" width="40%" center>
         <SubmitConfirm
-          :questionStatus="questionStatus"
+          :questions="questions"
           @toDetail="toDetail"
         ></SubmitConfirm>
         <template #footer>
@@ -61,12 +61,15 @@ watch(
 // 设置倒计时
 const end = props.endTime;
 store.commit("setEndTime", end);
+store.commit("setStartTime", Date.parse(new Date()));
 let hr = ref(0);
 let min = ref(0);
 let sec = ref(0);
+let totalTime = 0;
 function start() {
   const now = Date.parse(new Date());
   const msec = end - now;
+  totalTime++;
   hr.value = parseInt((msec / 1000 / 60 / 60) % 24);
   min.value = parseInt((msec / 1000 / 60) % 60);
   sec.value = parseInt((msec / 1000) % 60);
@@ -79,17 +82,15 @@ setInterval(() => {
   start();
 }, 1000);
 // 交卷
-const questionStatus = ref([]);
-const questionAnswers = ref([]);
 const submitDialogVisible = ref(false);
 // 跳转到对应题目
 function toDetail(i) {
   store.commit("setCurrentIndex", i);
   submitDialogVisible.value = false;
 }
+const questions = ref([]);
 function submit() {
-  questionAnswers.value = store.getters.getQuestionAnswers;
-  questionStatus.value = store.getters.getQuestionStatus;
+  questions.value = store.getters.getQuestions;
   submitDialogVisible.value = true;
 }
 // 确定提交
@@ -97,23 +98,12 @@ const isLoading = ref(false);
 async function confirmSubmit() {
   isLoading.value = true;
   // 计算考试总用时
-  const totalTime =
-    parseInt(hr.value) * 60 * 60 +
-    parseInt(min.value) * 60 +
-    parseInt(sec.value);
-  const res = await submitExercise(
-    questionAnswers.value,
-    totalTime,
-    props.examId
-  );
-  // console.log(questionAnswers.value);
-  // console.log(totalTime);
-  // console.log(props.examId);
-  // console.log(res);
+  store.commit("setTotalTime", totalTime * 1000);
+  const res = await submitExercise(questions.value, totalTime, props.examId);
   if (res.code === 201) {
     message.success("提交成功");
     submitDialogVisible.value = false;
-    Router.push("/review");
+    Router.replace("/score/0");
     store.commit("clear");
     isLoading.value = false;
   } else {

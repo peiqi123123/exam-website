@@ -2,14 +2,16 @@
   <div class="submit_confirm">
     <el-scrollbar height="300px">
       <div class="questions">
-        <div v-for="(item, i) in status">
+        <div v-for="(item, i) in questions">
           <div
             class="question-number"
-            v-if="i > 0"
-            :class="{ finish: status[i] == 1, warning: status[i] == 2 }"
+            :class="{
+              finish: questions[i].status === 1,
+              warning: questions[i].status === 2,
+            }"
             @click="toDetail(i)"
           >
-            {{ i }}
+            {{ i + 1 }}
           </div>
         </div>
       </div>
@@ -18,16 +20,17 @@
 </template>
 <script setup>
 const props = defineProps({
-  questionStatus: {
+  questions: {
     type: Array,
     default: [],
   },
 });
+const questions = props.questions;
+console.log("questions: ", questions);
 const emit = defineEmits(["toDetail"]);
-const status = props.questionStatus;
 // console.log(status);
 function toDetail(i) {
-  emit("toDetail", i);
+  emit("toDetail", i + 1);
 }
 </script>
 <style lang="less" scoped>

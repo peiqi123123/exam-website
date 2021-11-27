@@ -10,516 +10,512 @@ Mock.mock(/api\/login/, "post", {
 });
 
 // 随机生成考试题目
-const TFQuestions = [
+const questions = [
   {
     questionId: "-46505886112954320",
     questionContent:
-      "dzehbkteirmjbshxqliqdzkmlodesydcngjidmeikuqqrohmxfxfclmnxngmtthxgatldexurndvumgyrusyqtvzi",
-    answer: 1,
+      "企业网络常常使用DHCP为用户分配IP地址，与静态地址分配方式相比， DHCP地址分配方式极大地减 少了对网络地址进行管理的工作量",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
   },
   {
     questionId: "-32377424962168800",
-    questionContent:
-      "kuchuchjoocqigbnrivdswmsxokrcqojmvohwrwbfiwdgudkqeadecycgvbxucrkmklcdwuvujucqir",
-    answer: 1,
+    questionContent: "确定项目组成员是实施阶段的工作内容",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
   },
   {
     questionId: "-20082709465895080",
     questionContent:
-      "hrnmxfrjyxiewiyooeydmqflsqrbkiyelvgjuhsmglnrftsqpgiwqqpcfcbpaohsycl",
-    answer: 0,
+      "企业为了提高互联出口的可靠性， 常常采用多条链路连接不同运营商的方式，采用这种方式时，需要同时关注出方向和入方向的流量路径， 否则可能会影响网络质量",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "B",
   },
   {
     questionId: "-3903035295930480",
-    questionContent:
-      "cudvumiugxwjsnkqqfjmsdwownmaqbhzudjbcjqnvpwbkgcjrpgepatgygwdihfqofgjjwzbwxhxgbjwpsurloygw",
-    answer: 0,
+    questionContent: "项目验收只要甲乙双方到场就可以了， 不需要第三方参与",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
   },
   {
     questionId: "-2398135318463840",
     questionContent:
-      "dctijiugmmymjvnykbswgcsdbylspyhjfhkwujtgqsfwwzqugureyyutmhgpygvrkeozcnhtftlpnbbwluuehufyzpp",
-    answer: 0,
+      "]当DHCP客户端与DHCP服务器之间存在设备时，如果DHCP服务器全局地址池中的IP地址与中继设备上连接的客户端的VLANIF接口的IP地址不在同一网段， 则会引起DHCP故障。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "B",
   },
   {
     questionId: "-39987613343154240",
-    questionContent: "rsmcedyjbqipnrheebrjtemreedqbthgjol",
-    answer: 0,
+    questionContent:
+      "二层网络架构与三层网络架构相比，具备结构简单、数据转发效率高等优势，所以今后的网络结构将全面转向二层网络结构，三层网络架构将逐步被制汰。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
   },
   {
     questionId: "-10267735969812320",
     questionContent:
-      "pyqeojyvysiuwjqhwxgmhjscicthpbbetilboifjccocqclptcrzgzjhzxrqeadrinfqqcopkwbmiopjslwmbjkn",
-    answer: 0,
+      "二层网络架构与三层网络架构相比，具备结构简单、数据转发效率高等优势，所以今后的网络结构将全面转向二层网络结构，三层网络架构将逐步被制汰。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
   },
   {
     questionId: "28568493078299840",
-    questionContent: "higmlpqyghsgueendxhvpuhppffqijikoeazfqrgouti",
-    answer: 0,
+    questionContent:
+      "二层网络架构与三层网络架构相比，具备结构简单、数据转发效率高等优势，所以今后的网络结构将全面转向二层网络结构，三层网络架构将逐步被制汰。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
   },
   {
     questionId: "-59731919238752320",
     questionContent:
-      "edyjfywihuwbyeudcfrdrbesbglqkvdnkkwksweasphsrmdtjmgiucptxwnysk",
-    answer: 0,
+      "二层网络架构与三层网络架构相比，具备结构简单、数据转发效率高等优势，所以今后的网络结构将全面转向二层网络结构，三层网络架构将逐步被制汰。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
   },
   {
     questionId: "63135593522702440",
-    questionContent: "sfdnikfcipvigrcsldwvjfdphmjhghymfqyumecxuyixymkqjvs",
-    answer: 1,
+    questionContent:
+      "二层网络架构与三层网络架构相比，具备结构简单、数据转发效率高等优势，所以今后的网络结构将全面转向二层网络结构，三层网络架构将逐步被制汰。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
   },
-];
-const choiceQuestions = [
   {
     questionId: "20337265820639560",
     questionContent:
-      "joyvapbyjbvxzemfspcxnlvgmjrbdmeozbpnajlloltuwmgbmgemmijncxwmhldpwjdaeqgsgfayiouyv",
-    optionA: "vvtoghuke",
-    optionB: "lmmvan",
-    optionC: "ecbqubm",
-    optionD: "biqkkr",
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
     answer: "A",
   },
   {
     questionId: "-5490498138654040",
     questionContent:
-      "ckunurxcpxknqebtfxgdhddfvcouufyhggpglvnpduychkjzrymoppakuxjnxornlgwyt",
-    optionA: "qxvynph",
-    optionB: "rdvojxpc",
-    optionC: "tqmhbocq",
-    optionD: "nlipxbppu",
-    answer: "A",
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
   },
   {
     questionId: "-82913043165410240",
-    questionContent:
-      "yhwdajnwtcyjqwjvhuvfmxtdqctrlozuvsrbqcguvblnmtjbrxjdmisgycnhmkfgljhcvosnyryttkkkpp",
-    optionA: "dwgbl",
-    optionB: "lynbduyxl",
-    optionC: "rzevhyyrp",
-    optionD: "detmgj",
-    answer: "A",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
   },
   {
     questionId: "64824594325433240",
-    questionContent:
-      "mhvjzhiugoocnoohszdnlkbnscifqpvlyuqnfjtsskclqcicpitalacauql",
-    optionA: "dlacyh",
-    optionB: "jpcjbvjxm",
-    optionC: "stmieuzlt",
-    optionD: "ekvlkjwy",
-    answer: "B",
-  },
-  {
-    questionId: "78178223311573080",
-    questionContent:
-      "lxybyawtfbzibxuqnxumujqofxkanqhakjcdvemxxvtwourmgmltcubldzsrwjbfvjgfvdfoxluibqoivte",
-    optionA: "doqyqe",
-    optionB: "pyqfau",
-    optionC: "yatbxh",
-    optionD: "pqtegcans",
-    answer: "A",
-  },
-  {
-    questionId: "55800584023087480",
-    questionContent:
-      "elxwjgohbgqyvozckwpcbcpjiiyrovydjepbphzwgwxrvqwxrublebhurqulu",
-    optionA: "iktmxtey",
-    optionB: "bawrkvd",
-    optionC: "dmujkgq",
-    optionD: "pmgxemsp",
-    answer: "C",
-  },
-  {
-    questionId: "53099335697851720",
-    questionContent:
-      "yslefdnljkmzhvezyujzenddqtpvjhmmbwiccpzvorthauakhflmtydvrwzqvwnvoefotinwtkpdjkakpcdfbvvdbujjedduwqd",
-    optionA: "dzgnxmfo",
-    optionB: "bmrtpehqg",
-    optionC: "uqywk",
-    optionD: "mronerejeq",
-    answer: "C",
-  },
-  {
-    questionId: "-53387040487037840",
-    questionContent: "krnlobleocaqhmopvmgrpthtthdepxcnblhtuloycpijiwglkxqnp",
-    optionA: "ezvpdqduga",
-    optionB: "nrzvx",
-    optionC: "huedvdm",
-    optionD: "esvxtl",
-    answer: "B",
-  },
-  {
-    questionId: "70681208838626280",
-    questionContent:
-      "sgkntrmobdkmvtwmdnqknyhbgdqbeeepxdcthrqlmsdqchudyuccnqnnuhfyqhalpvsqllsafdaxtynrxkprwsart",
-    optionA: "bbcmle",
-    optionB: "tteelxsn",
-    optionC: "lyuuqq",
-    optionD: "fzygt",
-    answer: "B",
-  },
-  {
-    questionId: "33377078757250720",
-    questionContent:
-      "hlftpbivwwmllibgweeemsjsnpbsibvdimpsdcovmkgztieqfssbimeogxbyocnsmssngem",
-    optionA: "gljvpezo",
-    optionB: "tfvqhbt",
-    optionC: "uyigs",
-    optionD: "vfclvk",
-    answer: "A",
-  },
-  {
-    questionId: "3743871891810400",
-    questionContent:
-      "ihlrmxwxfgjjtvxgxqfnozcvsqzogoqweecawyjnaptivnnklfumuzvoevdwgvexkcpjnmhlfcmkdyfzygbgqtndwsxqxdiufw",
-    optionA: "cppgjyf",
-    optionB: "ypzcakpki",
-    optionC: "thnidwe",
-    optionD: "cbygqyuz",
-    answer: "B",
-  },
-  {
-    questionId: "58263724823762880",
-    questionContent:
-      "pewicwirpalcklfrddwditperrcxydkxjtqkphmzcuwxyowfnlntxrnmmvtfcmqsf",
-    optionA: "cicxqte",
-    optionB: "ntfxvcp",
-    optionC: "qbreergics",
-    optionD: "wtantbj",
-    answer: "B",
-  },
-  {
-    questionId: "54446858995846400",
-    questionContent:
-      "cpsichuwwyoetpndirggiieujetfhxmmudbuyxxbksycyulwdmsngikikfyfitfpd",
-    optionA: "ecocyegi",
-    optionB: "hxffmwmg",
-    optionC: "dtgcnd",
-    optionD: "mwzusk",
-    answer: "B",
-  },
-  {
-    questionId: "80475482172267840",
-    questionContent:
-      "vmdffypbwsfytbfegrjcwncwkbetjonlphyrzyxkenhoctvskmxexiwyehtjfoupppczepmcmmmntyjglymjwofoqigjccennv",
-    optionA: "ghpkauqid",
-    optionB: "motwugbxj",
-    optionC: "jftnpwmt",
-    optionD: "mdgkrijv",
-    answer: "C",
-  },
-  {
-    questionId: "63342109317318760",
-    questionContent: "ipwtqdvupcxxhqqdzrnnjinopzablhyzvjlsqbxgzefppzyhhboupr",
-    optionA: "lcqnjjov",
-    optionB: "evftrybgx",
-    optionC: "mipcwcsmz",
-    optionD: "jpjplidk",
-    answer: "C",
-  },
-  {
-    questionId: "34800198876482840",
-    questionContent:
-      "ravvffwvpunpdwostbfowkywkoemhlinkuuwzojejnmeekomhnxqtyvwxnw",
-    optionA: "ugrmcowdd",
-    optionB: "hwhtppnsuy",
-    optionC: "qsrycqy",
-    optionD: "lwqyrdib",
-    answer: "A",
-  },
-  {
-    questionId: "-27379117581953800",
-    questionContent:
-      "ywlazkfmhrnmfnsswnzsvruaevnzndlpbwhjezhsvfjfztpwmmhlcwkmmg",
-    optionA: "lhszcqv",
-    optionB: "jszggvbg",
-    optionC: "zqxkqm",
-    optionD: "ikoqfwizj",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
     answer: "D",
   },
   {
-    questionId: "26891178729235840",
-    questionContent: "cjlyrjetlvyxbrzbqmxwkajbyrrjimetvvbpetsanzyxtrpcevgbq",
-    optionA: "kvndpljlh",
-    optionB: "hdnun",
-    optionC: "raytdfnaqg",
-    optionD: "zhfwwur",
-    answer: "C",
-  },
-  {
-    questionId: "68089056993488360",
+    questionId: "20337265820639560",
     questionContent:
-      "xanqcnkvxfervjdchvcvmlhveukkjyfwffmwmjrjeusyirmverjqrywtqhtnkekniouymuxmlbxyfnoekqiedghbfetovrhctlc",
-    optionA: "mqcyp",
-    optionB: "rfrfbk",
-    optionC: "gcuows",
-    optionD: "sevyzt",
-    answer: "B",
-  },
-  {
-    questionId: "33433971854586760",
-    questionContent:
-      "utqdwcxayjouunyicktsldufyuzfaqbluutqukvlhkcygdcyvqmhdmxffcvipmwhirkcmdogtbobjjeacjfkatzbz",
-    optionA: "necmgp",
-    optionB: "msplydtow",
-    optionC: "csvmvq",
-    optionD: "qyscgqc",
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
     answer: "A",
   },
   {
-    questionId: "19547671492468240",
-    questionContent: "axidixuupnqyabxcxqcffggqjtltpjhlmeyvlsdmbxgsfcfkoxc",
-    optionA: "zqrxysxm",
-    optionB: "xcjbwdmlx",
-    optionC: "uyllhi",
-    optionD: "kabgqeqbj",
-    answer: "D",
-  },
-  {
-    questionId: "64528688993214960",
+    questionId: "-5490498138654040",
     questionContent:
-      "cxtatcplecjqwhdylgdjgdyzrpqkxrqpycpseyksnhomphxvitjutycvlcqenvxjxvtpsui",
-    optionA: "dyixnp",
-    optionB: "cqpboxbij",
-    optionC: "zhtknui",
-    optionD: "bhbpjcd",
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
     answer: "C",
   },
   {
-    questionId: "85367758941440400",
-    questionContent:
-      "vbocvmlaaddqtxlnbwkbwxgxgrsnmwhmhtofugrrtimitcwjvgweehpqlvurrdwqgmmnw",
-    optionA: "wluwskkwyd",
-    optionB: "swqeouxvf",
-    optionC: "fweim",
-    optionD: "rujntu",
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
     answer: "B",
   },
   {
-    questionId: "-24119026757834520",
-    questionContent:
-      "yivuhsxujlhbsqofdkqhicicbbpbcotjfzdpkrciyqqxbinvseujdwytopugngxqlvnqvcicktbttoshidoo",
-    optionA: "ymwzbyggdu",
-    optionB: "dnrjlepbb",
-    optionC: "qsjvjahvh",
-    optionD: "tzgtvhhhtm",
-    answer: "B",
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
   },
   {
-    questionId: "-20440327678946160",
+    questionId: "20337265820639560",
     questionContent:
-      "rwgoooiimcpcemtwgpykjvgfnmsdfzgfbxemlfmfevxmgdeleurnozufgsugwlkiepzrtokuk",
-    optionA: "virjboyo",
-    optionB: "qxgbkvrj",
-    optionC: "quberhmgp",
-    optionD: "pvvmmodmyp",
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
     answer: "A",
   },
   {
-    questionId: "16890467179574280",
+    questionId: "-5490498138654040",
     questionContent:
-      "gvmrumvsmxitgmnlsaftmgczplpmzbyafvtgngfvrsdcjixwtkuylckolqtqcnoqpuerbfrdxjruciwogzyyyibffqrlbvoyw",
-    optionA: "wiykvn",
-    optionB: "waxnakegic",
-    optionC: "qgteysn",
-    optionD: "yuzapntah",
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
     answer: "C",
   },
   {
-    questionId: "-82877050002680320",
-    questionContent:
-      "geyruosjidddbevgqjucstcmejumjjotupwrnkgmzimledtnwujumqnjvnvjkujoakstlhuwjpqfloknywbpnbsjvqdapqtxwl",
-    optionA: "yqadmih",
-    optionB: "yfpglng",
-    optionC: "mqscni",
-    optionD: "ssqsymy",
-    answer: "C",
-  },
-  {
-    questionId: "-83494801691561480",
-    questionContent:
-      "vsijuodrqbpdhbfwulkrtosqkjkcviltypmrkuszwycxizlawvmcfhttrezfscosvxmfcqlhreyendwmxclhqnysnufawvniwjnf",
-    optionA: "qnpoqtc",
-    optionB: "uvoqgkbqzc",
-    optionC: "epotdwh",
-    optionD: "hfrbv",
-    answer: "C",
-  },
-  {
-    questionId: "-73435545471192680",
-    questionContent:
-      "sewywjdlvhojyomumjdnbjrvcvoyvyiqkouckfpkgnfwlsemzdstvjmgccufmwmwwtdbhboiiqguzi",
-    optionA: "lpacqfh",
-    optionB: "lvrqxx",
-    optionC: "ciugvosnq",
-    optionD: "fuzjrmhzk",
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
     answer: "B",
   },
   {
-    questionId: "-21296753185471280",
-    questionContent: "enkmxtzqmjihvfvrqwlddbebkesjvywfuqtrrwtfneauldhriezcomvl",
-    optionA: "bprcqib",
-    optionB: "rpylvy",
-    optionC: "eywqvmh",
-    optionD: "lkbdoe",
-    answer: "C",
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
   },
   {
-    questionId: "52120887140652000",
+    questionId: "20337265820639560",
     questionContent:
-      "tqtwvlqmoykygmklfqlnxmxpoopwkivpwtnyundbvxsebwtkyhywyfgiywxzwcggennhumytkw",
-    optionA: "xxktr",
-    optionB: "gtrtana",
-    optionC: "vtsvecsw",
-    optionD: "frtyjdkyvm",
-    answer: "C",
-  },
-  {
-    questionId: "-456315709080520",
-    questionContent:
-      "ygnqlxfnrjdvhkddxfdheknvkggglhwonpipxusrtlbndqkfumcpbqhvbpkupmfopolfsxnjzuqhkrxdqefx",
-    optionA: "nwcpsmfkr",
-    optionB: "regivrdp",
-    optionC: "qkdum",
-    optionD: "topayq",
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
     answer: "A",
   },
   {
-    questionId: "-55688693350439120",
+    questionId: "-5490498138654040",
     questionContent:
-      "izrczaygcaqftyrsmogpimyvhniylfflkbgcsyrrmkeitccsbcwhmflnglorpasylvupzymhnvahunjhosxwym",
-    optionA: "mcvulnrs",
-    optionB: "uricps",
-    optionC: "ngxey",
-    optionD: "duxvlc",
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
     answer: "B",
   },
   {
-    questionId: "46422032541865120",
-    questionContent:
-      "zysepwpptvlgfjyjhtiydnfiskmfpmbloowrgegbeusefibfxiufmhhbbntyfsqndgdttlrjlipvlsr",
-    optionA: "cmuubs",
-    optionB: "wvmxlp",
-    optionC: "tpilgbkns",
-    optionD: "dbjwf",
-    answer: "B",
-  },
-  {
-    questionId: "-61211793166913760",
-    questionContent:
-      "gekunrfqaroypsoutpvnqpdpkczvlxmnmiwgvdetstresceuegkfnjqesmwjvrsnmalcbvjbwrilyxblzyjserjhpmnvmkdbic",
-    optionA: "xoorpojb",
-    optionB: "ivcrypxv",
-    optionC: "mdfdjirh",
-    optionD: "mewedrnk",
-    answer: "B",
-  },
-  {
-    questionId: "-1883644977033400",
-    questionContent:
-      "pzcpijnhkodxcuxaxpctaxmowwofvvjrybivpwikhsjplzarhhugkbopsnglqfclkynntplmxijqempr",
-    optionA: "qlustwhpx",
-    optionB: "xcexwqy",
-    optionC: "kcghhpd",
-    optionD: "qugkskmbk",
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
     answer: "D",
   },
   {
-    questionId: "23994457262264640",
+    questionId: "20337265820639560",
     questionContent:
-      "geebblimkuzhbojmnfqsexmaxywothkchesbxnsmdemhdqybygtybojmsjterchlegmgkdtewkgotphykbvstkqprfmf",
-    optionA: "kockidirl",
-    optionB: "kpfzqqa",
-    optionC: "fhnsxasdog",
-    optionD: "huztln",
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
     answer: "B",
   },
   {
-    questionId: "20430207256202280",
-    questionContent:
-      "vnicqcfjfkijejgisbgukkcidcjzmiqdeojwzrylrqfwiflvkftsucyiqdr",
-    optionA: "yoghxlc",
-    optionB: "fgsfuj",
-    optionC: "uikcu",
-    optionD: "nyvgcyov",
-    answer: "B",
-  },
-  {
-    questionId: "-48227655560107960",
-    questionContent:
-      "cenmsivxvxoewkjtulbbcwyidecxqkmzoyfmxemmzfrvcflcuatszcwxddzidzw",
-    optionA: "riyffym",
-    optionB: "wxpsjxz",
-    optionC: "pmhbre",
-    optionD: "otwdum",
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
     answer: "D",
   },
   {
-    questionId: "35349707314824480",
+    questionId: "20337265820639560",
     questionContent:
-      "jwcevtupkrqgaotdfeldkyvqxkxcqhewajcyricdwcejtqjbtiqfpdlsuumlzempttesnlfkwbguqkycnhtxdmhw",
-    optionA: "wnkqgbf",
-    optionB: "nlyzmqa",
-    optionC: "vfyhbpwb",
-    optionD: "nwnwhcums",
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
     answer: "B",
   },
-];
-const questionAnswers = [
-  {},
-  { questionId: "-46505886112954320", answer: 0 },
-  { questionId: "-32377424962168800", answer: 0 },
-  { questionId: "-20082709465895080", answer: 0 },
-  { questionId: "-3903035295930480", answer: null },
-  { questionId: "-2398135318463840", answer: 1 },
-  { questionId: "-39987613343154240", answer: 0 },
-  { questionId: "-10267735969812320", answer: 1 },
-  { questionId: "28568493078299840", answer: null },
-  { questionId: "-59731919238752320", answer: 1 },
-  { questionId: "63135593522702440", answer: 1 },
-  { questionId: "20337265820639560", answer: null },
-  { questionId: "-5490498138654040", answer: "D" },
-  { questionId: "-82913043165410240", answer: "B" },
-  { questionId: "64824594325433240", answer: null },
-  { questionId: "78178223311573080", answer: "C" },
-  { questionId: "55800584023087480", answer: "A" },
-  { questionId: "53099335697851720", answer: "B" },
-  { questionId: "-53387040487037840", answer: "B" },
-  { questionId: "70681208838626280", answer: "B" },
-  { questionId: "33377078757250720", answer: "C" },
-  { questionId: "3743871891810400", answer: "C" },
-  { questionId: "58263724823762880", answer: "C" },
-  { questionId: "54446858995846400", answer: "C" },
-  { questionId: "80475482172267840", answer: "B" },
-  { questionId: "63342109317318760", answer: "C" },
-  { questionId: "34800198876482840", answer: "C" },
-  { questionId: "-27379117581953800", answer: "A" },
-  { questionId: "26891178729235840", answer: "B" },
-  { questionId: "68089056993488360", answer: "D" },
-  { questionId: "33433971854586760", answer: "B" },
-  { questionId: "19547671492468240", answer: "C" },
-  { questionId: "64528688993214960", answer: "B" },
-  { questionId: "85367758941440400", answer: "C" },
-  { questionId: "-24119026757834520", answer: "A" },
-  { questionId: "-20440327678946160", answer: "D" },
-  { questionId: "16890467179574280", answer: "B" },
-  { questionId: "-82877050002680320", answer: "B" },
-  { questionId: "-83494801691561480", answer: "D" },
-  { questionId: "-73435545471192680", answer: "A" },
-  { questionId: "-21296753185471280", answer: "B" },
-  { questionId: "52120887140652000", answer: "B" },
-  { questionId: "-456315709080520", answer: "C" },
-  { questionId: "-55688693350439120", answer: "B" },
-  { questionId: "46422032541865120", answer: "C" },
-  { questionId: "-61211793166913760", answer: "C" },
-  { questionId: "-1883644977033400", answer: "C" },
-  { questionId: "23994457262264640", answer: "D" },
-  { questionId: "20430207256202280", answer: "B" },
-  { questionId: "-48227655560107960", answer: "B" },
-  { questionId: "35349707314824480", answer: "A" },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
 ];
 
+questions.forEach((item) => {
+  item.score = 16
+  item.studentAnswer = null;
+  item.status = 0;
+});
 Mock.mock(/api\/exercise\/random/, {
   code: 200,
   passingScore: 600,
@@ -527,10 +523,8 @@ Mock.mock(/api\/exercise\/random/, {
     size: 50,
     examTime: 120,
     totalPoints: 1000,
-    // 判断题
-    TFQuestions,
-    // 选择题 单选题
-    choiceQuestions,
+    // 题目信息
+    questions,
     // 考试ID
     examId: Random.string("lower", 5, 10),
   },
@@ -549,15 +543,518 @@ Mock.mock(/api\/submit\/exit/, {
 });
 
 // 获取更改后的卷子
+const reviewQuestions = [
+  {
+    questionId: "-46505886112954320",
+    questionContent:
+      "企业网络常常使用DHCP为用户分配IP地址，与静态地址分配方式相比， DHCP地址分配方式极大地减 少了对网络地址进行管理的工作量",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
+  },
+  {
+    questionId: "-32377424962168800",
+    questionContent: "确定项目组成员是实施阶段的工作内容",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
+  },
+  {
+    questionId: "-20082709465895080",
+    questionContent:
+      "企业为了提高互联出口的可靠性， 常常采用多条链路连接不同运营商的方式，采用这种方式时，需要同时关注出方向和入方向的流量路径， 否则可能会影响网络质量",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "B",
+  },
+  {
+    questionId: "-3903035295930480",
+    questionContent: "项目验收只要甲乙双方到场就可以了， 不需要第三方参与",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
+  },
+  {
+    questionId: "-2398135318463840",
+    questionContent:
+      "]当DHCP客户端与DHCP服务器之间存在设备时，如果DHCP服务器全局地址池中的IP地址与中继设备上连接的客户端的VLANIF接口的IP地址不在同一网段， 则会引起DHCP故障。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "B",
+  },
+  {
+    questionId: "-39987613343154240",
+    questionContent:
+      "二层网络架构与三层网络架构相比，具备结构简单、数据转发效率高等优势，所以今后的网络结构将全面转向二层网络结构，三层网络架构将逐步被制汰。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
+  },
+  {
+    questionId: "-10267735969812320",
+    questionContent:
+      "二层网络架构与三层网络架构相比，具备结构简单、数据转发效率高等优势，所以今后的网络结构将全面转向二层网络结构，三层网络架构将逐步被制汰。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
+  },
+  {
+    questionId: "28568493078299840",
+    questionContent:
+      "二层网络架构与三层网络架构相比，具备结构简单、数据转发效率高等优势，所以今后的网络结构将全面转向二层网络结构，三层网络架构将逐步被制汰。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
+  },
+  {
+    questionId: "-59731919238752320",
+    questionContent:
+      "二层网络架构与三层网络架构相比，具备结构简单、数据转发效率高等优势，所以今后的网络结构将全面转向二层网络结构，三层网络架构将逐步被制汰。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
+  },
+  {
+    questionId: "63135593522702440",
+    questionContent:
+      "二层网络架构与三层网络架构相比，具备结构简单、数据转发效率高等优势，所以今后的网络结构将全面转向二层网络结构，三层网络架构将逐步被制汰。",
+    optionA: "正确",
+    optionB: "错误",
+    answer: "A",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+  {
+    questionId: "20337265820639560",
+    questionContent:
+      "下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?",
+    optionA: "对比配置法",
+    optionB: "自项向下法",
+    optionC: "自底向上法",
+    optionD: "替换法",
+    answer: "A",
+  },
+  {
+    questionId: "-5490498138654040",
+    questionContent:
+      "在一个有着财务、 OA(officeAutomation,System,办公自动化)、生产、甚至更多业务系统的复杂网络",
+    optionA: "IP地址的分配",
+    optionB: "网络设备的型号",
+    optionC: "各业务系统的数据流方向",
+    optionD: "机房的环境",
+    answer: "C",
+  },
+  {
+    questionId: "-82913043165410240",
+    questionContent: "在进行设备运行检查时，以下哪项是正确",
+    optionA:
+      "可通过执行displaymemory-usage命令来检查设各内存占用率， 如果'MemoryUsingPercentageIs'超过80%，此时则需要特别关注",
+    optionB:
+      '可通过执行displaydevice命令来检查单板运行状态，单板"Online"应为"Present"',
+    optionC:
+      "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
+    optionD:
+      "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
+    answer: "B",
+  },
+  {
+    questionId: "64824594325433240",
+    questionContent: "'打环'测试一般用在什么场合",
+    optionA: "测试应用是否能正常连接",
+    optionB: "测试路由协议是否能有效避免环路",
+    optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
+    optionD: "测试物理线路是否有中断",
+    answer: "D",
+  },
+];
+reviewQuestions.forEach((item) => {
+  item.score = 16;
+  item.studentAnswer = Random.string("ABCD", 1, 1);
+});
 Mock.mock(/api\/exercise\/review/, {
   code: 200,
   data: {
     size: 50,
-    // 判断题
-    TFQuestions,
-    // 选择题 单选题
-    choiceQuestions,
-    questionAnswers,
+    questions: reviewQuestions,
     test: "q23qaw",
+    totalTime: 5650000,
+    startTime: 1637994458000,
+    endTime: 1638001911000,
   },
 });

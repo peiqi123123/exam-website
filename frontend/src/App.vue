@@ -1,5 +1,9 @@
 <template>
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <keep-alive>
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
 </template>
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
@@ -7,8 +11,11 @@
 import { provide } from "vue";
 import Login from "@/views/login/Login.vue";
 import { ElMessage } from "element-plus";
+import * as echarts from "echarts";
 //全局注入消息提示功能
 provide("message", ElMessage);
+// 全局注入echarts
+provide("echarts", echarts);
 </script>
 <style lang="less">
 @import "@/assets/css/style.less";

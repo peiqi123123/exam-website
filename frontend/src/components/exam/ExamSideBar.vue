@@ -6,23 +6,14 @@
       <div class="account">账号：1905110129</div>
     </div>
     <el-scrollbar ref="scrollbar" height="550px" always>
-      <div class="tf" v-if="TFQuestions.length !== 0">
-        <div class="tf_title solid">判断题</div>
+      <div class="tf" v-if="size !== 0">
+        <div class="tf_title solid">题目</div>
         <SlideItem
-          v-for="(item, i) in TFQuestions"
+          v-for="(item, i) in props.questions"
           :key="item.questionId"
           :number="i + 1"
           :score="16"
           :questionId="item.questionId"
-        ></SlideItem>
-      </div>
-      <div class="select" v-if="choiceQuestions.length !== 0">
-        <div class="select_title solid">选择题</div>
-        <SlideItem
-          v-for="(item, i) in choiceQuestions"
-          :key="item.questionId"
-          :number="TFSize + i + 1"
-          :score="16"
         ></SlideItem>
       </div>
     </el-scrollbar>
@@ -36,11 +27,7 @@ const props = defineProps({
     default: {},
   },
 });
-console.log(props.questions);
-const TFQuestions = props.questions.TFQuestions || [];
-const choiceQuestions = props.questions.choiceQuestions || [];
-const TFSize = TFQuestions.length;
-// const choiceSize = choiceQuestions.length;
+const size = props.questions.length;
 </script>
 <style lang="less" scoped>
 .exam_slide_bar {

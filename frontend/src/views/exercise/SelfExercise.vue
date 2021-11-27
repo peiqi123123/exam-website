@@ -15,7 +15,7 @@
   <div v-else v-loading.fullscreen.lock="true"></div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { useStore } from "vuex";
 import { getExerciseQuestions, exerciseExit } from "@/network/api/user";
 // import { beforeunload } from "@/network/api/user";
@@ -29,17 +29,8 @@ async function init() {
   console.log(res);
   size.value = config.exerciseSize;
   examId.value = res.data.examId;
-  const questionAnswers = [];
-  for (let i = 0; i < size.value + 1; i++) {
-    questionAnswers[i] = {
-      questionId: 0,
-      answer: null,
-    };
-  }
-  const questionStatus = new Array(size.value + 1).fill(0);
-  questions.value = res.data;
-  store.commit("setQuestionAnswers", questionAnswers);
-  store.commit("setQuestionStatus", questionStatus);
+  questions.value = res.data.questions;
+  store.commit("setQuestions", questions.value);
 }
 // 获取练习题目等相关信息
 init();
