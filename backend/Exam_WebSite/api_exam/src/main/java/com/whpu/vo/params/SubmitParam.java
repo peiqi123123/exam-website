@@ -15,5 +15,5 @@ import java.util.Map;
 public class SubmitParam {
     private List<AnsParam> ans;
     private Integer totalTime;
-    private String examRecordingId;
+    private String examId;
 }

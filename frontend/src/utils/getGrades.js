@@ -21,7 +21,7 @@ export function getGrades(questions) {
 }
 // 判断多选题答案包含关系
 function isSubAnswer(answer, studentAnswer) {
-  if (studentAnswer === null) return false;
+  if (studentAnswer === undefined) return false;
   for (const c of studentAnswer) if (answer.indexOf(c) === -1) return false;
   return true;
 }

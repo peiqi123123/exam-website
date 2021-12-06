@@ -10,5 +10,5 @@ import lombok.Data;
 @Data
 public class AnsParam {
     private String questionId;
-    private String answer;
+    private String studentAnswer="-1";
 }

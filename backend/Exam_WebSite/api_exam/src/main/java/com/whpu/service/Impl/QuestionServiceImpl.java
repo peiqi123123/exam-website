@@ -58,7 +58,8 @@ public class QuestionServiceImpl implements SysQuestionService {
         question.setOptionB(String.valueOf(r[1]));
         question.setOptionC(String.valueOf(r[2]));
         question.setOptionD(String.valueOf(r[3]));
-        question.setAnswer(String.valueOf(res));
+        char ans = (char)('A'+resIndex);
+        question.setAnswer(ans+"");
         question.setAnalyse(a+"+"+b+"="+res);
         int insert = questionMapper.insert(question);
         return insert;
@@ -68,7 +69,7 @@ public class QuestionServiceImpl implements SysQuestionService {
     @Transactional
     public ExerciseRandomVo selectRandomQuestion(int SysQuestionNum,String userId) {
         //添加考试的记录
-        String examRecordingId = examRecordingService.addExamRecordingService();
+        String examRecordingId = examRecordingService.addExamRecordingService(SysQuestionNum);
         //选择题模块
         if(SysQuestionNum==0)
         {
@@ -116,7 +117,7 @@ public class QuestionServiceImpl implements SysQuestionService {
 
         ExerciseRandomVo exerciseRandomVo = new ExerciseRandomVo();
             //将选择题目放入到结果集当中
-        exerciseRandomVo.setSysQuestions(questionVos);
+        exerciseRandomVo.setQuestions(questionVos);
             //判断题模块(还没做)
             //告诉你这是哪次考试
         exerciseRandomVo.setExamId(examRecordingId);
