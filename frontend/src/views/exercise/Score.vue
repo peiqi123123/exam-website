@@ -5,7 +5,7 @@
       <div class="info">
         <div class="name">姓名：黄京旺</div>
         <div class="number">学号: 1905110129</div>
-        <div class="total_score">得分：{{ totalScore }}</div>
+        <div class="total_score">得分：{{ scoreContext }}</div>
         <div class="start_time">开始时间：{{ startTime }}</div>
         <div class="end_time">总用时：{{ totalTime }}</div>
         <el-button class="btn" type="primary" round @click="toReview"
@@ -36,7 +36,7 @@ const startTime = ref();
 const totalTime = ref();
 const endTime = ref();
 const diagram = ref();
-const totalScore = ref(0);
+const scoreContext = ref(0);
 async function init() {
   if (examId === 0) {
     // 获取本地考试记录
@@ -57,42 +57,111 @@ async function init() {
   totalTime.value = format(totalTime.value);
   startTime.value = timestamp(startTime.value);
   store.commit("setQuestions", questions.value);
-  const { correctSize, errorSize, score } = getGrades(questions.value);
-  totalScore.value = score;
+  const { correctSize, errorSize, score, totalScore } = getGrades(
+    questions.value
+  );
+  scoreContext.value = `${score} / ${totalScore} 分`;
   var myChart = echarts.init(diagram.value);
   const option = {
-    legend: {
-      orient: "vertical",
-      x: "left",
-      data: [`正确:${correctSize}`, `错误:${errorSize}`],
+    title: {
+      text: score,
+      textStyle: {
+        color: "#01c4a3",
+        fontSize: 40,
+      },
+      subtext: `总分：${totalScore}分`,
+      subtextStyle: {
+        color: "#909090",
+      },
+      itemGap: -10, // 主副标题距离
+      left: "center",
+      top: "center",
     },
-    color: ["green", "red"],
+    angleAxis: {
+      max: totalScore, // 满分
+      clockwise: true, // 逆时针
+      // 隐藏刻度线
+      axisLine: {
+        show: false,
+      },
+      axisTick: {
+        show: false,
+      },
+      axisLabel: {
+        show: false,
+      },
+      splitLine: {
+        show: false,
+      },
+    },
+    radiusAxis: {
+      type: "category",
+      // 隐藏刻度线
+      axisLine: {
+        show: false,
+      },
+      axisTick: {
+        show: false,
+      },
+      axisLabel: {
+        show: false,
+      },
+      splitLine: {
+        show: false,
+      },
+    },
+    polar: {
+      center: ["50%", "50%"],
+      radius: "140%", //图形大小
+    },
     series: [
       {
-        type: "pie",
-        radius: ["50%", "70%"],
-        avoidLabelOverlap: false,
-        label: {
-          show: false,
-          position: "center",
-          emphasis: {
-            show: true,
-          },
-        },
-        labelLine: {
-          show: false,
-        },
-        emphasis: {
-          label: {
-            show: true,
-            fontSize: "30",
-            fontWeight: "bold",
-          },
-        },
+        type: "bar",
         data: [
-          { value: correctSize, name: `正确:${correctSize}` },
-          { value: errorSize, name: `错误:${errorSize}` },
+          {
+            name: "作文得分",
+            value: score,
+            itemStyle: {
+              normal: {
+                color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [
+                  {
+                    offset: 0,
+                    color: "#aaf14f",
+                  },
+                  {
+                    offset: 1,
+                    color: "#0acfa1",
+                  },
+                ]),
+              },
+            },
+          },
         ],
+        coordinateSystem: "polar",
+        roundCap: true,
+        barWidth: 25,
+        barGap: "-100%", // 两环重叠
+        z: 2,
+      },
+      {
+        // 灰色环
+        type: "bar",
+        data: [
+          {
+            value: totalScore,
+            itemStyle: {
+              color: "#e2e2e2",
+              shadowColor: "rgba(0, 0, 0, 0.2)",
+              shadowBlur: 5,
+              shadowOffsetY: 2,
+            },
+          },
+        ],
+        coordinateSystem: "polar",
+        roundCap: true,
+        barWidth: 25,
+        barGap: "-100%", // 两环重叠
+        z: 1,
       },
     ],
   };

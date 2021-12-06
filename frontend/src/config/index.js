@@ -22,17 +22,47 @@ const config = {
   },
   // 练习的类别
   contestCategory: [
-    "网络系统管理",
-    "大数据",
-    "云计算",
-    "......",
-    "......",
-    "......",
+    {
+      name: "网络系统管理",
+      children: [
+        {
+          name: "自主练习",
+          children: [
+            {
+              name: "随机组卷",
+              children: [],
+            },
+            {
+              name: "智能组卷",
+              children: [],
+            },
+            {
+              name: "针对训练",
+              children: [],
+            },
+            {
+              name: "错题专项",
+              children: [],
+            },
+          ],
+        },
+        {
+          name: "赛事模拟",
+          children: [],
+        },
+      ],
+    },
+    {
+      name: "大数据",
+      children: [],
+    },
+    {
+      name: "云计算",
+      children: [],
+    },
   ],
-  // 试卷类型
-  contestType: ["自主练习", "赛事模拟"],
-  // 自主练习的四个模块
-  selfExercise: ["随机组卷", "智能组卷", "针对训练", "错题专项"],
+  studentCategory: ["首页", "排行榜", "社区"],
+
   // 做题状态颜色
   statusColor: {
     info: "#909399",

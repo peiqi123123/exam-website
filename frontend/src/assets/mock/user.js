@@ -97,7 +97,7 @@ const questions = [
     optionB: "自项向下法",
     optionC: "自底向上法",
     optionD: "替换法",
-    answer: "A",
+    answer: "ABC",
   },
   {
     questionId: "-5490498138654040",
@@ -107,7 +107,7 @@ const questions = [
     optionB: "网络设备的型号",
     optionC: "各业务系统的数据流方向",
     optionD: "机房的环境",
-    answer: "C",
+    answer: "CD",
   },
   {
     questionId: "-82913043165410240",
@@ -120,7 +120,7 @@ const questions = [
       "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
     optionD:
       "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
-    answer: "B",
+    answer: "AB",
   },
   {
     questionId: "64824594325433240",
@@ -129,7 +129,7 @@ const questions = [
     optionB: "测试路由协议是否能有效避免环路",
     optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
     optionD: "测试物理线路是否有中断",
-    answer: "D",
+    answer: "AD",
   },
   {
     questionId: "20337265820639560",
@@ -139,7 +139,7 @@ const questions = [
     optionB: "自项向下法",
     optionC: "自底向上法",
     optionD: "替换法",
-    answer: "A",
+    answer: "AB",
   },
   {
     questionId: "-5490498138654040",
@@ -510,9 +510,8 @@ const questions = [
     answer: "D",
   },
 ];
-
 questions.forEach((item) => {
-  item.score = 16
+  item.score = 2;
   item.studentAnswer = null;
   item.status = 0;
 });
@@ -630,7 +629,7 @@ const reviewQuestions = [
     optionB: "自项向下法",
     optionC: "自底向上法",
     optionD: "替换法",
-    answer: "A",
+    answer: "ABC",
   },
   {
     questionId: "-5490498138654040",
@@ -640,7 +639,7 @@ const reviewQuestions = [
     optionB: "网络设备的型号",
     optionC: "各业务系统的数据流方向",
     optionD: "机房的环境",
-    answer: "C",
+    answer: "CD",
   },
   {
     questionId: "-82913043165410240",
@@ -653,7 +652,7 @@ const reviewQuestions = [
       "可通过执行displayfan命令来查看风扇状态，当Presen项为NO时， 表示正常",
     optionD:
       "可通过执行displayftpserver命令来查看FTP网络服务端口， 未使用的FTP网络服务端口需要记录下来",
-    answer: "B",
+    answer: "AB",
   },
   {
     questionId: "64824594325433240",
@@ -662,7 +661,7 @@ const reviewQuestions = [
     optionB: "测试路由协议是否能有效避免环路",
     optionC: "测试交换机是否能有效进行环路遏制和广播遏制",
     optionD: "测试物理线路是否有中断",
-    answer: "D",
+    answer: "AD",
   },
   {
     questionId: "20337265820639560",
@@ -672,7 +671,7 @@ const reviewQuestions = [
     optionB: "自项向下法",
     optionC: "自底向上法",
     optionD: "替换法",
-    answer: "A",
+    answer: "AB",
   },
   {
     questionId: "-5490498138654040",
@@ -1044,8 +1043,11 @@ const reviewQuestions = [
   },
 ];
 reviewQuestions.forEach((item) => {
-  item.score = 16;
+  item.score = 2;
   item.studentAnswer = Random.string("ABCD", 1, 1);
+  if (item.answer.length > 1) {
+    item.studentAnswer = "AC";
+  }
 });
 Mock.mock(/api\/exercise\/review/, {
   code: 200,

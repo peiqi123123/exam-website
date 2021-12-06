@@ -27,7 +27,7 @@ const examId = ref("");
 async function init() {
   const res = await getExerciseQuestions();
   console.log(res);
-  size.value = config.exerciseSize;
+  size.value = res.data.questions.length;
   examId.value = res.data.examId;
   questions.value = res.data.questions;
   store.commit("setQuestions", questions.value);

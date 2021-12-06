@@ -43,17 +43,22 @@ function toDetail(i) {
         cursor: pointer;
         width: 50px;
         height: 50px;
+        border-radius: 50%;
         line-height: 50px;
         font-weight: bolder;
         background-color: cornsilk;
         text-align: center;
-        margin: 5px;
+        margin: 10px;
+        color: #bebebe;
+        background-color: #f6f6f6;
       }
       .finish {
-        background-color: #1afa29;
+        color: #f7fef0;
+        background: linear-gradient(to bottom, #25d49e, #29c89c);
       }
       .warning {
-        background-color: #faad14;
+        color: #f7fef0;
+        background: linear-gradient(to bottom, #faad14, #cc8a05);
       }
     }
   }

@@ -1,9 +1,10 @@
 <template>
-  <router-view v-slot="{ Component }">
+  <!-- <router-view v-slot="{ Component }">
     <keep-alive>
       <component :is="Component" />
     </keep-alive>
-  </router-view>
+  </router-view> -->
+  <router-view></router-view>
 </template>
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs

@@ -8,13 +8,40 @@ export function getGrades(questions) {
       item.status = 1;
       correctSize++;
       score += item.score;
-    } else item.status = 3;
+    } else if (isSubAnswer(item.answer, item.studentAnswer)) item.status = 2;
+    else item.status = 3;
     totalScore += item.score;
   });
-  score = `${score} / ${totalScore} 分`;
   return {
     correctSize,
     errorSize: size - correctSize,
     score,
+    totalScore,
   };
+}
+// 判断多选题答案包含关系
+function isSubAnswer(answer, studentAnswer) {
+  if (studentAnswer === null) return false;
+  for (const c of studentAnswer) if (answer.indexOf(c) === -1) return false;
+  return true;
+}
+
+// 提交前将数组中对象改为
+// interface question{
+//     questionId: String,
+//     answer: String
+// }
+
+export function convertQuestions(questions) {
+  const submitQuestions = [];
+  questions.forEach((question) => {
+    const questionId = question.questionId;
+    const studentAnswer = question.studentAnswer;
+    submitQuestions.push({
+      questionId,
+      studentAnswer,
+    });
+  });
+  console.log("submitQuestions: ", submitQuestions);
+  return submitQuestions;
 }

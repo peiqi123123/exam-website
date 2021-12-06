@@ -5,15 +5,11 @@ const routes = [
   { path: "/login", component: () => import("@/views/login/Login.vue") },
   {
     path: "/student",
-    component: () => import("@/views/student/Contest.vue"),
+    component: () => import("@/views/student/Student.vue"),
     children: [
       {
-        path: "category",
-        component: () => import("@/views/student/child/Category.vue"),
-      },
-      {
-        path: "exercise",
-        component: () => import("@/views/student/child/Exercise.vue"),
+        path: "home",
+        component: () => import("@/views/student/child/TestRecords.vue"),
       },
     ],
   },
@@ -39,17 +35,17 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  if (from.path === "/student/exercise") {
-    if (to.path === "/exercise") {
-      return next();
-    }
-  } else {
-    if (to.path === "/exercise") {
-      next("/login");
-    }
-  }
-  next();
-});
+// router.beforeEach((to, from, next) => {
+//   if (from.path === "/student/exercise") {
+//     if (to.path === "/exercise") {
+//       return next();
+//     }
+//   } else {
+//     if (to.path === "/exercise") {
+//       next("/login");
+//     }
+//   }
+//   next();
+// });
 
 export default router;

@@ -1,7 +1,7 @@
 <template>
   <div class="exam_tab_bar">
-    <div class="total-score">满分：1000分</div>
-    <div class="pass-score">及格：600分</div>
+    <div class="total-score">满分：100分</div>
+    <div class="pass-score">及格：60分</div>
     <div class="has_answer">已答：{{ hasAnswerContext }}</div>
     <div class="remain_time">剩余时间：{{ `${hr}: ${min}: ${sec}` }}</div>
     <div class="submit">
@@ -33,6 +33,7 @@ import { ref, watch, inject } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { submitExercise } from "@/network/api/user";
+import { convertQuestions } from "@/utils/getGrades";
 const message = inject("message");
 const store = useStore();
 const Router = useRouter();
@@ -99,7 +100,8 @@ async function confirmSubmit() {
   isLoading.value = true;
   // 计算考试总用时
   store.commit("setTotalTime", totalTime * 1000);
-  const res = await submitExercise(questions.value, totalTime, props.examId);
+  const submitQuesitons = convertQuestions(questions.value);
+  const res = await submitExercise(submitQuesitons, totalTime, props.examId);
   if (res.code === 201) {
     message.success("提交成功");
     submitDialogVisible.value = false;

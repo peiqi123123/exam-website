@@ -87,9 +87,9 @@ function submitForm() {
       isLoading.value = false;
       if (res.code === 201) {
         message.success("登录成功");
-        window.sessionStorage.setItem("token", res.data)
+        window.sessionStorage.setItem("token", res.data);
         // window.
-        if (identity.value === "student") Router.push("/student/category");
+        if (identity.value === "student") Router.push("/student/home");
         else if (identity.value === "teacher") Router.push("/teacher");
         else if (identity.value === "manager") Router.push("/manager");
       } else {
