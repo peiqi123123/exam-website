@@ -26,12 +26,13 @@ public class AddQuestionController {
      @RequestMapping("addSelfQuestion")
     public Result addTeacherSelfQuestion(@RequestBody QuestionParam questionParam)
      {
-         teacherSelfQuestionService.addQuestion(questionParam);
+         int i = teacherSelfQuestionService.addQuestion(questionParam);
          return Result.success(null);
      }
     @RequestMapping("addSysQuestion")
     public Result addSysQuestion(@RequestBody QuestionParam questionParam)
     {
+        sysQuestionService.addSysQuestion();
         return null;
     }
 }

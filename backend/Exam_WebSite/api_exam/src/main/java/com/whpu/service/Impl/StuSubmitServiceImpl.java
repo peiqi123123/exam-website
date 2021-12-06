@@ -47,8 +47,8 @@ public class StuSubmitServiceImpl implements StuSubmitService {
     @Override
     public Result submit(SubmitParam submitParam,String userId) {
 
-        String examRecordingId = submitParam.getExamRecordingId();
-        List<AnsParam> ans = submitParam.getAns();
+        String examRecordingId = submitParam.getExamId();
+        List<AnsParam> ans = submitParam.getQuestionAnswers();
         ans.forEach(s->{
             //将对应的答案 找到对应的题目记录，如果是对的就将judgment改成1
             //如果是错的就将judgement 改成0

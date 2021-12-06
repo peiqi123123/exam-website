@@ -50,5 +50,20 @@ public class SysQuestion  {
     @TableField(value = "Analyse")
     String Analyse;
 
+    public SysQuestion() {
+    }
 
+    public SysQuestion(Integer ansNum, String questionContent, String optionA, String optionB, String optionC, String optionD, String optionE, String optionF, String optionG, String answer, String analyse) {
+        AnsNum = ansNum;
+        this.questionContent = questionContent;
+        this.optionA = optionA;
+        this.optionB = optionB;
+        this.optionC = optionC;
+        this.optionD = optionD;
+        this.optionE = optionE;
+        this.optionF = optionF;
+        this.optionG = optionG;
+        Answer = answer;
+        Analyse = analyse;
+    }
 }
