@@ -32,7 +32,7 @@ public class AddQuestionController {
     @RequestMapping("addSysQuestion")
     public Result addSysQuestion(@RequestBody QuestionParam questionParam)
     {
-        sysQuestionService.addSysQuestion();
-        return null;
+        int i = sysQuestionService.addSysQuestion(questionParam);
+        return Result.success(null);
     }
 }
