@@ -8,6 +8,7 @@ import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.params.QuestionParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @description
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
  * @time: 2021/11/24 11:27
  */
 @Service
+@Transactional
 public class TeacherSelfQuestionServiceImpl implements TeacherSelfQuestionService {
     @Autowired
     private TeacherSelfQuestionMapper teacherSelfQuestionMapper;

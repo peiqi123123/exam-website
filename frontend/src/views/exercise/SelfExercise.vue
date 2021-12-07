@@ -26,7 +26,7 @@ let size = ref(0);
 const examId = ref("");
 async function init() {
   const res = await getExerciseQuestions();
-  console.log(res);
+  console.log("res: ", res);
   size.value = res.data.questions.length;
   examId.value = res.data.examId;
   questions.value = res.data.questions;

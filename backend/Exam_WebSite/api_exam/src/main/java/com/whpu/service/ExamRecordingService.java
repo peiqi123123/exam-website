@@ -10,6 +10,6 @@ import java.util.List;
  * @time: 2021/11/8 20:58
  */
 public interface ExamRecordingService {
-    String addExamRecordingService();
+    String addExamRecordingService(Integer questionNum);
     List<ExamRecording> getAllExamRecording(String studentId);
 }

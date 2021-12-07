@@ -102,6 +102,7 @@ async function confirmSubmit() {
   store.commit("setTotalTime", totalTime * 1000);
   const submitQuesitons = convertQuestions(questions.value);
   const res = await submitExercise(submitQuesitons, totalTime, props.examId);
+  console.log("res: ", res);
   if (res.code === 201) {
     message.success("提交成功");
     submitDialogVisible.value = false;

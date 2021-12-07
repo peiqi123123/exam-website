@@ -1,8 +1,6 @@
 package com.whpu.dao.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 /**
@@ -15,10 +13,15 @@ import lombok.Data;
 public class StuAnsRecording {
     @TableId(type = IdType.ID_WORKER_STR)
     private String id;
+    @TableField(value = "studentId")
     private String StudentId;
+    @TableField("exam_recording_id")
     private String examRecordingId;
+    @TableField("questionId")
     private String questionId;
+    @TableField("stuAnswer")
     private String stuAnswer;
+    @TableField("answer")
     private String answer;
     private Integer judgment;
     //考试类型，如果是判断题就是0，选择题就是1，默认是-1

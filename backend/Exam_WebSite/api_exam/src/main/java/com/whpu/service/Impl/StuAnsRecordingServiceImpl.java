@@ -12,6 +12,7 @@ import com.whpu.vo.QuestionVo;
 import com.whpu.vo.ExamInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.List;
  * @time: 2021/11/17 10:10
  */
 @Service
+@Transactional
 public class StuAnsRecordingServiceImpl implements StuAnsRecordingService {
     @Autowired
     StuAnsRecordingMapper stuAnsRecordingMapper;

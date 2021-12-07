@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Data
 public class ExerciseRandomVo {
-    List<QuestionVo> SysQuestions;
+    List<QuestionVo> questions;
     Integer size;
     String examTime;
     String examId;

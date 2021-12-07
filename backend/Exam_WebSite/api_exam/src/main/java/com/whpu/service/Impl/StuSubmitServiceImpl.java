@@ -8,6 +8,7 @@ import com.whpu.dao.mapper.StuWrongQueMapper;
 import com.whpu.dao.pojo.ExamRecording;
 import com.whpu.dao.pojo.StuAnsRecording;
 import com.whpu.dao.pojo.StuWrongQue;
+import com.whpu.service.StuAnsRecordingService;
 import com.whpu.service.StuSubmitService;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.AnsParam;
@@ -45,6 +46,7 @@ public class StuSubmitServiceImpl implements StuSubmitService {
      * 4，比对完成后，得到得分，并且存到考试记录中
      */
     @Override
+    @Transactional
     public Result submit(SubmitParam submitParam,String userId) {
 
         String examRecordingId = submitParam.getExamId();
@@ -56,9 +58,9 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                 UpdateWrapper uw = new UpdateWrapper();
                 uw.eq("studentId",userId);
                 uw.eq("questionId",s.getQuestionId());
-                uw.eq("recordingId",examRecordingId);
-                StuAnsRecording stuAnsRecording = new StuAnsRecording();
-                if(stuAnsRecording.getAnswer().equals(s.getAnswer())) {
+                uw.eq("exam_recording_id",examRecordingId);
+                StuAnsRecording stuAnsRecording = stuAnsRecordingMapper.selectOne(uw);
+                if(s.getStudentAnswer().equals(stuAnsRecording.getAnswer())) {
                     stuAnsRecording.setJudgment(1);//对了
                     trueNum++;
                 }
@@ -70,11 +72,11 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                     stuWrongQue.setQuestionId(s.getQuestionId());
                     stuWrongQue.setRecordingId(examRecordingId);
                     stuWrongQue.setStudentId(userId);
-                    stuWrongQue.setStudentAns(s.getAnswer());
+                    stuWrongQue.setStudentAns(s.getStudentAnswer());
                     stuWrongQueMapper.insert(stuWrongQue);
                     falseNum++;
                 }
-                stuAnsRecording.setStuAnswer(s.getAnswer());
+                stuAnsRecording.setStuAnswer(s.getStudentAnswer());
                 stuAnsRecordingMapper.update(stuAnsRecording,uw);
 
         });
@@ -82,7 +84,7 @@ public class StuSubmitServiceImpl implements StuSubmitService {
         //将是否完成改为完成，添加用时时长，添加分数，添加错题数
         UpdateWrapper<ExamRecording> eruw = new UpdateWrapper<>();
         eruw.eq("examRecordingId",examRecordingId)
-                .set("totalTime",submitParam.getTotalTime())
+                .set("spendTime",submitParam.getTotalTime())
                 .set("isFinish",1)
                 .set("WrongAnsNum",falseNum)
                 .set("totalScore",trueNum*1.00/(falseNum+trueNum))
