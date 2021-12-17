@@ -13,7 +13,7 @@ import java.util.Map;
  */
 @Data
 public class SubmitParam {
-    private List<AnsParam> ans;
+    private List<AnsParam> questionAnswers;
     private Integer totalTime;
     private String examId;
 }

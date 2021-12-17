@@ -8,11 +8,15 @@ import com.whpu.dao.mapper.StuAnsRecordingMapper;
 import com.whpu.dao.mapper.SysQuestionMapper;
 import com.whpu.dao.pojo.StuAnsRecording;
 import com.whpu.dao.pojo.SysQuestion;
+import com.whpu.dao.pojo.TeacherSelfQuestion;
+import com.whpu.dao.pojo.User;
 import com.whpu.service.ExamRecordingService;
 
 import com.whpu.service.SysQuestionService;
+import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.ExerciseRandomVo;
 import com.whpu.vo.QuestionVo;
+import com.whpu.vo.params.QuestionParam;
 import org.apache.commons.lang3.builder.ToStringExclude;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,10 +30,10 @@ import java.util.*;
  * @time: 2021/10/29 20:25
  */
 @Service
-public class QuestionServiceImpl implements SysQuestionService {
+public class SysQuestionServiceImpl implements SysQuestionService {
 
     @Autowired
-    private SysQuestionMapper questionMapper;
+    private SysQuestionMapper sysQuestionMapper;
     @Autowired
     private ExamRecordingService examRecordingService;
     @Autowired
@@ -61,8 +65,28 @@ public class QuestionServiceImpl implements SysQuestionService {
         char ans = (char)('A'+resIndex);
         question.setAnswer(ans+"");
         question.setAnalyse(a+"+"+b+"="+res);
-        int insert = questionMapper.insert(question);
+        int insert = sysQuestionMapper.insert(question);
         return insert;
+    }
+
+    @Override
+    public int addSysQuestion(QuestionParam questionParam) {
+        User user = UserThreadLocal.get();
+        SysQuestion sysQuestion = new SysQuestion(
+                questionParam.getAnsNum(),
+                questionParam.getQuestionContent(),
+                questionParam.getOptionA(),
+                questionParam.getOptionB(),
+                questionParam.getOptionC(),
+                questionParam.getOptionD(),
+                questionParam.getOptionE(),
+                questionParam.getOptionF(),
+                questionParam.getOptionG(),
+                questionParam.getAnswer(),
+                questionParam.getAnalyse()
+        );
+        int insert = sysQuestionMapper.insert(sysQuestion);
+        return  insert;
     }
 
     @Override
@@ -78,7 +102,7 @@ public class QuestionServiceImpl implements SysQuestionService {
                 SysQuestion::getOptionA,SysQuestion::getOptionB,SysQuestion::getOptionC,SysQuestion::getOptionD,SysQuestion::getOptionE
         ,SysQuestion::getOptionF,SysQuestion::getOptionG,SysQuestion::getAnswer,SysQuestion::getQuestionId);
         qw.last("ORDER BY RAND() LIMIT "+SysQuestionNum);
-        List<SysQuestion> SysQuestions = questionMapper.selectList(qw);
+        List<SysQuestion> SysQuestions = sysQuestionMapper.selectList(qw);
         List<QuestionVo> questionVos= new ArrayList<QuestionVo>();
 
         for(SysQuestion q:SysQuestions)

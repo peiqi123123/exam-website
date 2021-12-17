@@ -9,6 +9,7 @@ import com.whpu.service.ExamRecordingService;
 import com.whpu.utils.UserThreadLocal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * 用于添加考试的记录
  */
 @Service
+@Transactional
 public class ExamRecordingServiceImpl implements ExamRecordingService {
     @Autowired
     ExamRecordingMapper examRecordingMapper;
