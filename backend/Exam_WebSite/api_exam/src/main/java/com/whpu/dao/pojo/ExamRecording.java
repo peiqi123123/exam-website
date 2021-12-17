@@ -32,9 +32,9 @@ public class ExamRecording {
     @TableField(value = "examType")
     private String examType;
     @TableField(value = "spendTime")
-    private Integer spendTime;
+    private Long spendTime;
     @TableField(value = "submitTime")
-    private String submitTime;
+    private Long submitTime;
     @TableField(value = "limitTime")
     private Long limitTime;
 }

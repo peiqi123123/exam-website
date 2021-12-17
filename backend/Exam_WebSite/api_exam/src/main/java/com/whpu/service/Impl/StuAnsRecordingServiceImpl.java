@@ -1,6 +1,7 @@
 package com.whpu.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.whpu.dao.mapper.SysQuestionMapper;
 import com.whpu.dao.mapper.ExamRecordingMapper;
 import com.whpu.dao.mapper.StuAnsRecordingMapper;
@@ -31,9 +32,9 @@ public class StuAnsRecordingServiceImpl implements StuAnsRecordingService {
     SysQuestionMapper SysQuestionMapper;
     @Override
     public ExamInfoVo getExamInfo(String examId) {
-        LambdaQueryWrapper lambdaQueryWrapper = new LambdaQueryWrapper();
-        lambdaQueryWrapper.eq("examRecordingId",examId);
-        List<StuAnsRecording> recordings = stuAnsRecordingMapper.selectList(lambdaQueryWrapper);
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("exam_recording_Id",examId);
+        List<StuAnsRecording> recordings = stuAnsRecordingMapper.selectList(queryWrapper);
 
         ExamRecording examRecording = examRecordingMapper.selectById(examId);
 
@@ -56,9 +57,12 @@ public class StuAnsRecordingServiceImpl implements StuAnsRecordingService {
                SysQuestionsList.add(SysQuestionVo);
        });
         ExamInfoVo examInfoVo = new ExamInfoVo();
-        examInfoVo.setSysQuestions(SysQuestionsList);
+        examInfoVo.setQuestions(SysQuestionsList);
         examInfoVo.setExamId(examId);
-        examInfoVo.setExamTime(examRecording.getSpendTime());
+        examInfoVo.setSpendTime(examRecording.getSpendTime());
+        examInfoVo.setSubmitTime(examRecording.getSubmitTime());
+        System.out.println("-----------------------");
+        System.out.println(examRecording.getSpendTime());
         examInfoVo.setSize(examRecording.getQuestionNum());
         examInfoVo.setTotalPoints(examRecording.getTotalScore());
        return examInfoVo;

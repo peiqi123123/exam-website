@@ -155,7 +155,8 @@ const isMoreChoice = ref(false);
 // 根据当前题目索引判断题目类型
 function changeInfo() {
   studentAnswer.value =
-    currentQuestion.value && currentQuestion.value.studentAnswer;
+    currentQuestion.value &&
+    (currentQuestion.value.studentAnswer || currentQuestion.value.stuAnswer);
   answer.value = currentQuestion.value && currentQuestion.value.answer;
   questionContent.value =
     currentQuestion.value && currentQuestion.value.questionContent;
@@ -170,6 +171,8 @@ function changeInfo() {
     if (studentAnswer.value === null) studentMoreAnswer.value = [];
     else studentMoreAnswer.value = studentAnswer.value.split("");
   } else isMoreChoice.value = false;
+  console.log("studentAnswer: ", studentAnswer.value);
+  console.log("answer: ", answer.value);
 }
 
 // 判断是否有上一题或者下一题
@@ -191,6 +194,7 @@ watch(
     }
     index.value = currentIndex;
     currentQuestion.value = store.getters.getQuestions[currentIndex - 1];
+    console.log("currentQuestion: ", currentQuestion.value);
     changeInfo();
     // console.log(studentAnswer.value);
     questionNumber.value = `第${currentIndex} / ${size}题`;

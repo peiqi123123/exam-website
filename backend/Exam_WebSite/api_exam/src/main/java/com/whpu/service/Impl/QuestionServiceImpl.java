@@ -71,10 +71,7 @@ public class QuestionServiceImpl implements SysQuestionService {
         //添加考试的记录
         String examRecordingId = examRecordingService.addExamRecordingService(SysQuestionNum);
         //选择题模块
-        if(SysQuestionNum==0)
-        {
-            SysQuestionNum=100;
-        }
+        SysQuestionNum=20;
         //随机查到对应的选择题题目
         LambdaQueryWrapper<SysQuestion> qw = new LambdaQueryWrapper<>();
         qw.select(SysQuestion::getQuestionContent,SysQuestion::getAnalyse,SysQuestion::getAnsNum,

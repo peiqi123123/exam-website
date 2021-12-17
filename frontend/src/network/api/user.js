@@ -42,5 +42,10 @@ export function exerciseExit(questions) {
 
 // 获取更改后的卷子
 export function getExerciseReview(examId) {
-  return axios.get(`exercise/review/${examId}`);
+  return axios.get(`exercise/question/info/${examId}`);
+}
+
+// 获取该学生考试列表
+export function getExamList() {
+  return axios.get("exercise/exam/info");
 }

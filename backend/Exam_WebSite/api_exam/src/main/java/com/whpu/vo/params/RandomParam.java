@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class RandomParam {
-    private Integer questionNum = 100;
+    private Integer questionNum = 20;
 }
