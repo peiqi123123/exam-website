@@ -3,7 +3,10 @@ package com.whpu.vo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.whpu.module.question.dao.pojo.QuestionTopics;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * @description
@@ -15,7 +18,7 @@ public class QuestionVo {
     public QuestionVo() {
     }
 
-    public QuestionVo(String questionId, String questionContent, int ansNum, String optionA, String optionB, String optionC, String optionD, String optionE, String optionF, String optionG, String answer, String analyse, String stuAnswer, Integer status, Integer score) {
+    public QuestionVo(String questionId, String questionContent, int ansNum, String optionA, String optionB, String optionC, String optionD, String optionE, String optionF, String optionG, String answer, String analyse, String stuAnswer, Integer status, Integer score, List<QuestionTopics> questionTopics) {
         this.questionId = questionId;
         this.questionContent = questionContent;
         AnsNum = ansNum;
@@ -31,6 +34,7 @@ public class QuestionVo {
         this.stuAnswer = stuAnswer;
         this.status = status;
         this.score = score;
+        this.questionTopics = questionTopics;
     }
 
     private String questionId;
@@ -47,5 +51,6 @@ public class QuestionVo {
     private String Analyse;
     private String stuAnswer;
     private Integer status;
+    private List<QuestionTopics> questionTopics;
     private Integer score=1;
 }

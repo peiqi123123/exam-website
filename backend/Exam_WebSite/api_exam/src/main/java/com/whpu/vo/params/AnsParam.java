@@ -11,4 +11,5 @@ import lombok.Data;
 public class AnsParam {
     private String questionId;
     private String stuAnswer=" ";
+
 }

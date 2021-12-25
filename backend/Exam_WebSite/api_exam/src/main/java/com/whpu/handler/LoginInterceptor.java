@@ -1,8 +1,8 @@
 package com.whpu.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.whpu.dao.pojo.User;
-import com.whpu.service.LoginAndRegisterService;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
+import com.whpu.module.loginAndResgiter.service.LoginAndRegisterService;
 import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.ErrorCode;
 import com.whpu.vo.Result;
