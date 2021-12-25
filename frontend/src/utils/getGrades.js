@@ -4,7 +4,6 @@ export function getGrades(questions) {
   let score = 0;
   let totalScore = 0;
   questions.forEach((item) => {
-    console.log("item: ", item);
     if (item.stuAnswer === item.answer) {
       item.status = 1;
       correctSize++;
@@ -22,7 +21,7 @@ export function getGrades(questions) {
 }
 // 判断多选题答案包含关系
 function isSubAnswer(answer, stuAnswer) {
-  console.log("stuAnswer: ", stuAnswer);
+  // console.log("stuAnswer: ", stuAnswer);
   if (stuAnswer === undefined || stuAnswer === null) return false;
   for (const c of stuAnswer) if (answer.indexOf(c) === -1) return false;
   return true;

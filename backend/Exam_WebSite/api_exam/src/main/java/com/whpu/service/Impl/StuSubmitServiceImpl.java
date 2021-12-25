@@ -62,7 +62,7 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                 uw.eq("questionId",s.getQuestionId());
                 uw.eq("exam_recording_id",examRecordingId);
                 StuAnsRecording stuAnsRecording = stuAnsRecordingMapper.selectOne(uw);
-                if(s.getStudentAnswer().equals(stuAnsRecording.getAnswer())) {
+                if(stuAnsRecording.getAnswer().equals(s.getStuAnswer())) {
                     stuAnsRecording.setJudgment(1);//对了
                     trueNum++;
                 }
@@ -74,11 +74,11 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                     stuWrongQue.setQuestionId(s.getQuestionId());
                     stuWrongQue.setRecordingId(examRecordingId);
                     stuWrongQue.setStudentId(userId);
-                    stuWrongQue.setStudentAns(s.getStudentAnswer());
+                    stuWrongQue.setStudentAns(s.getStuAnswer());
                     stuWrongQueMapper.insert(stuWrongQue);
                     falseNum++;
                 }
-                stuAnsRecording.setStuAnswer(s.getStudentAnswer());
+                stuAnsRecording.setStuAnswer(s.getStuAnswer());
                 stuAnsRecordingMapper.update(stuAnsRecording,uw);
 
         });

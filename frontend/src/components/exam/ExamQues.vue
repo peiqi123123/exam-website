@@ -155,7 +155,7 @@ const isMoreChoice = ref(false);
 // 根据当前题目索引判断题目类型
 function changeInfo() {
   studentAnswer.value =
-    currentQuestion.value && currentQuestion.value.stuAnswer;
+    (currentQuestion.value && currentQuestion.value.stuAnswer) || "";
   answer.value = currentQuestion.value && currentQuestion.value.answer;
   questionContent.value =
     currentQuestion.value && currentQuestion.value.questionContent;
@@ -167,7 +167,8 @@ function changeInfo() {
   if (answer.value.length > 1) {
     isMoreChoice.value = true;
     questionType.value = "多选题";
-    if (studentAnswer.value === null) studentMoreAnswer.value = [];
+    if (studentAnswer.value === null || studentAnswer.value === undefined)
+      studentMoreAnswer.value = [];
     else studentMoreAnswer.value = studentAnswer.value.split("");
   } else isMoreChoice.value = false;
   console.log("studentAnswer: ", studentAnswer.value);
