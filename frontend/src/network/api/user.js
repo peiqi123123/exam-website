@@ -13,9 +13,9 @@ export function getExerciseQuestions(questionNum = 100) {
   });
 }
 
-export function submitExercise(ans, totalTime, examId) {
+export function submitExercise(questionAnswers, totalTime, examId) {
   return axios.post("exercise/submit", {
-    ans,
+    questionAnswers,
     totalTime,
     examId,
   });
