@@ -512,7 +512,7 @@ const questions = [
 ];
 questions.forEach((item) => {
   item.score = 2;
-  item.studentAnswer = null;
+  item.stuAnswer = null;
   item.status = 0;
 });
 Mock.mock(/api\/exercise\/random/, {
@@ -1044,9 +1044,9 @@ const reviewQuestions = [
 ];
 reviewQuestions.forEach((item) => {
   item.score = 2;
-  item.studentAnswer = Random.string("ABCD", 1, 1);
+  item.stuAnswer = Random.string("ABCD", 1, 1);
   if (item.answer.length > 1) {
-    item.studentAnswer = "AC";
+    item.stuAnswer = "AC";
   }
 });
 Mock.mock(/api\/exercise\/review/, {

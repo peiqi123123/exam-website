@@ -42,8 +42,47 @@
       </template>
     </el-card>
 
-    <el-dialog v-model="dialogVisible" title="自主练习" width="30%">
-      <span>{{ `是否进行${module}？` }}</span>
+    <el-dialog
+      v-model="dialogVisible"
+      title="自主练习"
+      width="455px"
+      destroy-on-close
+    >
+      <el-form label-width="100px" :model="randomForm">
+        <el-form-item label="错题专项">
+          <el-radio-group v-model="isError">
+            <el-radio :label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item label="题目数量">
+          <el-select v-model="number" placeholder="请选择题目数量">
+            <el-option
+              v-for="item in numberOptions"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="题目难度">
+          <el-select v-model="difficulty" placeholder="请选择题目难度">
+            <el-option
+              v-for="item in difficultyOptions"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="知识点">
+          <el-select v-model="knowledge" placeholder="请选择知识点">
+            <el-option
+              v-for="item in knowledgeOptions"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogVisible = false">取消</el-button>
@@ -54,10 +93,69 @@
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
-const extend = ["随机组卷", "智能组卷", "针对训练", "错题专项"];
+const extend = ["随机组卷", "智能组卷"];
 const dialogVisible = ref(false);
+// 题目数量
+const number = ref(20);
+const numberOptions = [
+  {
+    label: 20,
+    value: 0,
+  },
+  {
+    label: 30,
+    value: 1,
+  },
+  {
+    label: 50,
+    value: 2,
+  },
+];
+// 题目难度
+const difficulty = ref("随机");
+const difficultyOptions = [
+  {
+    label: "随机",
+    value: 0,
+  },
+  {
+    label: "简单",
+    value: 1,
+  },
+  {
+    label: "中等",
+    value: 2,
+  },
+  {
+    label: "困难",
+    value: 3,
+  },
+];
+// 所属知识点
+const knowledge = ref("随机");
+const knowledgeOptions = [
+  {
+    label: "随机",
+    value: 0,
+  },
+  {
+    label: "高数",
+    value: 1,
+  },
+  {
+    label: "物理",
+    value: 2,
+  },
+];
+const isError = ref(0);
+const randomForm = reactive({
+  number,
+  difficulty,
+  knowledge,
+  isError,
+});
 // 自主练习类别
 const module = ref("");
 let currentIndex = 0;
@@ -71,7 +169,6 @@ function selectModule(i, item) {
 const router = useRouter();
 function toExercise() {
   if (currentIndex === 0) {
-    console.log("currentIndex: ", currentIndex);
     router.push("/exercise");
   }
   dialogVisible.value = false;

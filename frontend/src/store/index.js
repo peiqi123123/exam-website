@@ -55,13 +55,14 @@ const store = createStore({
     },
     setOneAnswer(state, payload) {
       const question = state.questions[payload.index - 1];
+      // console.log("question: ", question);
       if (
-        question.studentAnswer === null &&
+        question.stuAnswer === null &&
         state.hasAnswer < state.questions.length &&
         question.questionId === payload.questionId
       )
         state.hasAnswer++;
-      question.studentAnswer = payload.value;
+      question.stuAnswer = payload.value;
       question.status = payload.status;
     },
     setOneStatus(state, payload) {

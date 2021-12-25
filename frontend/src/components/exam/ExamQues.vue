@@ -155,8 +155,7 @@ const isMoreChoice = ref(false);
 // 根据当前题目索引判断题目类型
 function changeInfo() {
   studentAnswer.value =
-    currentQuestion.value &&
-    (currentQuestion.value.studentAnswer || currentQuestion.value.stuAnswer);
+    currentQuestion.value && currentQuestion.value.stuAnswer;
   answer.value = currentQuestion.value && currentQuestion.value.answer;
   questionContent.value =
     currentQuestion.value && currentQuestion.value.questionContent;
@@ -196,7 +195,7 @@ watch(
     currentQuestion.value = store.getters.getQuestions[currentIndex - 1];
     console.log("currentQuestion: ", currentQuestion.value);
     changeInfo();
-    // console.log(studentAnswer.value);
+    // console.log(stuAnswer.value);
     questionNumber.value = `第${currentIndex} / ${size}题`;
   },
   {

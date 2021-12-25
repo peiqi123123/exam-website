@@ -22,7 +22,11 @@
           <el-input v-model="loginForm.account"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input v-model="loginForm.password" type="password"></el-input>
+          <el-input
+            v-model="loginForm.password"
+            type="password"
+            @keyup.enter="submitForm"
+          ></el-input>
         </el-form-item>
         <el-form-item class="btns">
           <el-button type="primary" @click="submitForm" :loading="isLoading"
@@ -45,8 +49,8 @@ import config from "@/config";
 import { studentLogin } from "@/network/api/user";
 //表单数据
 const loginForm = ref({
-  account: "",
-  password: "",
+  account: "stu",
+  password: "123456",
 });
 //选择登录方式
 const identity = ref("student");
