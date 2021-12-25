@@ -27,7 +27,8 @@ import { format, timestamp } from "@/utils/transformTime";
 const route = useRoute();
 const store = useStore();
 // 考试ID
-const examId = parseInt(route.params.id);
+// const examId = parseInt(route.params.id);
+const examId = route.params.id;
 // 引入echarts
 const echarts = inject("echarts");
 // 考试信息
@@ -38,7 +39,7 @@ const endTime = ref();
 const diagram = ref();
 const scoreContext = ref(0);
 async function init() {
-  if (examId === 0) {
+  if (examId === "0") {
     // 获取本地考试记录
     questions.value = store.getters.getQuestions;
     startTime.value = store.getters.getStartTime;
@@ -46,12 +47,15 @@ async function init() {
     endTime.value = store.getters.getEndTime;
   } else {
     // 获取指定examId的考试信息
-    const res = await getExerciseReview();
-    if (res.code === 200) {
+    const res = await getExerciseReview(examId);
+    console.log("res: ", res);
+    if (res.code === 201) {
       const data = res.data;
       questions.value = data.questions;
-      totalTime.value = data.totalTime;
+      totalTime.value = data.spendTime;
       startTime.value = data.startTime;
+      // 将问题存入vuex中
+      store.commit("setQuestions", data.questions)
     }
   }
   totalTime.value = format(totalTime.value);

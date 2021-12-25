@@ -50,6 +50,8 @@ public class StuSubmitServiceImpl implements StuSubmitService {
 
         String examRecordingId = submitParam.getExamId();
         List<AnsParam> ans = submitParam.getQuestionAnswers();
+        if(ans==null)
+            System.out.println("-----------------------------------------*****************************");
         ans.forEach(s->{
             //将对应的答案 找到对应的题目记录，如果是对的就将judgment改成1
             //如果是错的就将judgement 改成0

@@ -1,10 +1,12 @@
 package com.whpu.module.exam.service.Impl;
 
+
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.whpu.module.exam.dao.mapper.ExamRecordingMapper;
 import com.whpu.module.exam.dao.pojo.ExamRecording;
-import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.module.exam.service.ExamRecordingService;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.utils.UserThreadLocal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +41,7 @@ public class ExamRecordingServiceImpl implements ExamRecordingService {
         queryWrapper.eq("studentId",studentId);
         queryWrapper.orderByDesc("submitTime");
         List<ExamRecording>list = examRecordingMapper.selectList(queryWrapper);
+        System.out.println(studentId);
         return list;
     }
 }

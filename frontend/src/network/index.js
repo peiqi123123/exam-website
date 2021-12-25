@@ -10,11 +10,12 @@ const instance = axios.create({
   baseURL: config.product.baseURL,
   timeout: 3000,
 });
-// Authorization
-const token = window.sessionStorage.getItem("token") || null;
-instance.defaults.headers["Authorization"] = token;
 instance.interceptors.request.use(
   (config) => {
+    // Authorization
+    const token = window.sessionStorage.getItem("token") || null;
+    // console.log("token: ", token);
+    config.headers["Authorization"] = token;
     return config;
   },
   (err) => {

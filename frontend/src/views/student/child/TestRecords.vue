@@ -17,7 +17,6 @@ import ExamList from "./ExamList.vue";
   width: 100%;
   max-width: 960px;
   margin: 4.5rem auto 0;
-  height: 800px;
   border-radius: 2px;
   position: relative;
   .exam-list {
@@ -25,7 +24,7 @@ import ExamList from "./ExamList.vue";
     width: 600px;
     margin-right: 22rem;
     //
-    height: 600px;
+    min-height: 300px;
   }
   .aside {
     // background-color: #fff;

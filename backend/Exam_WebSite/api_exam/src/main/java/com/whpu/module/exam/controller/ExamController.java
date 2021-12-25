@@ -32,6 +32,7 @@ public class ExamController {
     public Result doSubmit(@RequestBody SubmitParam submitParam)
     {
         User user = UserThreadLocal.get();
+        System.out.println(submitParam);
         Result result = stuSubmitService.submit(submitParam,user.getUserId());
         return result;
     }

@@ -24,13 +24,14 @@ const currentIndex = ref(0);
 </script>
 <style lang="less" scoped>
 .nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
   height: 4rem;
   background-color: #fff;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  z-index: 999;
   .container {
     width: 80%;
     min-width: 1000px;

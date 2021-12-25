@@ -26,66 +26,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c70510e-3d9c-4815-80bb-09a058eb2b52" name="Default Changelist" comment="后端提交和阅卷的实现">
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/controller/RegisterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/mapper/QuestionTopicsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/mapper/SysQuestionTopicsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/mapper/TeacherQuestionTopicMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/pojo/QuestionTopics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/pojo/SysQuestionTopic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/pojo/TeacherQuestionTopic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/RegisterParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/考试系统.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/libraries/Maven__junit_junit_4_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/components/exam/ExamListItem.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/views/manager/child/AddQuestions.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/views/manager/child/QuestionList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/views/student/child/Test.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/ApiExamApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/ApiExamApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/config/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/ExamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/controller/ExamController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/question/AddQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/controller/AddQuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/question/GetQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/controller/GetQuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/token/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/token/LogoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/controller/LogoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/token/RegisterController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/user/AddUserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/user/UpdateUserPassword.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/controller/user/ViewUserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/mapper/ExamRecordingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/dao/mapper/ExamRecordingMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/mapper/StuAnsRecordingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/dao/mapper/StuAnsRecordingMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/mapper/StuWrongQueMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/mapper/StuWrongQueMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/mapper/SysQuestionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/mapper/SysQuestionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/mapper/TeacherSelfQuestionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/mapper/TeacherSelfQuestionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/dao/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/ExamRecording.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/dao/pojo/ExamRecording.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/StuAnsRecording.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/dao/pojo/StuAnsRecording.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/StuWrongQue.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/pojo/StuWrongQue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/SysQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/pojo/SysQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/TeacherSelfQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/pojo/TeacherSelfQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/dao/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/dao/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/handler/AllExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/handler/AllExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/handler/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/handler/LoginInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/ExamRecordingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/ExamRecordingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/ExamRecordingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/ExamRecordingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/LoginAndRegisterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/service/Impl/LoginAndRegisterServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/StuAnsRecordingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/StuAnsRecordingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/StuSubmitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/StuSubmitServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/SysQuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/service/Impl/SysQuestionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/TeacherSelfQuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/service/Impl/TeacherSelfQuestionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/service/Impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/LoginAndRegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/service/LoginAndRegisterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/StuAnsRecordingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/StuAnsRecordingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/StuSubmitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/StuSubmitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/SysQuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/service/SysQuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/TeacherSelfQuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/service/TeacherSelfQuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/TestMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/UserThreadLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/UserThreadLocal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ErrorCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/controller/ExamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/controller/ExamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/dao/pojo/ExamRecording.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/dao/pojo/ExamRecording.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/ExamRecordingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/ExamRecordingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/StuAnsRecordingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/StuAnsRecordingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/StuSubmitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/StuSubmitServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/service/Impl/SysQuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/service/Impl/SysQuestionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ExamInfoVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ExamInfoVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ExerciseRandomVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ExerciseRandomVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/QuestionVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/QuestionVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/AddUserParam.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/AnsParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/AnsParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/QuestionParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/QuestionParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/RandomParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/RandomParam.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api_exam/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/test/java/com/whpu/ApiExamApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/test/java/com/whpu/ApiExamApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../docs/api文档.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../docs/api文档.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/assets/mock/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/assets/mock/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/exam/ExamQues.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/exam/ExamQues.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/components/exam/ExamTabBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/components/exam/ExamTabBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/network/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/network/api/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/network/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/network/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/utils/getGrades.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/utils/getGrades.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/utils/transformTime.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/utils/transformTime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/views/exercise/Score.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/views/exercise/Score.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/views/login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/views/login/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/views/manager/Manager.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/views/manager/Manager.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/views/student/child/Category.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/views/student/child/Category.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/views/student/child/ExamList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/views/student/child/ExamList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/views/student/child/Nav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/views/student/child/Nav.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/views/student/child/TestRecords.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/views/student/child/TestRecords.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +279,7 @@
       <workItem from="1640096643904" duration="31000" />
       <workItem from="1640413242177" duration="1742000" />
       <workItem from="1640415015448" duration="16036000" />
-      <workItem from="1640433642322" duration="7263000" />
+      <workItem from="1640433642322" duration="8368000" />
     </task>
     <task id="LOCAL-00001" summary="后端提交和阅卷的实现">
       <created>1637153781773</created>

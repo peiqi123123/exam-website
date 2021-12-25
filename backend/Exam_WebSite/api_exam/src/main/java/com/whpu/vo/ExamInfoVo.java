@@ -13,9 +13,10 @@ import java.util.ArrayList;
 @Data
 public class ExamInfoVo {
     Integer size;
-    Integer examTime;//秒
+    Long spendTime;//秒
+    Long submitTime;
     Integer totalPoints;
-    ArrayList<QuestionVo> SysQuestions;
+    ArrayList<QuestionVo> questions;
     String examId;
     ArrayList<AnsParam> questionAnswers;
 }

@@ -1,5 +1,4 @@
 import axios from "../index";
-
 export function studentLogin(account, password, identity) {
   return axios.post("/login", {
     account,
@@ -14,9 +13,9 @@ export function getExerciseQuestions(questionNum = 100) {
   });
 }
 
-export function submitExercise(ans, totalTime, examId) {
+export function submitExercise(questionAnswers, totalTime, examId) {
   return axios.post("exercise/submit", {
-    ans,
+    questionAnswers,
     totalTime,
     examId,
   });
@@ -42,5 +41,10 @@ export function exerciseExit(questions) {
 
 // 获取更改后的卷子
 export function getExerciseReview(examId) {
-  return axios.get(`exercise/review/${examId}`);
+  return axios.get(`exercise/question/info/${examId}`);
+}
+
+// 获取该学生考试列表
+export function getExamList() {
+  return axios.get("exercise/exam/info");
 }

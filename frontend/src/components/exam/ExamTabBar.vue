@@ -101,6 +101,7 @@ async function confirmSubmit() {
   // 计算考试总用时
   store.commit("setTotalTime", totalTime * 1000);
   const submitQuesitons = convertQuestions(questions.value);
+  console.log("submitQuesitons: ", submitQuesitons);
   const res = await submitExercise(submitQuesitons, totalTime, props.examId);
   console.log("res: ", res);
   if (res.code === 201) {
