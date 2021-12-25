@@ -1,13 +1,10 @@
-package com.whpu.controller;
+package com.whpu.module.exam.controller;
 
-import com.whpu.dao.pojo.ExamRecording;
-import com.whpu.dao.pojo.StuAnsRecording;
-import com.whpu.dao.pojo.User;
-import com.whpu.service.ExamRecordingService;
-import com.whpu.service.Impl.StuSubmitServiceImpl;
-import com.whpu.service.StuAnsRecordingService;
-import com.whpu.service.StuSubmitService;
-import com.whpu.utils.JWTUtils;
+import com.whpu.module.exam.dao.pojo.ExamRecording;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
+import com.whpu.module.exam.service.ExamRecordingService;
+import com.whpu.module.exam.service.StuAnsRecordingService;
+import com.whpu.module.exam.service.StuSubmitService;
 import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.ExamInfoVo;
 import com.whpu.vo.Result;
@@ -16,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @description

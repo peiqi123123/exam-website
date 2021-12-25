@@ -1,7 +1,7 @@
-package com.whpu.service;
+package com.whpu.module.loginAndResgiter.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.whpu.dao.pojo.User;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.vo.Result;
 
 public interface UserService {

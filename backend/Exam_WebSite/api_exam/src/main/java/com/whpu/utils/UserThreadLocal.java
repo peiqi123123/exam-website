@@ -1,6 +1,6 @@
 package com.whpu.utils;
 
-import com.whpu.dao.pojo.User;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
 
 /**
  * @description

@@ -1,23 +1,24 @@
-package com.whpu.service.Impl;
+package com.whpu.module.question.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.api.R;
 
-import com.whpu.dao.mapper.StuAnsRecordingMapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.whpu.module.exam.dao.mapper.StuAnsRecordingMapper;
 
-import com.whpu.dao.mapper.SysQuestionMapper;
-import com.whpu.dao.pojo.StuAnsRecording;
-import com.whpu.dao.pojo.SysQuestion;
-import com.whpu.dao.pojo.TeacherSelfQuestion;
-import com.whpu.dao.pojo.User;
-import com.whpu.service.ExamRecordingService;
+import com.whpu.module.question.dao.mapper.QuestionTopicsMapper;
+import com.whpu.module.question.dao.mapper.SysQuestionMapper;
+import com.whpu.module.exam.dao.pojo.StuAnsRecording;
+import com.whpu.module.question.dao.mapper.SysQuestionTopicsMapper;
+import com.whpu.module.question.dao.pojo.QuestionTopics;
+import com.whpu.module.question.dao.pojo.SysQuestion;
+import com.whpu.module.exam.service.ExamRecordingService;
 
-import com.whpu.service.SysQuestionService;
-import com.whpu.utils.UserThreadLocal;
+import com.whpu.module.question.dao.pojo.SysQuestionTopic;
+import com.whpu.module.question.service.SysQuestionService;
 import com.whpu.vo.ExerciseRandomVo;
 import com.whpu.vo.QuestionVo;
 import com.whpu.vo.params.QuestionParam;
-import org.apache.commons.lang3.builder.ToStringExclude;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +31,7 @@ import java.util.*;
  * @time: 2021/10/29 20:25
  */
 @Service
+@Transactional
 public class SysQuestionServiceImpl implements SysQuestionService {
 
     @Autowired
@@ -38,40 +40,15 @@ public class SysQuestionServiceImpl implements SysQuestionService {
     private ExamRecordingService examRecordingService;
     @Autowired
     private StuAnsRecordingMapper stuAnsRecordingMapper;
+
+    @Autowired
+    private SysQuestionTopicsMapper sysQuestionTopicsMapper;
     @Override
     /**
-     * 用于添加随机的题目，随机的题目仅用于测试
+     * 添加系统的题目
      */
-    public int addTestSysQuestion() {
-        Random random = new Random();
-        int a = random.nextInt(1000);
-        int b = random.nextInt(1000);
-        int res = a+b;
-        SysQuestion question = new SysQuestion();
-        int [] r = new int[4];
-        int resIndex = random.nextInt(4);
-        r[resIndex] = res;
-        for (int i = 0; i <4 ; i++) {
-            if(r[i]==0)
-            {
-                r[i]=res-15+random.nextInt(10);
-            }
-        }
-        question.setQuestionContent(a+"+"+b+"=?");
-        question.setOptionA(String.valueOf(r[0]));
-        question.setOptionB(String.valueOf(r[1]));
-        question.setOptionC(String.valueOf(r[2]));
-        question.setOptionD(String.valueOf(r[3]));
-        char ans = (char)('A'+resIndex);
-        question.setAnswer(ans+"");
-        question.setAnalyse(a+"+"+b+"="+res);
-        int insert = sysQuestionMapper.insert(question);
-        return insert;
-    }
-
-    @Override
     public int addSysQuestion(QuestionParam questionParam) {
-        User user = UserThreadLocal.get();
+        List<Integer> topics = questionParam.getTopics();
         SysQuestion sysQuestion = new SysQuestion(
                 questionParam.getAnsNum(),
                 questionParam.getQuestionContent(),
@@ -86,11 +63,23 @@ public class SysQuestionServiceImpl implements SysQuestionService {
                 questionParam.getAnalyse()
         );
         int insert = sysQuestionMapper.insert(sysQuestion);
+        topics.forEach(s->{
+            /**
+             * 将添加的题目与知识点分类 添加到题目与知识点的映射表中
+             */
+            SysQuestionTopic sysQuestionTopic =new SysQuestionTopic();
+            sysQuestionTopic.setQuestionId(sysQuestion.getQuestionId());
+            sysQuestionTopic.setTopicId(s);
+            sysQuestionTopicsMapper.insert(sysQuestionTopic);
+        });
         return  insert;
     }
 
     @Override
     @Transactional
+    /**
+     * 随机组卷
+     */
     public ExerciseRandomVo selectRandomQuestion(int SysQuestionNum,String userId) {
         //添加考试的记录
         String examRecordingId = examRecordingService.addExamRecordingService(SysQuestionNum);
@@ -120,6 +109,10 @@ public class SysQuestionServiceImpl implements SysQuestionService {
             stuAnsRecording.setQuestionType(1);
             stuAnsRecordingMapper.insert(stuAnsRecording);
 
+            //将通过题目的Id 获取到这个题目topic(知识点)
+            List<QuestionTopics> questionTopicsList = sysQuestionTopicsMapper.findTopicByQuestionId(q.getQuestionId());
+
+
             QuestionVo questionVo = new QuestionVo(
                     q.getQuestionId(),
                     q.getQuestionContent(),
@@ -133,11 +126,10 @@ public class SysQuestionServiceImpl implements SysQuestionService {
                     q.getOptionG(),
                     q.getAnswer(),
                     q.getAnalyse(),
-                    null,null, 1
+                    null,null, 1,questionTopicsList
             );
             questionVos.add(questionVo);
         }
-
 
         ExerciseRandomVo exerciseRandomVo = new ExerciseRandomVo();
             //将选择题目放入到结果集当中

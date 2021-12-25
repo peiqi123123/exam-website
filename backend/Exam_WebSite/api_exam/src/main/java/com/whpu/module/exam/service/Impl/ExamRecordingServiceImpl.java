@@ -1,11 +1,10 @@
-package com.whpu.service.Impl;
+package com.whpu.module.exam.service.Impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.whpu.dao.mapper.ExamRecordingMapper;
-import com.whpu.dao.pojo.ExamRecording;
-import com.whpu.dao.pojo.User;
-import com.whpu.service.ExamRecordingService;
+import com.whpu.module.exam.dao.mapper.ExamRecordingMapper;
+import com.whpu.module.exam.dao.pojo.ExamRecording;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
+import com.whpu.module.exam.service.ExamRecordingService;
 import com.whpu.utils.UserThreadLocal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

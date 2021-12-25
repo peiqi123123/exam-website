@@ -1,14 +1,13 @@
-package com.whpu.service.Impl;
+package com.whpu.module.loginAndResgiter.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.whpu.dao.mapper.UserMapper;
-import com.whpu.dao.pojo.User;
-import com.whpu.service.LoginAndRegisterService;
-import com.whpu.service.UserService;
-import com.whpu.utils.JWTUtils;
+import com.whpu.module.loginAndResgiter.dao.mapper.UserMapper;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
+import com.whpu.module.loginAndResgiter.service.LoginAndRegisterService;
+import com.whpu.module.loginAndResgiter.service.UserService;
 import com.whpu.vo.ErrorCode;
 import com.whpu.vo.LoginUserVo;
 import com.whpu.vo.Result;
@@ -17,9 +16,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.xml.crypto.Data;
-import java.util.Map;
 
 /**
  * @description

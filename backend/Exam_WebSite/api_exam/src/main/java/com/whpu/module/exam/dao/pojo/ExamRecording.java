@@ -1,12 +1,10 @@
-package com.whpu.dao.pojo;
+package com.whpu.module.exam.dao.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-
-import java.sql.Date;
 
 /**
  * @description

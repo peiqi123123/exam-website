@@ -1,13 +1,13 @@
-package com.whpu.service.Impl;
+package com.whpu.module.exam.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.whpu.dao.mapper.SysQuestionMapper;
-import com.whpu.dao.mapper.ExamRecordingMapper;
-import com.whpu.dao.mapper.StuAnsRecordingMapper;
-import com.whpu.dao.pojo.SysQuestion;
-import com.whpu.dao.pojo.ExamRecording;
-import com.whpu.dao.pojo.StuAnsRecording;
-import com.whpu.service.StuAnsRecordingService;
+import com.whpu.module.question.dao.mapper.SysQuestionMapper;
+import com.whpu.module.exam.dao.mapper.ExamRecordingMapper;
+import com.whpu.module.exam.dao.mapper.StuAnsRecordingMapper;
+import com.whpu.module.question.dao.pojo.SysQuestion;
+import com.whpu.module.exam.dao.pojo.ExamRecording;
+import com.whpu.module.exam.dao.pojo.StuAnsRecording;
+import com.whpu.module.exam.service.StuAnsRecordingService;
 import com.whpu.vo.QuestionVo;
 import com.whpu.vo.ExamInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;

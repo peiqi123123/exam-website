@@ -2,42 +2,43 @@ package com.whpu;
 
 
 
-import com.whpu.dao.pojo.User;
-import com.whpu.service.SysQuestionService;
-import com.whpu.service.UserService;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
+import com.whpu.module.question.dao.mapper.SysQuestionTopicsMapper;
+import com.whpu.module.question.service.SysQuestionService;
+import com.whpu.module.loginAndResgiter.service.UserService;
 import com.whpu.vo.params.QuestionParam;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.xml.ws.Service;
 
 @SpringBootTest
 class ApiExamApplicationTests {
 
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private SysQuestionTopicsMapper sysQuestionTopicsMapper;
     @Autowired
     private SysQuestionService questionService;
 
     @Test
     void contextLoads() {
     }
+
     @Test
-    public void testDb()
-    {
-        User user= new User();
+    public void testDb() {
+        User user = new User();
         user.setAccount("admin");
         user.setPassword("123456");
         user.setNickName("小明");
         user.setIdentity("student");
         userService.addUser(user);
     }
+
     @Test
-    public void test()
-    {
-        for (int i = 0; i <99 ; i++) {
+    public void test() {
+        for (int i = 0; i < 99
+                ; i++) {
             QuestionParam questionParam = new QuestionParam();
             questionParam.setQuestionContent("企业网络常常使用DHCP为用户分配IP地址，与静态地址分配方式相比， DHCP地址分配方式极大地减 少了对网络地址进行管理的工作量");
             questionParam.setAnalyse("暂无");
@@ -46,7 +47,7 @@ class ApiExamApplicationTests {
             questionParam.setOptionB("错误");
             questionService.addSysQuestion(questionParam);
         }
-        for (int i = 0; i <100 ; i++) {
+        for (int i = 0; i < 100; i++) {
             QuestionParam questionParam = new QuestionParam();
             questionParam.setQuestionContent("下列零项故障排除方法不是使用TCP/IP 参考模型作为理论基础的?");
             questionParam.setAnalyse("暂无");
@@ -58,13 +59,12 @@ class ApiExamApplicationTests {
             questionService.addSysQuestion(questionParam);
         }
 
-
     }
+
     @Test
-    public void addTestQuestion()
+    public void testSql()
     {
-        for (int i = 0; i <999 ; i++) {
-            questionService.addTestSysQuestion();
-        }
+        sysQuestionTopicsMapper.findQuestionByTopics(1);
+        sysQuestionTopicsMapper.findTopicByQuestionId("1");
     }
 }

@@ -2,6 +2,8 @@ package com.whpu.vo.params;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @description
  * @author: 唉 烁
@@ -20,4 +22,5 @@ public class QuestionParam {
     private String optionG;
     private String Answer;
     private String Analyse;
+    private List<Integer> topics;
 }

@@ -1,15 +1,14 @@
-package com.whpu.service.Impl;
+package com.whpu.module.exam.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.whpu.dao.mapper.SysQuestionMapper;
-import com.whpu.dao.mapper.ExamRecordingMapper;
-import com.whpu.dao.mapper.StuAnsRecordingMapper;
-import com.whpu.dao.mapper.StuWrongQueMapper;
-import com.whpu.dao.pojo.ExamRecording;
-import com.whpu.dao.pojo.StuAnsRecording;
-import com.whpu.dao.pojo.StuWrongQue;
-import com.whpu.service.StuAnsRecordingService;
-import com.whpu.service.StuSubmitService;
+import com.whpu.module.question.dao.mapper.SysQuestionMapper;
+import com.whpu.module.exam.dao.mapper.ExamRecordingMapper;
+import com.whpu.module.exam.dao.mapper.StuAnsRecordingMapper;
+import com.whpu.module.question.dao.mapper.StuWrongQueMapper;
+import com.whpu.module.exam.dao.pojo.ExamRecording;
+import com.whpu.module.exam.dao.pojo.StuAnsRecording;
+import com.whpu.module.question.dao.pojo.StuWrongQue;
+import com.whpu.module.exam.service.StuSubmitService;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.AnsParam;
 import com.whpu.vo.params.SubmitParam;
@@ -60,7 +59,7 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                 uw.eq("questionId",s.getQuestionId());
                 uw.eq("exam_recording_id",examRecordingId);
                 StuAnsRecording stuAnsRecording = stuAnsRecordingMapper.selectOne(uw);
-                if(s.getStudentAnswer().equals(stuAnsRecording.getAnswer())) {
+                if(stuAnsRecording.getAnswer().equals(s.getStuAnswer())) {
                     stuAnsRecording.setJudgment(1);//对了
                     trueNum++;
                 }
@@ -72,11 +71,11 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                     stuWrongQue.setQuestionId(s.getQuestionId());
                     stuWrongQue.setRecordingId(examRecordingId);
                     stuWrongQue.setStudentId(userId);
-                    stuWrongQue.setStudentAns(s.getStudentAnswer());
+                    stuWrongQue.setStudentAns(s.getStuAnswer());
                     stuWrongQueMapper.insert(stuWrongQue);
                     falseNum++;
                 }
-                stuAnsRecording.setStuAnswer(s.getStudentAnswer());
+                stuAnsRecording.setStuAnswer(s.getStuAnswer());
                 stuAnsRecordingMapper.update(stuAnsRecording,uw);
 
         });

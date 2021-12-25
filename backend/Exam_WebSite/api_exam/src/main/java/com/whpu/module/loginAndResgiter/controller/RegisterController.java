@@ -1,9 +1,8 @@
-package com.whpu.controller.token;
+package com.whpu.module.loginAndResgiter.controller;
 
-import com.whpu.service.LoginAndRegisterService;
+import com.whpu.module.loginAndResgiter.service.LoginAndRegisterService;
 import com.whpu.vo.ErrorCode;
 import com.whpu.vo.Result;
-import com.whpu.vo.params.LoginParam;
 import com.whpu.vo.params.RegisterParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

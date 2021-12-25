@@ -1,17 +1,13 @@
-package com.whpu.controller.question;
+package com.whpu.module.question.controller;
 
-import com.whpu.dao.pojo.User;
-import com.whpu.service.SysQuestionService;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
+import com.whpu.module.question.service.SysQuestionService;
 import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.ExerciseRandomVo;
 import com.whpu.vo.Result;
-import com.whpu.vo.params.QuestionParam;
 import com.whpu.vo.params.RandomParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * @description

@@ -1,9 +1,7 @@
-package com.whpu.dao.mapper;
+package com.whpu.module.loginAndResgiter.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.whpu.dao.pojo.User;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

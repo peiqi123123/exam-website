@@ -1,14 +1,12 @@
-package com.whpu.controller.question;
+package com.whpu.module.question.controller;
 
-import com.whpu.dao.pojo.TeacherSelfQuestion;
-import com.whpu.service.SysQuestionService;
-import com.whpu.service.TeacherSelfQuestionService;
+import com.whpu.module.question.service.SysQuestionService;
+import com.whpu.module.question.service.TeacherSelfQuestionService;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.QuestionParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**

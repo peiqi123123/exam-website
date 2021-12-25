@@ -1,6 +1,6 @@
-package com.whpu.service;
+package com.whpu.module.exam.service;
 
-import com.whpu.dao.pojo.ExamRecording;
+import com.whpu.module.exam.dao.pojo.ExamRecording;
 
 import java.util.List;
 

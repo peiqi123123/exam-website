@@ -73,9 +73,135 @@ interface login {
 }
 ```
 
-- [x] 
+- [ ] 
 
-## 添加学生账号 
+## 注册学生账号
+
+Post api/register/student
+
+request 
+
+```
+interface registerParam{
+	account:String 账号      不可为空
+	password:String 密码     不可为空
+	nickName:String 名称 昵称 不可为空
+	userState:账户状态  禁用是0 正常是1  默认是1 可为空
+	remark:String 备注 ，      可以为空
+}
+```
+
+response
+
+```
+success {
+    "success": true,
+    "code": 201,
+    "msg": "success",
+    "data": 1
+}
+账号存在 {
+{
+    "success": false,
+    "code": 10004,
+    "msg": "注册失败,账号已存在",
+    "data": null
+}
+注册失败 {
+"success": false,
+    "code": 10002,
+    "msg": "注册失败,",
+    "data": null
+}
+```
+
+
+
+## 注册教师账号
+
+Post api/register/teacher
+
+request 
+
+```
+interface registerParam{
+	account:String 账号      不可为空
+	password:String 密码     不可为空
+	nickName:String 名称 昵称 不可为空
+	userState:账户状态  禁用是0 正常是1  默认是1 可为空
+	remark:String 备注 ，      可以为空
+}
+```
+
+response
+
+```
+success {
+    "success": true,
+    "code": 201,
+    "msg": "success",
+    "data": 1
+}
+账号存在 {
+{
+    "success": false,
+    "code": 10004,
+    "msg": "注册失败,账号已存在",
+    "data": null
+}
+注册失败 {
+"success": false,
+    "code": 10002,
+    "msg": "注册失败,",
+    "data": null
+}
+```
+
+
+
+## 注册管理员账号
+
+Post api/register/manager
+
+request 
+
+```
+interface registerParam{
+	account:String 账号      不可为空
+	password:String 密码     不可为空
+	nickName:String 名称 昵称 不可为空
+	userState:账户状态  禁用是0 正常是1  默认是1 可为空
+	remark:String 备注 ，      可以为空
+}
+```
+
+response
+
+```
+success {
+    "success": true,
+    "code": 201,
+    "msg": "success",
+    "data": 1
+}
+账号存在 {
+{
+    "success": false,
+    "code": 10004,
+    "msg": "注册失败,账号已存在",
+    "data": null
+}
+注册失败 {
+"success": false,
+    "code": 10002,
+    "msg": "注册失败,",
+    "data": null
+}
+```
+
+
+
+## 添加学生账号 （已废弃）
 
 get api/add/addUser
 
@@ -113,7 +239,7 @@ interface user{
 
 ## 修改学生密码	（未做）
 
-## 添加教师账号	
+## 添加教师账号	（已废弃）
 
 get api/add/addUser
 
@@ -269,7 +395,7 @@ interface User {
 
 # 
 
-# 管理员模块
+# 管理员模块 （已修改 ）
 
 ## 添加系统题目
 
@@ -280,7 +406,7 @@ interface User {
 Request
 
 ```
-interface teacherQuestion{
+旧的 interface addQuestion{
 questionContent: String // 题目内容
     AnsNum:int   题目数量，单选还是多选，单选是0，多选是1，默认是0
     answer: Number // 题目答案
@@ -294,6 +420,24 @@ questionContent: String // 题目内容
     optionF:String,
     optionG:String,
 }
+-------------------------------------------
+新的
+interface addQuestion{
+questionContent: String // 题目内容
+    AnsNum:int   题目数量，单选还是多选，单选是0，多选是1，默认是0
+    answer: Number // 题目答案
+    analyse：题目解析
+    // 选择题选项
+    optionA: String,  
+    optionB: String, 
+    optionC: String, 
+    optionD: String, 
+    optionE:String,
+    optionF:String,
+    optionG:String,
+    List<Integer> topics, 这个是这个题目的知识点的数组 数组中存的是知识点的id，
+    }
+
 ```
 
 # 
@@ -318,33 +462,34 @@ Response `200`
 interface exerciseRandom {
 	code: 200,
     data: {
-        size: Nubmer // 题目数量
-        examTime: String, // 考试用时
-        totalPoints: Number // 总分
-        // 判断题
-        TFQuestions: Array<TFQuestion>
-        // 选择题 单选题
-        choiceQuestions: Array<choiceQuestion>
-        // 考试ID
-        examId: String,
+      questions:List<QuestionVo>题目列表
+        size:Integer    题目数量
+        examTime:String 考试时间
+        examId：考试Id
+        totalPoints: 总分
     }
 } 
-interface TFQuestion {
-    questionId: String, // 题目ID
-    questionContent: String // 题目内容
-    answer: Number // 题目答案
-    score: Number // 题目分值
+interface QuestionVo {
+   questionId：String  题目Id
+   questionContent:String  题目内容
+   Analyse:String           题目分析
+   Answer:String            题目答案
+   stuAnswer:String        学生答案
+   status:Integer           状态
+   AnsNum:Integer          题目数量
+   score:Integer           单题分数
+   optionA;String
+   optionB;String
+   optionC;String
+   optionD;String
+   optionE;String
+   optionF;String
+   List<QuestionTopics> questionTopics 知识点数组
+   
 }
-interface choiceQuestion {
-    questionId: String, // 题目ID
-    questionContent: String // 题目内容
-    answer: Number // 题目答案
-    // 选择题选项
-    optionA: String,  
-    optionB: String, 
-    optionC: String, 
-    optionD: String, 
-    score: Number // 题目分值
+QuestionTopics{ 
+    id：Integer  知识点ID
+    topic:String 知识点
 }
 ```
 

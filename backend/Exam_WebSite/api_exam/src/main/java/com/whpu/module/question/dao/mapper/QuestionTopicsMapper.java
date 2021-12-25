@@ -1,4 +1,9 @@
 package com.whpu.module.question.dao.mapper;
 
-public class QuestionTopicsMapper {
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.whpu.module.question.dao.pojo.QuestionTopics;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface QuestionTopicsMapper extends BaseMapper<QuestionTopics> {
 }

@@ -1,4 +1,4 @@
-package com.whpu.dao.pojo;
+package com.whpu.module.exam.dao.pojo;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

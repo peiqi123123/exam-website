@@ -1,7 +1,5 @@
 package com.whpu.vo;
 
-import com.whpu.dao.pojo.SysQuestion;
-
 import lombok.Data;
 
 import java.util.List;

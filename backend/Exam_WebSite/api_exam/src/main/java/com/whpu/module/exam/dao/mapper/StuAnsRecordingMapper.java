@@ -1,7 +1,7 @@
-package com.whpu.dao.mapper;
+package com.whpu.module.exam.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.whpu.dao.pojo.StuAnsRecording;
+import com.whpu.module.exam.dao.pojo.StuAnsRecording;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

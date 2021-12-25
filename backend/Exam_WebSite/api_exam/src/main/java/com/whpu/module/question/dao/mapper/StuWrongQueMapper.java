@@ -1,7 +1,7 @@
-package com.whpu.dao.mapper;
+package com.whpu.module.question.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.whpu.dao.pojo.StuWrongQue;
+import com.whpu.module.question.dao.pojo.StuWrongQue;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

@@ -1,7 +1,5 @@
 package com.whpu.vo;
 
-import com.whpu.dao.pojo.SysQuestion;
-import com.whpu.dao.pojo.StuAnsRecording;
 import com.whpu.vo.params.AnsParam;
 import lombok.Data;
 

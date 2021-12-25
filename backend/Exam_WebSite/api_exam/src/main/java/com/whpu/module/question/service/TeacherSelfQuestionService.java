@@ -1,4 +1,4 @@
-package com.whpu.service;
+package com.whpu.module.question.service;
 
 import com.whpu.vo.params.QuestionParam;
 

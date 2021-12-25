@@ -1,4 +1,4 @@
-package com.whpu.service;
+package com.whpu.module.exam.service;
 
 import com.whpu.vo.ExamInfoVo;
 

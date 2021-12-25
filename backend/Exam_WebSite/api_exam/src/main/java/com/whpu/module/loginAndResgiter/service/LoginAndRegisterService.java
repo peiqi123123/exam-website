@@ -1,6 +1,5 @@
-package com.whpu.service;
+package com.whpu.module.loginAndResgiter.service;
 
-import com.whpu.dao.pojo.User;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.LoginParam;
 import com.whpu.vo.params.RegisterParam;
