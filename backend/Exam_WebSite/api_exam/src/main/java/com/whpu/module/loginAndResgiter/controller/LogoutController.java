@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @time: 2021/10/28 16:52
  */
 @RestController
-@RequestMapping("logout")
+@RequestMapping("/api/logout")
 public class LogoutController {
 
     @Autowired

@@ -1,6 +1,7 @@
 package com.whpu.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.whpu.dao.mapper.ExamRecordingMapper;
 import com.whpu.dao.pojo.ExamRecording;
 import com.whpu.dao.pojo.User;
@@ -35,10 +36,10 @@ public class ExamRecordingServiceImpl implements ExamRecordingService {
     @Override
     public List<ExamRecording> getAllExamRecording(String studentId)
     {
-        LambdaQueryWrapper lambdaQueryWrapper = new LambdaQueryWrapper();
-        lambdaQueryWrapper.eq("studentId",studentId);
-        lambdaQueryWrapper.orderByDesc("submitTime");
-        List list = examRecordingMapper.selectList(lambdaQueryWrapper);
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("studentId",studentId);
+        queryWrapper.orderByDesc("submitTime");
+        List<ExamRecording>list = examRecordingMapper.selectList(queryWrapper);
         return list;
     }
 }
