@@ -26,11 +26,12 @@ public class ExamRecordingServiceImpl implements ExamRecordingService {
      * 创建一条考试记录，一般用于在考生开始考试的时候
      */
     @Override
-    public String addExamRecordingService(Integer questionNum) {
+    public String addExamRecordingService(Integer questionNum,String examType) {
         ExamRecording examRecording = new ExamRecording();
         User user = UserThreadLocal.get();
-        examRecording.setStudentId(user.getUserId());
+        examRecording.setStudentId(/*user.getUserId()*/"1463502680960798722");
         examRecording.setQuestionNum(questionNum);
+        examRecording.setExamType(examType);
         examRecordingMapper.insert(examRecording);
         return examRecording.getExamRecordingId();
     }

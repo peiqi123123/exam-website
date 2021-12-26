@@ -10,7 +10,7 @@ import java.util.List;
  * @time: 2021/11/17 8:37
  */
 @Data
-public class ExerciseRandomVo {
+public class ExercisePaperVo {
     List<QuestionVo> questions;
     Integer size;
     String examTime;
