@@ -173,10 +173,10 @@ public class SysQuestionServiceImpl implements SysQuestionService {
             examRecordingId = examRecordingService.addExamRecordingService(topicParam.getQuestionNum(), "Topic");
             //用set结构将随机出的 题目进行去重，然后将set变为我们要的题目集
             Set<SysQuestion> questionSet = new HashSet<>();
-            Random r = new Random(SysQuestions.size()-1);
+            Random r = new Random();
             while(questionSet.size()<topicParam.getQuestionNum())
             {
-                int i = r.nextInt();
+                int i = r.nextInt(SysQuestions.size()-1);
                 questionSet.add(SysQuestions.get(i));
             }
             SysQuestions.clear();
@@ -192,7 +192,7 @@ public class SysQuestionServiceImpl implements SysQuestionService {
             StuAnsRecording stuAnsRecording = new StuAnsRecording();
             stuAnsRecording.setQuestionId(q.getQuestionId());
             stuAnsRecording.setExamRecordingId(examRecordingId);
-            stuAnsRecording.setStudentId(/*user.getUserId()*/"1463502680960798722");
+            stuAnsRecording.setStudentId(user.getUserId());
             stuAnsRecording.setAnswer(q.getAnswer());
             stuAnsRecording.setQuestionType(1);
             stuAnsRecordingMapper.insert(stuAnsRecording);
@@ -230,7 +230,7 @@ public class SysQuestionServiceImpl implements SysQuestionService {
         //考试时长，默认给120分钟，7200秒
         exerciseRandomVo.setExamTime("7200");
         //考试总分，默认给100分
-        exerciseRandomVo.setTotalPoints(100);
+        exerciseRandomVo.setTotalPoints(questionVos.size());
         return exerciseRandomVo;
     }
 

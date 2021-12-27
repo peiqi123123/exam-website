@@ -10,6 +10,6 @@ import lombok.Data;
 @Data
 public class AnsParam {
     private String questionId;
-    private String stuAnswer=" ";
+    private String stuAnswer="";
 
 }

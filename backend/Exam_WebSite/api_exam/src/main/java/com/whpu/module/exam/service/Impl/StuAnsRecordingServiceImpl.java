@@ -8,6 +8,8 @@ import com.whpu.module.exam.dao.pojo.ExamRecording;
 import com.whpu.module.exam.dao.pojo.StuAnsRecording;
 import com.whpu.module.exam.service.StuAnsRecordingService;
 import com.whpu.module.question.dao.mapper.SysQuestionMapper;
+import com.whpu.module.question.dao.mapper.SysQuestionTopicsMapper;
+import com.whpu.module.question.dao.pojo.QuestionTopics;
 import com.whpu.module.question.dao.pojo.SysQuestion;
 import com.whpu.vo.ExamInfoVo;
 import com.whpu.vo.QuestionVo;
@@ -32,6 +34,8 @@ public class StuAnsRecordingServiceImpl implements StuAnsRecordingService {
     ExamRecordingMapper examRecordingMapper;
     @Autowired
     SysQuestionMapper sysQuestionMapper;
+    @Autowired
+    SysQuestionTopicsMapper sysQuestionTopicsMapper;
     @Override
     public ExamInfoVo getExamInfo(String examId) {
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -56,6 +60,9 @@ public class StuAnsRecordingServiceImpl implements StuAnsRecordingService {
                SysQuestionVo.setOptionF(SysQuestion.getOptionF());
                SysQuestionVo.setAnswer(SysQuestion.getAnswer());
                SysQuestionVo.setStuAnswer(s.getStuAnswer());
+
+           List<QuestionTopics> topics = sysQuestionTopicsMapper.findTopicByQuestionId(s.getQuestionId());
+           SysQuestionVo.setQuestionTopics(topics);
                SysQuestionsList.add(SysQuestionVo);
        });
         ExamInfoVo examInfoVo = new ExamInfoVo();

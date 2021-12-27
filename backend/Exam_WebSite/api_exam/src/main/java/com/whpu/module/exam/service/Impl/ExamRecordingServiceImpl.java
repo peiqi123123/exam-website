@@ -29,7 +29,7 @@ public class ExamRecordingServiceImpl implements ExamRecordingService {
     public String addExamRecordingService(Integer questionNum,String examType) {
         ExamRecording examRecording = new ExamRecording();
         User user = UserThreadLocal.get();
-        examRecording.setStudentId(/*user.getUserId()*/"1463502680960798722");
+        examRecording.setStudentId(user.getUserId());
         examRecording.setQuestionNum(questionNum);
         examRecording.setExamType(examType);
         examRecordingMapper.insert(examRecording);

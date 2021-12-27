@@ -33,7 +33,7 @@ public class ExamController {
     {
         User user = UserThreadLocal.get();
         System.out.println(submitParam);
-        Result result = stuSubmitService.submit(submitParam,user.getUserId());
+        Result result = stuSubmitService.submit(submitParam,"user.getUserId()");
         return result;
     }
     @GetMapping("/question/info/{id}")

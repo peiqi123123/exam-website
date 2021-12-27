@@ -2,14 +2,18 @@ package com.whpu;
 
 
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.module.question.dao.mapper.SysQuestionTopicsMapper;
+import com.whpu.module.question.dao.pojo.QuestionTopics;
 import com.whpu.module.question.service.SysQuestionService;
 import com.whpu.module.loginAndResgiter.service.UserService;
 import com.whpu.vo.params.QuestionParam;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.*;
 
 @SpringBootTest
 class ApiExamApplicationTests {
@@ -20,6 +24,8 @@ class ApiExamApplicationTests {
     private SysQuestionTopicsMapper sysQuestionTopicsMapper;
     @Autowired
     private SysQuestionService questionService;
+    @Autowired
+    private SysQuestionService sysQuestionService;
 
     @Test
     void contextLoads() {
@@ -66,5 +72,27 @@ class ApiExamApplicationTests {
     {
         sysQuestionTopicsMapper.findQuestionByTopics(1);
         sysQuestionTopicsMapper.findTopicByQuestionId("1");
+    }
+    @Test
+    public void addTestTopicAndQuestion()
+    {
+        QuestionParam questionParam = new QuestionParam();
+        questionParam.setQuestionContent("当前华为的防火墙产品USG6X00系列， 属于UTM防火墙产品，其在支持状态检测包过滤的同时， 还支持入侵检测， 反病毒和URL过德等功能");
+        questionParam.setAnswer("B");
+        questionParam.setAnsNum(0);
+        questionParam.setOptionA("正确");
+        questionParam.setOptionB("错误");
+        questionParam.setOptionC("");
+        questionParam.setOptionD("");
+        questionParam.setOptionE("");
+
+        Random r = new Random();
+       Set<Integer> set = new HashSet<>();
+       while(set.size()<2)
+       {
+           set.add(r.nextInt(4)+1);
+       }
+        questionParam.setTopics(new ArrayList<>(set));
+        sysQuestionService.addSysQuestion(questionParam);
     }
 }

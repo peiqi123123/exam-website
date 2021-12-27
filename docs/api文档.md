@@ -493,9 +493,51 @@ QuestionTopics{
 }
 ```
 
-## 专项训练（未做）
+## 专项训练  
 
 ## get`api/exercise/topic`
+
+```
+request
+interface TopicParam{
+	Topics：ArrayList<Integer> 一个数组，里面是topic，知识点的id
+	questionNum：Integer 
+}
+
+response
+interface exerciseRandom {
+	code: 200,
+    data: {
+      questions:List<QuestionVo>题目列表
+        size:Integer    题目数量
+        examTime:String 考试时间
+        examId：考试Id
+        totalPoints: 总分
+    }
+} 
+interface QuestionVo {
+   questionId：String  题目Id
+   questionContent:String  题目内容
+   Analyse:String           题目分析
+   Answer:String            题目答案
+   stuAnswer:String        学生答案
+   status:Integer           状态
+   AnsNum:Integer          题目数量
+   score:Integer           单题分数
+   optionA;String
+   optionB;String
+   optionC;String
+   optionD;String
+   optionE;String
+   optionF;String
+   List<QuestionTopics> questionTopics 知识点数组
+   
+}
+QuestionTopics{ 
+    id：Integer  知识点ID
+    topic:String 知识点
+}
+```
 
 
 
