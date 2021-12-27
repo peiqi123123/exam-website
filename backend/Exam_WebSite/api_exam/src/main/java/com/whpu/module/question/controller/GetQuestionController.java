@@ -23,7 +23,7 @@ public class GetQuestionController {
     @Autowired
     SysQuestionService sysQuestionService;
     @PostMapping("random")
-    public Result selectRandomQuestion(@RequestBody RandomParam randomParam)
+    public Result<ExercisePaperVo> selectRandomQuestion(@RequestBody RandomParam randomParam)
     {
 
         User user = UserThreadLocal.get();
@@ -33,7 +33,7 @@ public class GetQuestionController {
         return Result.success(exerciseRandomVo);
     }
     @PostMapping("topic")
-    public Result selectTopicQuestion(@RequestBody TopicParam topicParam)
+    public Result<ExercisePaperVo> selectTopicQuestion(@RequestBody TopicParam topicParam)
     {
         System.out.println(topicParam);
 

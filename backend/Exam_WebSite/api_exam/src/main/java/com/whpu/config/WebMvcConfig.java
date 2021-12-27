@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -32,4 +33,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/api/login");
     }*/
+   public void addResourceHandlers(ResourceHandlerRegistry registry) {
+       //如果静态文件放到了classpath 下，就如下配置。
+       registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+
+       /*放行swagger*/
+       registry.addResourceHandler("swagger-ui.html")
+               .addResourceLocations("classpath:/META-INF/resources/");
+       registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
+       registry.addResourceHandler("/webjars/**")
+               .addResourceLocations("classpath:/META-INF/resources/webjars/");
+       WebMvcConfigurer.super.addResourceHandlers(registry);
+   }
 }

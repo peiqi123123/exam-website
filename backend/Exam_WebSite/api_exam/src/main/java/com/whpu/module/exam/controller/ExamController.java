@@ -9,6 +9,7 @@ import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.ExamInfoVo;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.SubmitParam;
+import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,14 +38,14 @@ public class ExamController {
         return result;
     }
     @GetMapping("/question/info/{id}")
-    public Result getExamInfo(@PathVariable String id)
+    public Result<ExamInfoVo> getExamInfo(@PathVariable String id)
     {
 
         ExamInfoVo examInfo = stuAnsRecordingService.getExamInfo(id);
         return Result.success(examInfo);
     }
-    @RequestMapping("/exam/info")
-    public Result getAllExamRecording()
+    @GetMapping("/exam/info")
+    public Result<List<ExamRecording>> getAllExamRecording()
     {
         User user = UserThreadLocal.get();
         List<ExamRecording> allExamRecording = examRecordingService.getAllExamRecording(user.getUserId());

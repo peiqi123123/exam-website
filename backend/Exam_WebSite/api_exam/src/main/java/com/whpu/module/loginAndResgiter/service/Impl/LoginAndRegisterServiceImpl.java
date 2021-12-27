@@ -7,6 +7,7 @@ import com.whpu.module.loginAndResgiter.service.UserService;
 import com.whpu.utils.JWTUtils;
 import com.whpu.vo.ErrorCode;
 import com.whpu.vo.Result;
+import com.whpu.vo.TokenVo;
 import com.whpu.vo.params.LoginParam;
 import com.whpu.vo.params.RegisterParam;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -43,7 +44,7 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
      * @return: com.whpu.vo.Result
      */
     @Override
-    public Result doLogin(LoginParam loginParam) {
+    public Result<String> doLogin(LoginParam loginParam) {
 
         /**
          *  1，检查参数是否合法
@@ -73,8 +74,9 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
         }
         String token = JWTUtils.creatToken(user.getUserId());
         redisTemplate.opsForValue().set("Token_"+token, JSON.toJSONString(user),1, TimeUnit.DAYS);
-
-        return Result.success(token);
+        TokenVo tokenVo =new TokenVo();
+        tokenVo.setToken(token);
+        return Result.success(tokenVo);
     }
 
     @Override

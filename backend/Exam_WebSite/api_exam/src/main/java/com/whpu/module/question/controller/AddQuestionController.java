@@ -5,6 +5,7 @@ import com.whpu.module.question.service.TeacherSelfQuestionService;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.QuestionParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,13 +22,13 @@ public class AddQuestionController {
     private TeacherSelfQuestionService teacherSelfQuestionService;
     @Autowired
     private SysQuestionService sysQuestionService;
-     @RequestMapping("addSelfQuestion")
+     @PostMapping("addSelfQuestion")
     public Result addTeacherSelfQuestion(@RequestBody QuestionParam questionParam)
      {
          int i = teacherSelfQuestionService.addQuestion(questionParam);
          return Result.success(null);
      }
-    @RequestMapping("addSysQuestion")
+    @PostMapping("addSysQuestion")
     public Result addSysQuestion(@RequestBody QuestionParam questionParam)
     {
         int i = sysQuestionService.addSysQuestion(questionParam);
