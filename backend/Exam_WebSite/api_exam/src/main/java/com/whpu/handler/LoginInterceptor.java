@@ -3,6 +3,7 @@ package com.whpu.handler;
 import com.alibaba.fastjson.JSON;
 import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.module.loginAndResgiter.service.LoginAndRegisterService;
+import com.whpu.utils.JWTUtils;
 import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.ErrorCode;
 import com.whpu.vo.Result;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * @description
@@ -49,7 +51,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         log.info("===================request end==============");
 
         String token = request.getHeader("Authorization");
-
+        System.out.println(token);
         if(StringUtils.isBlank(token))
         {
            Result result =Result.fail(ErrorCode.NO_LOGIN.getCode(),ErrorCode.NO_LOGIN.getMsg());
@@ -57,6 +59,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             response.getWriter().print(JSON.toJSONString(result));
             return false;
         }
+
         Result getResult = loginAndRegisterService.checkToken(token);
         User user = (User) getResult.getData();
         if(user==null)

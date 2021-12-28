@@ -24,11 +24,17 @@ public class JWTUtils {
                 .setIssuedAt(new Date())//设置签发时间
                 .setExpiration(new Date(System.currentTimeMillis()+24*60*60*1000));//设置过期时间
         String token = jwtBuilder.compact();
+        System.out.println(token+"---------------------------------");
         return token;
     }
 
     public static Map<String,Object> checkToken(String token)
     {
+        if(token==null)
+        {
+            System.out.println(token);
+        }
+        System.out.println(token);
         try {
             Jwt parse = Jwts.parser().setSigningKey(jwtToken).parse(token);
             return (Map<String, Object>) parse.getBody();

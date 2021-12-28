@@ -74,9 +74,7 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
         }
         String token = JWTUtils.creatToken(user.getUserId());
         redisTemplate.opsForValue().set("Token_"+token, JSON.toJSONString(user),1, TimeUnit.DAYS);
-        TokenVo tokenVo =new TokenVo();
-        tokenVo.setToken(token);
-        return Result.success(tokenVo);
+        return Result.success(token);
     }
 
     @Override
@@ -134,7 +132,7 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
         user.setNickName(registerParam.getNickName());
         user.setUserState(registerParam.getUserState());
         user.setRemark(registerParam.getRemark());
-        user.setIdentity("Student");
+        user.setIdentity("student");
         Integer integer = userService.addUser(user);
 
         //查看是否注册成功
@@ -163,7 +161,7 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
         user.setNickName(registerParam.getNickName());
         user.setUserState(registerParam.getUserState());
         user.setRemark(registerParam.getRemark());
-        user.setIdentity("Teacher");
+        user.setIdentity("teacher");
         Integer integer = userService.addUser(user);
 
         //查看是否注册成功
@@ -192,7 +190,7 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
         user.setNickName(registerParam.getNickName());
         user.setUserState(registerParam.getUserState());
         user.setRemark(registerParam.getRemark());
-        user.setIdentity("Manager");
+        user.setIdentity("manager");
         Integer integer = userService.addUser(user);
 
         //查看是否注册成功

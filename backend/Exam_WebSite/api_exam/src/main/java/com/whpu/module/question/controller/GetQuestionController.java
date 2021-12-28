@@ -27,8 +27,8 @@ public class GetQuestionController {
     {
 
         User user = UserThreadLocal.get();
-
-
+        System.out.println(user);
+        System.out.println(randomParam.getQuestionNum());
         ExercisePaperVo exerciseRandomVo = sysQuestionService.selectRandomQuestion(randomParam.getQuestionNum(), user.getUserId());
         return Result.success(exerciseRandomVo);
     }
