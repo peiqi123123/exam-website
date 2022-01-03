@@ -142,10 +142,11 @@ public class SysQuestionServiceImpl implements SysQuestionService {
         exerciseRandomVo.setExamId(examRecordingId);
             //题目数量，如果前端没给就默认100
         exerciseRandomVo.setSize(SysQuestionNum);
-            //考试时长，默认给120分钟，7200秒
-        exerciseRandomVo.setExamTime("7200");
-            //考试总分，默认给100分
-        exerciseRandomVo.setTotalPoints(100);
+        //考试时长，一题一分钟
+        int examTime = questionVos.size()*60;
+        exerciseRandomVo.setExamTime(String.valueOf(examTime));
+        //考试总分，一题一分，默认给100分
+        exerciseRandomVo.setTotalPoints(questionVos.size());
         //题目类型
         return exerciseRandomVo;
         }
@@ -227,9 +228,10 @@ public class SysQuestionServiceImpl implements SysQuestionService {
         exerciseRandomVo.setExamId(examRecordingId);
         //题目数量，如果前端没给就默认20
         exerciseRandomVo.setSize(topicParam.getQuestionNum());
-        //考试时长，默认给120分钟，7200秒
-        exerciseRandomVo.setExamTime("7200");
-        //考试总分，默认给100分
+        //考试时长，一题一分钟
+        int examTime = questionVos.size()*60;
+        exerciseRandomVo.setExamTime(String.valueOf(examTime));
+        //考试总分，一题一分，默认给100分
         exerciseRandomVo.setTotalPoints(questionVos.size());
         return exerciseRandomVo;
     }
