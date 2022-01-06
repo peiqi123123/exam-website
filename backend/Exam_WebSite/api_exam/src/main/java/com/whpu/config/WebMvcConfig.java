@@ -27,12 +27,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     }
 
- /*  @Override
+   @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/api/login");
-    }*/
+    }
    public void addResourceHandlers(ResourceHandlerRegistry registry) {
        //如果静态文件放到了classpath 下，就如下配置。
        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
