@@ -1,5 +1,6 @@
 package com.whpu.module.exam.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.whpu.module.question.dao.mapper.SysQuestionMapper;
 import com.whpu.module.exam.dao.mapper.ExamRecordingMapper;
@@ -68,14 +69,22 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                 else
                 {
                     //将错题插入错题库中
-                    stuAnsRecording.setJudgment(0);//错了
-                    StuWrongQue stuWrongQue = new StuWrongQue();
-                    stuWrongQue.setQuestionId(s.getQuestionId());
-                    stuWrongQue.setRecordingId(examRecordingId);
-                    stuWrongQue.setStudentId(userId);
-                    stuWrongQue.setStudentAns(s.getStuAnswer());
-                    stuWrongQueMapper.insert(stuWrongQue);
-                    falseNum++;
+                    //首先查找 对应的题目是否存在，如果此错题已经存在，那么就不再添加
+                    QueryWrapper<StuWrongQue> queryWrapper = new QueryWrapper<>();
+                    queryWrapper.eq("studentId",userId).eq("questionId",s.getQuestionId());
+                    List<StuWrongQue> stuWrongQues = stuWrongQueMapper.selectList(queryWrapper);
+                    //如果不存在 就添加对应的错题题目
+                    if(stuWrongQues==null) {
+                        //添加错题
+                        stuAnsRecording.setJudgment(0);//错了
+                        StuWrongQue stuWrongQue = new StuWrongQue();
+                        stuWrongQue.setQuestionId(s.getQuestionId());
+                        stuWrongQue.setRecordingId(examRecordingId);
+                        stuWrongQue.setStudentId(userId);
+                        stuWrongQue.setStudentAns(s.getStuAnswer());
+                        stuWrongQueMapper.insert(stuWrongQue);
+                        falseNum++;
+                    }
                 }
                 stuAnsRecording.setStuAnswer(s.getStuAnswer());
                 stuAnsRecordingMapper.update(stuAnsRecording,uw);

@@ -8,6 +8,7 @@ import com.whpu.vo.ExercisePaperVo;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.RandomParam;
 import com.whpu.vo.params.TopicParam;
+import com.whpu.vo.params.TopicsForGetTopicPaperParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,15 +26,12 @@ public class GetQuestionController {
     @PostMapping("random")
     public Result<ExercisePaperVo> selectRandomQuestion(@RequestBody RandomParam randomParam)
     {
-
         User user = UserThreadLocal.get();
-        System.out.println(user);
-        System.out.println(randomParam.getQuestionNum());
         ExercisePaperVo exerciseRandomVo = sysQuestionService.selectRandomQuestion(randomParam.getQuestionNum(), user.getUserId());
         return Result.success(exerciseRandomVo);
     }
     @PostMapping("topic")
-    public Result<ExercisePaperVo> selectTopicQuestion(@RequestBody TopicParam topicParam)
+    public Result<ExercisePaperVo> selectTopicQuestion(@RequestBody TopicsForGetTopicPaperParam topicParam)
     {
         System.out.println(topicParam);
 
