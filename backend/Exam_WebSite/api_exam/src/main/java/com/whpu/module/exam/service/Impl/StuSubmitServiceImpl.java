@@ -10,6 +10,7 @@ import com.whpu.module.exam.dao.pojo.ExamRecording;
 import com.whpu.module.exam.dao.pojo.StuAnsRecording;
 import com.whpu.module.question.dao.pojo.StuWrongQue;
 import com.whpu.module.exam.service.StuSubmitService;
+import com.whpu.module.user.service.SysStuService;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.AnsParam;
 import com.whpu.vo.params.SubmitParam;
@@ -27,8 +28,9 @@ import java.util.List;
 @Service
 @Transactional
 public class StuSubmitServiceImpl implements StuSubmitService {
-    private int trueNum=0;
-    private int falseNum=0;
+
+    @Autowired
+    SysStuService sysStuService;
     @Autowired
     ExamRecordingMapper examRecordingMapper;
     @Autowired
@@ -48,12 +50,13 @@ public class StuSubmitServiceImpl implements StuSubmitService {
     @Override
     @Transactional
     public Result submit(SubmitParam submitParam,String userId) {
-
+        int trueNum = 0;
+        int falseNum = 0;
         String examRecordingId = submitParam.getExamId();
         List<AnsParam> ans = submitParam.getQuestionAnswers();
         if(ans==null)
             System.out.println("-----------------------------------------*****************************");
-        ans.forEach(s->{
+        for(AnsParam s : ans) {
             //将对应的答案 找到对应的题目记录，如果是对的就将judgment改成1
             //如果是错的就将judgement 改成0
             //同时将学生的答案放进去
@@ -74,7 +77,7 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                     queryWrapper.eq("studentId",userId).eq("questionId",s.getQuestionId());
                     List<StuWrongQue> stuWrongQues = stuWrongQueMapper.selectList(queryWrapper);
                     //如果不存在 就添加对应的错题题目
-                    if(stuWrongQues==null) {
+                    if(stuWrongQues.size()==0) {
                         //添加错题
                         stuAnsRecording.setJudgment(0);//错了
                         StuWrongQue stuWrongQue = new StuWrongQue();
@@ -89,7 +92,7 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                 stuAnsRecording.setStuAnswer(s.getStuAnswer());
                 stuAnsRecordingMapper.update(stuAnsRecording,uw);
 
-        });
+        };
         //对考试记录进行更改操作
         //将是否完成改为完成，添加用时时长，添加分数，添加错题数
         UpdateWrapper<ExamRecording> eruw = new UpdateWrapper<>();
@@ -97,9 +100,12 @@ public class StuSubmitServiceImpl implements StuSubmitService {
                 .set("spendTime",submitParam.getTotalTime())
                 .set("isFinish",1)
                 .set("WrongAnsNum",falseNum)
-                .set("totalScore",trueNum*1.00/(falseNum+trueNum))
+                .set("totalScore",trueNum)
                 .set("submitTime",System.currentTimeMillis());
         examRecordingMapper.update(null,eruw);
+
+        //将对应结果添加到学生的个人信息中
+        sysStuService.changeStudentInfo(trueNum,falseNum,userId);
         return Result.success(null);
     }
 }

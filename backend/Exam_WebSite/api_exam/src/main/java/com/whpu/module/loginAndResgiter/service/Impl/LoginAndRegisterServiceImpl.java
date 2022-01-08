@@ -122,6 +122,7 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
         //①首先查看要注册的账户的account是否已经存在
         //如果存在就返回 fail 不能进行注册
         User user1 = userService.findUserByAccount(registerParam.getAccount());
+        System.out.println("user1"+"------------"+user1);
         if(user1!=null)
         {
             return Result.fail(ErrorCode.REGISTER_ERROR_UserHasExit.getCode(),ErrorCode.REGISTER_ERROR_UserHasExit.getMsg());
@@ -138,7 +139,7 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
         //查看是否注册成功
         if(integer==1)
         {
-            return Result.success(integer);
+            return Result.success(user);
         }
         else
         {

@@ -26,31 +26,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c70510e-3d9c-4815-80bb-09a058eb2b52" name="Default Changelist" comment="后端提交和阅卷的实现">
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/excel/controller/AddQuestionByExcel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/excel/dao/SysQuestionForExcel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/excel/dao/SysQuestionForExcelReadListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/excel/service/Impl/QuestionByExcelServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/excel/service/QuestionByExcelService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/controller/TopicController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/WrongExcelRowVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/TopicsForGetTopicPaperParam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/test/java/com/whpu/TestExcel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/test/java/com/whpu/controller/UploadFileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/controller/StuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/controller/TeacherController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/dao/mapper/StuTeacherMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/dao/mapper/SysStuMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/dao/pojo/StuTeacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/dao/pojo/SysStu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/service/Impl/StuTeacherServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/service/Impl/SysStuServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/service/StuTeacherService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/service/SysStuService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/GetAllStudentInfoVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/GetExamRecordingInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api_exam/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/config/SwaggerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/config/WebMvcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/StuSubmitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/StuSubmitServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/controller/GetQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/controller/GetQuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/mapper/QuestionTopicsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/mapper/QuestionTopicsMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/pojo/QuestionTopics.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/pojo/QuestionTopics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/pojo/SysQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/dao/pojo/SysQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/service/Impl/SysQuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/service/Impl/SysQuestionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/service/SysQuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/question/service/SysQuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/TopicParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/TopicParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/service/Impl/LoginAndRegisterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/service/Impl/LoginAndRegisterServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/TestMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/network/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/network/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +98,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -113,15 +108,15 @@
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\idea_code\exam\exam-website\backend\Exam_WebSite\api_exam\src\main\java\com\whpu" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\idea_code\exam\exam-website\backend\Exam_WebSite\api_exam\src\main\java\com\whpu\vo\params" />
       <recent name="G:\idea_code\exam\exam-website\backend\Exam_WebSite\api_exam\src\main\java\com\whpu\service\Impl" />
       <recent name="G:\idea_code\exam\exam-website\backend\Exam_WebSite\api_exam\src\main\java\com\whpu\service" />
       <recent name="G:\idea_code\exam\exam-website\backend\Exam_WebSite\api_exam\src\main\java\com\whpu\controller" />
       <recent name="G:\idea_code\exam\exam-website\backend\Exam_WebSite\api_exam\src\main\java\com\whpu\dao\mapper" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\idea_code\exam\exam-website\backend\Exam_WebSite\api_exam\src\main\java\com\whpu" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -227,10 +222,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestMain.test02" />
         <item itemvalue="JUnit.ApiExamApplicationTests.addTestTopicAndQuestion" />
         <item itemvalue="JUnit.ApiExamApplicationTests.testSql" />
         <item itemvalue="JUnit.ApiExamApplicationTests.testDb" />
-        <item itemvalue="JUnit.TestMain.test02" />
         <item itemvalue="JUnit.ApiExamApplicationTests.test" />
       </list>
     </recent_temporary>
@@ -277,7 +272,7 @@
       <workItem from="1640958172571" duration="54000" />
       <workItem from="1640958253577" duration="133000" />
       <workItem from="1640958426349" duration="9176000" />
-      <workItem from="1641474029953" duration="9284000" />
+      <workItem from="1641474029953" duration="26485000" />
     </task>
     <task id="LOCAL-00001" summary="后端提交和阅卷的实现">
       <created>1637153781773</created>
@@ -348,10 +343,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="后端提交和阅卷的实现" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1640767403259">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1641567414582">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1640767403259" />
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1641567414582" />
     <state x="290" y="335" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1640426191277">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -360,42 +355,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="544" y="279" width="478" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1640443391202" />
-    <state x="539" y="226" key="FileChooserDialogImpl" timestamp="1640959145820">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1641643776154">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="539" y="226" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1640959145820" />
-    <state width="1493" height="212" key="GridCell.Tab.0.bottom" timestamp="1641482906121">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1641643776154" />
+    <state x="539" y="226" key="FileChooserDialogImpl" timestamp="1641645708043">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1641482906121" />
-    <state width="1493" height="212" key="GridCell.Tab.0.center" timestamp="1641482906118">
+    <state x="539" y="226" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1641645708043" />
+    <state width="1493" height="290" key="GridCell.Tab.0.bottom" timestamp="1641647219084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1641482906118" />
-    <state width="1493" height="212" key="GridCell.Tab.0.left" timestamp="1641482906117">
+    <state width="1493" height="290" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
+    <state width="1493" height="290" key="GridCell.Tab.0.center" timestamp="1641647219084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1641482906117" />
-    <state width="1493" height="212" key="GridCell.Tab.0.right" timestamp="1641482906120">
+    <state width="1493" height="290" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
+    <state width="1493" height="290" key="GridCell.Tab.0.left" timestamp="1641647219083">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1641482906120" />
-    <state width="1493" height="212" key="GridCell.Tab.1.bottom" timestamp="1641482906122">
+    <state width="1493" height="290" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1641647219083" />
+    <state width="1493" height="290" key="GridCell.Tab.0.right" timestamp="1641647219084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1641482906122" />
-    <state width="1493" height="212" key="GridCell.Tab.1.center" timestamp="1641482906122">
+    <state width="1493" height="290" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
+    <state width="1493" height="290" key="GridCell.Tab.1.bottom" timestamp="1641647219084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1641482906122" />
-    <state width="1493" height="212" key="GridCell.Tab.1.left" timestamp="1641482906122">
+    <state width="1493" height="290" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
+    <state width="1493" height="290" key="GridCell.Tab.1.center" timestamp="1641647219084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1641482906122" />
-    <state width="1493" height="212" key="GridCell.Tab.1.right" timestamp="1641482906122">
+    <state width="1493" height="290" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
+    <state width="1493" height="290" key="GridCell.Tab.1.left" timestamp="1641647219084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1641482906122" />
+    <state width="1493" height="290" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
+    <state width="1493" height="290" key="GridCell.Tab.1.right" timestamp="1641647219084">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="290" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
     <state width="1493" height="259" key="GridCell.Tab.2.bottom" timestamp="1640773208029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -420,10 +419,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="300" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1640427426241" />
+    <state x="562" y="322" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1641559903251">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="562" y="322" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1641559903251" />
+    <state x="514" y="218" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1641562646862">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="514" y="218" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1641562646862" />
     <state x="486" y="303" width="573" height="284" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1641468213699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="486" y="303" width="573" height="284" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1536.824@0.0.1536.824" timestamp="1641468213699" />
+    <state x="545" y="169" key="refactoring.ChangeSignatureDialog" timestamp="1641566590145">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="545" y="169" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1641566590145" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1640517826600">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
