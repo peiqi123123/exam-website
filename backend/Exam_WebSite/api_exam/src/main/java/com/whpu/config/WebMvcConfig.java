@@ -27,19 +27,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     }
 
-<<<<<<< HEAD
+
  @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/api/login","/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
-=======
-  @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/api/login","/doc.html");
->>>>>>> 93c71e6e460861d78e73c13b34d908196eac5eb2
     }
    public void addResourceHandlers(ResourceHandlerRegistry registry) {
        //如果静态文件放到了classpath 下，就如下配置。
