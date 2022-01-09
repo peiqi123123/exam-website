@@ -4,7 +4,6 @@
       <div class="diagram" ref="diagram"></div>
       <div class="info">
         <div class="name">姓名：黄京旺</div>
-        <div class="number">学号: 1905110129</div>
         <div class="total_score">得分：{{ scoreContext }}</div>
         <div class="start_time">开始时间：{{ startTime }}</div>
         <div class="end_time">总用时：{{ totalTime }}</div>

@@ -2,8 +2,6 @@
   <div class="exam_slide_bar">
     <div class="title">
       <div class="name">姓名：黄京旺</div>
-      <el-divider direction="vertical"></el-divider>
-      <div class="account">账号：1905110129</div>
     </div>
     <el-scrollbar ref="scrollbar" height="550px" always>
       <div class="tf" v-if="size !== 0">
