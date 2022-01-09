@@ -9,6 +9,8 @@ import com.whpu.vo.Result;
 import com.whpu.vo.params.RandomParam;
 import com.whpu.vo.params.TopicParam;
 import com.whpu.vo.params.TopicsForGetTopicPaperParam;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +21,13 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("api/exercise")
+@Api(tags = "用于组卷")
 public class GetQuestionController {
 
     @Autowired
     SysQuestionService sysQuestionService;
     @PostMapping("random")
+    @ApiOperation(value = "随机组卷")
     public Result<ExercisePaperVo> selectRandomQuestion(@RequestBody RandomParam randomParam)
     {
         User user = UserThreadLocal.get();
@@ -31,6 +35,7 @@ public class GetQuestionController {
         return Result.success(exerciseRandomVo);
     }
     @PostMapping("topic")
+    @ApiOperation(value = "专题组卷（根据知识点组卷）")
     public Result<ExercisePaperVo> selectTopicQuestion(@RequestBody TopicsForGetTopicPaperParam topicParam)
     {
         System.out.println(topicParam);

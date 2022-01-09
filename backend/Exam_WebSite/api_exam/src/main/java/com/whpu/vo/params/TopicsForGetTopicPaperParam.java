@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.ArrayList;
+
 @Data
 @ApiModel("专题组卷时的参数")
 public class TopicsForGetTopicPaperParam {

@@ -18,10 +18,9 @@ public class AllExceptionHandler {
     //进行异常处理，对Exception进行处理，即对所有错误进行处理
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public Result doException(Exception e)
-    {
-            e.printStackTrace();
-            return Result.fail(-999,"系统异常");
+    public Result doException(Exception e) {
+        e.printStackTrace();
+        return Result.fail(-999, "系统异常");
     }
 
 

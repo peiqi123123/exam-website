@@ -19,7 +19,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Autowired
     LoginInterceptor loginInterceptor;
 
-//    跨域配置
+    //    跨域配置
     @Override
     public void addCorsMappings(CorsRegistry registry) {
 //        跨域配置，允许当前所有接口给 8080访问
@@ -28,22 +28,23 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
 
- @Override
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/api/login","/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
+                .excludePathPatterns("/api/login", "/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
     }
-   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-       //如果静态文件放到了classpath 下，就如下配置。
-       registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
 
-       /*放行swagger*/
-       registry.addResourceHandler("swagger-ui.html")
-               .addResourceLocations("classpath:/META-INF/resources/");
-       registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
-       registry.addResourceHandler("/webjars/**")
-               .addResourceLocations("classpath:/META-INF/resources/webjars/");
-       WebMvcConfigurer.super.addResourceHandlers(registry);
-   }
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        //如果静态文件放到了classpath 下，就如下配置。
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+
+        /*放行swagger*/
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        WebMvcConfigurer.super.addResourceHandlers(registry);
+    }
 }

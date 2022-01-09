@@ -15,51 +15,51 @@ import lombok.Data;
  */
 @Data
 @TableName("sys_question")
-public class SysQuestion  {
+public class SysQuestion {
     @ExcelIgnore
-    @TableId(value = "questionId",type = IdType.ID_WORKER_STR)
+    @TableId(value = "questionId", type = IdType.ID_WORKER_STR)
     String questionId;
     @ExcelIgnore
     @TableField(value = "AnsNum")
     Integer AnsNum;
 
-    @ExcelProperty(value = "题目",index = 0)
+    @ExcelProperty(value = "题目", index = 0)
     @TableField(value = "questionContent")
     String questionContent;
 
-    @ExcelProperty(value = "选项A",index=1)
+    @ExcelProperty(value = "选项A", index = 1)
     @TableField(value = "optionA")
     String optionA;
 
-    @ExcelProperty(value = "选项B",index = 2)
+    @ExcelProperty(value = "选项B", index = 2)
     @TableField(value = "optionB")
     String optionB;
 
-    @ExcelProperty(value = "选项C",index = 3)
+    @ExcelProperty(value = "选项C", index = 3)
     @TableField(value = "optionC")
     String optionC;
 
-    @ExcelProperty(value = "选项D",index = 4)
+    @ExcelProperty(value = "选项D", index = 4)
     @TableField(value = "optionD")
     String optionD;
 
-    @ExcelProperty(value = "选项E",index = 5)
+    @ExcelProperty(value = "选项E", index = 5)
     @TableField(value = "optionE")
     String optionE;
 
-    @ExcelProperty(value = "选项F",index = 6)
+    @ExcelProperty(value = "选项F", index = 6)
     @TableField(value = "optionF")
     String optionF;
 
-    @ExcelProperty(value = "选项G",index = 7)
+    @ExcelProperty(value = "选项G", index = 7)
     @TableField(value = "optionG")
     String optionG;
 
-    @ExcelProperty(value = "答案",index = 9)
+    @ExcelProperty(value = "答案", index = 9)
     @TableField(value = "Answer")
     String answer;
 
-    @ExcelProperty(value = "解析",index = 8)
+    @ExcelProperty(value = "解析", index = 8)
     @TableField(value = "Analyse")
     String analyse;
 

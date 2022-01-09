@@ -12,6 +12,8 @@ import com.whpu.module.question.dao.pojo.SysQuestion;
 import com.whpu.vo.ErrorCode;
 import com.whpu.vo.Result;
 import com.whpu.vo.WrongExcelRowVo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,10 +27,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("excel")
+@Api(tags = "用于通过Excel添加试题")
 public class AddQuestionByExcel {
     @Autowired
     QuestionByExcelService questionByExcelService;
 
+    @ApiOperation(value = "通过Excel添加题目的接口(管理员权限使用的)")
     @PostMapping("addQuestion")
     public Result addQuestionByExecl(@RequestBody MultipartFile file) throws IOException {
 

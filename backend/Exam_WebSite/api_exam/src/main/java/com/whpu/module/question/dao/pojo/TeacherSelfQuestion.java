@@ -28,10 +28,11 @@ public class TeacherSelfQuestion {
         this.Analyse = analyse;
         this.teacherId = teacherId;
     }
-    public TeacherSelfQuestion()
-    {}
 
-    @TableId(value = "questionId",type = IdType.ID_WORKER_STR)
+    public TeacherSelfQuestion() {
+    }
+
+    @TableId(value = "questionId", type = IdType.ID_WORKER_STR)
     String questionId;
 
     @TableField(value = "AnsNum")

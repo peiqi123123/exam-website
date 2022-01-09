@@ -21,16 +21,16 @@ import java.util.Date;
 public class TestMain {
 
     @Test
-    public void test01(){
+    public void test01() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         String date = simpleDateFormat.format(System.currentTimeMillis());
         System.out.println(date);
         System.out.println(System.currentTimeMillis());
     }
+
     @Test
-    public void test02()
-    {
-        AutoGenerator mg= new AutoGenerator();
+    public void test02() {
+        AutoGenerator mg = new AutoGenerator();
         GlobalConfig globalConfig = new GlobalConfig();
         globalConfig.setOutputDir(System.getProperty("user.dir") + "/src/main/java/");
         globalConfig.setAuthor("Adonis");
@@ -50,7 +50,7 @@ public class TestMain {
         pc.setParent("com.whpu.module.user");
         mg.setPackageInfo(pc);
 
-        StrategyConfig sc= new StrategyConfig();
+        StrategyConfig sc = new StrategyConfig();
         sc.setInclude("sys_stu");
         sc.setColumnNaming(NamingStrategy.underline_to_camel);
         sc.setNaming(NamingStrategy.underline_to_camel);

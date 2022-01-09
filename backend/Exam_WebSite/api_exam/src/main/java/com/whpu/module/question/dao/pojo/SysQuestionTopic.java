@@ -8,8 +8,8 @@ import lombok.Data;
 
 @Data
 @TableName("sys_question_topic")
-public class SysQuestionTopic{
-    @TableId(value = "id",type = IdType.AUTO)
+public class SysQuestionTopic {
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     @TableField(value = "topicId")
     private Integer topicId;

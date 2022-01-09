@@ -7,6 +7,7 @@ import com.whpu.module.excel.dao.SysQuestionForExcel;
 import com.whpu.module.excel.dao.SysQuestionForExcelReadListener;
 import com.whpu.module.question.dao.pojo.SysQuestion;
 import com.whpu.vo.Result;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,16 +23,17 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping("/test")
+@Api(tags = "用于后端用于测试的接口，这个没啥用")
 public class TestController {
     @PostMapping("/doInterceptor")
-    public Result dotest()
-    {
-        return Result.fail(111,"拦截失败");
+    public Result dotest() {
+        return Result.fail(111, "拦截失败");
     }
+
     @PostMapping("uploadFile")
     public Result uploadFile(@RequestBody MultipartFile file) throws IOException {
-            System.out.println(file.getOriginalFilename());
-        
+        System.out.println(file.getOriginalFilename());
+
         // 读取文件，读取完之后会自动关闭
         /*
             pathName        文件路径；"d:\\模拟在线202003班学员信息.xls"
@@ -48,7 +50,7 @@ public class TestController {
         ExcelReaderSheetBuilder sheet1 = workBook.sheet();
         // 读取
         sheet1.doRead();
-    
+
         return null;
     }
 }

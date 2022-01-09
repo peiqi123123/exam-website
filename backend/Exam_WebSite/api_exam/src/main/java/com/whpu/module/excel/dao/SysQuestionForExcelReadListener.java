@@ -31,17 +31,18 @@ import java.util.List;
 public class SysQuestionForExcelReadListener extends AnalysisEventListener<SysQuestionForExcel> {
 
 
-       public static List<SysQuestionForExcel> datas = new ArrayList<>();
+    public static List<SysQuestionForExcel> datas = new ArrayList<>();
 
-        @Override
-        public void invoke(SysQuestionForExcel data, AnalysisContext context) {
-            datas.add(data);
-        }
-        // 全部读完之后，会调用该方法
-        @Override
-        public void doAfterAllAnalysed(AnalysisContext context) {
-            // TODO......
-        }
-
+    @Override
+    public void invoke(SysQuestionForExcel data, AnalysisContext context) {
+        datas.add(data);
     }
+
+    // 全部读完之后，会调用该方法
+    @Override
+    public void doAfterAllAnalysed(AnalysisContext context) {
+        // TODO......
+    }
+
+}
 

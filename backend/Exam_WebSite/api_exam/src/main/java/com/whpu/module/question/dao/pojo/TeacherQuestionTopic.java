@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 @TableName("teacher_self_question_topic")
 public class TeacherQuestionTopic {
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     @TableField(value = "topicId")
     private Integer topicId;

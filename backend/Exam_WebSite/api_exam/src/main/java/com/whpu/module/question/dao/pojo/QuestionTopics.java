@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class QuestionTopics {
     @ApiModelProperty("知识点Id")
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     @ApiModelProperty("知识点")
     @TableField(value = "topic")
