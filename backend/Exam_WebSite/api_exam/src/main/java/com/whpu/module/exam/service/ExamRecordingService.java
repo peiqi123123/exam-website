@@ -1,5 +1,6 @@
 package com.whpu.module.exam.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.whpu.module.exam.dao.pojo.ExamRecording;
 
 import java.util.List;
@@ -11,5 +12,5 @@ import java.util.List;
  */
 public interface ExamRecordingService {
     String addExamRecordingService(Integer questionNum,String examType);
-    List<ExamRecording> getAllExamRecording(String studentId);
+    IPage<ExamRecording> getAllExamRecording(String studentId, Integer PageSize, Integer currentPage);
 }

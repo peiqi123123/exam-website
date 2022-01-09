@@ -1,5 +1,6 @@
 package com.whpu.module.user.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.whpu.module.exam.dao.pojo.ExamRecording;
 import com.whpu.module.exam.service.ExamRecordingService;
 import com.whpu.module.loginAndResgiter.dao.pojo.User;
@@ -10,6 +11,7 @@ import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.*;
 import com.whpu.vo.params.RegisterParam;
 import com.whpu.module.user.service.StuTeacherService;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -65,9 +67,9 @@ public class TeacherController {
         return Result.success(getAllStudentInfoVo);
     }
 
-    @GetMapping("getStudentExamInfo/{id}")
-    public Result<GetAllStudentInfoVo> getStudentExamInfo(@PathVariable String studentId) {
-        List<ExamRecording> allExamRecording = examRecordingService.getAllExamRecording(studentId);
+    @GetMapping("getStudentExamInfo/{id}/{currentPage}/pageSize")
+    public Result<GetAllStudentInfoVo> getStudentExamInfo(@PathVariable String studentId,@PathVariable Integer currentPage,@PathVariable Integer pageSize) {
+        IPage<ExamRecording> allExamRecording = examRecordingService.getAllExamRecording(studentId,pageSize,currentPage);
         GetExamRecordingInfo examRecordingInfo = new GetExamRecordingInfo();
         examRecordingInfo.setAllExamRecording(allExamRecording);
         return Result.success(examRecordingInfo);

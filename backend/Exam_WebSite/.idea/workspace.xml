@@ -26,25 +26,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c70510e-3d9c-4815-80bb-09a058eb2b52" name="Default Changelist" comment="后端提交和阅卷的实现">
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/controller/StuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/controller/TeacherController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/dao/mapper/StuTeacherMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/dao/mapper/SysStuMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/dao/pojo/StuTeacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/dao/pojo/SysStu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/service/Impl/StuTeacherServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/service/Impl/SysStuServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/service/StuTeacherService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/service/SysStuService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/GetAllStudentInfoVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/GetExamRecordingInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/params/ExamRecordingPageParam.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/config/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/StuSubmitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/StuSubmitServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/service/Impl/LoginAndRegisterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/loginAndResgiter/service/Impl/LoginAndRegisterServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/utils/TestMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/controller/ExamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/controller/ExamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/ExamRecordingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/ExamRecordingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/ExamRecordingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/exam/service/Impl/ExamRecordingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/module/user/controller/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/GetExamRecordingInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/api_exam/src/main/java/com/whpu/vo/GetExamRecordingInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/network/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/network/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +86,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../JavaWebBigWork" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -272,7 +260,7 @@
       <workItem from="1640958172571" duration="54000" />
       <workItem from="1640958253577" duration="133000" />
       <workItem from="1640958426349" duration="9176000" />
-      <workItem from="1641474029953" duration="26485000" />
+      <workItem from="1641474029953" duration="30894000" />
     </task>
     <task id="LOCAL-00001" summary="后端提交和阅卷的实现">
       <created>1637153781773</created>
@@ -359,42 +347,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1641643776154" />
-    <state x="539" y="226" key="FileChooserDialogImpl" timestamp="1641645708043">
+    <state x="539" y="226" key="FileChooserDialogImpl" timestamp="1641731862097">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="539" y="226" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1641645708043" />
-    <state width="1493" height="290" key="GridCell.Tab.0.bottom" timestamp="1641647219084">
+    <state x="539" y="226" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1641731862097" />
+    <state width="1493" height="226" key="GridCell.Tab.0.bottom" timestamp="1641734145535">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="290" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
-    <state width="1493" height="290" key="GridCell.Tab.0.center" timestamp="1641647219084">
+    <state width="1493" height="226" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1641734145535" />
+    <state width="1493" height="226" key="GridCell.Tab.0.center" timestamp="1641734145535">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="290" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
-    <state width="1493" height="290" key="GridCell.Tab.0.left" timestamp="1641647219083">
+    <state width="1493" height="226" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1641734145535" />
+    <state width="1493" height="226" key="GridCell.Tab.0.left" timestamp="1641734145535">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="290" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1641647219083" />
-    <state width="1493" height="290" key="GridCell.Tab.0.right" timestamp="1641647219084">
+    <state width="1493" height="226" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1641734145535" />
+    <state width="1493" height="226" key="GridCell.Tab.0.right" timestamp="1641734145535">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="290" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
-    <state width="1493" height="290" key="GridCell.Tab.1.bottom" timestamp="1641647219084">
+    <state width="1493" height="226" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1641734145535" />
+    <state width="1493" height="226" key="GridCell.Tab.1.bottom" timestamp="1641734145536">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="290" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
-    <state width="1493" height="290" key="GridCell.Tab.1.center" timestamp="1641647219084">
+    <state width="1493" height="226" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1641734145536" />
+    <state width="1493" height="226" key="GridCell.Tab.1.center" timestamp="1641734145536">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="290" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
-    <state width="1493" height="290" key="GridCell.Tab.1.left" timestamp="1641647219084">
+    <state width="1493" height="226" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1641734145536" />
+    <state width="1493" height="226" key="GridCell.Tab.1.left" timestamp="1641734145536">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="290" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
-    <state width="1493" height="290" key="GridCell.Tab.1.right" timestamp="1641647219084">
+    <state width="1493" height="226" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1641734145536" />
+    <state width="1493" height="226" key="GridCell.Tab.1.right" timestamp="1641734145536">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="290" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1641647219084" />
+    <state width="1493" height="226" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1641734145536" />
     <state width="1493" height="259" key="GridCell.Tab.2.bottom" timestamp="1640773208029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

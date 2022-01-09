@@ -3,6 +3,8 @@ package com.whpu.module.exam.service.Impl;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.whpu.module.exam.dao.mapper.ExamRecordingMapper;
 import com.whpu.module.exam.dao.pojo.ExamRecording;
 import com.whpu.module.exam.service.ExamRecordingService;
@@ -36,13 +38,16 @@ public class ExamRecordingServiceImpl implements ExamRecordingService {
         return examRecording.getExamRecordingId();
     }
     @Override
-    public List<ExamRecording> getAllExamRecording(String studentId)
+    public IPage<ExamRecording> getAllExamRecording(String studentId, Integer PageSize, Integer currentPage)
     {
+        IPage<ExamRecording> page = new Page<>();
+        page.setCurrent(currentPage);
+        page.setSize(PageSize);
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("studentId",studentId);
         queryWrapper.orderByDesc("submitTime");
-        List<ExamRecording>list = examRecordingMapper.selectList(queryWrapper);
+        IPage<ExamRecording> iPage = examRecordingMapper.selectPage(page, queryWrapper);
         System.out.println(studentId);
-        return list;
+        return iPage;
     }
 }
