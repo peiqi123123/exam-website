@@ -2,6 +2,7 @@ package com.whpu.vo;
 
 public enum ErrorCode {
     PARAMS_ERROR(10001,"参数有误"),
+    FILE_NOT_FORWORD(10005,"文件格式有误"),
     REGISTER_ERROR(10002,"注册失败"),
     REGISTER_ERROR_UserHasExit(10004,"注册失败,账号已存在"),
     ACCOUNT_PWD_NOT_EXIST(400,"用户名或密码不存在"),
@@ -11,6 +12,7 @@ public enum ErrorCode {
     ERROR_IDENTITY(400,"身份选择错误"),
     SESSION_TIME_OUT(90001,"未登录"),
     NO_LOGIN(401,"未登录，无权访问");
+    
 
 
 

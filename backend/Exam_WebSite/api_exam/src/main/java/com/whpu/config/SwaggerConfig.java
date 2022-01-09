@@ -19,7 +19,7 @@ public class SwaggerConfig {
     }
     //配置文档信息
     private ApiInfo apiInfo() {
-
+            //文档地址：http://localhost:8080/doc.html
         return new ApiInfo(
                 "考试系统开发文档", // 标题
                 "开发中", // 描述

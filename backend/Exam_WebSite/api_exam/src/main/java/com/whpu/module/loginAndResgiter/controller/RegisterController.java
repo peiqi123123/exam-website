@@ -31,7 +31,8 @@ public class RegisterController {
         {
             return Result.fail(ErrorCode.PARAMS_ERROR.getCode(),ErrorCode.PARAMS_ERROR.getMsg());
         }
-        return loginAndRegisterService.registerStudent(registerParam);
+        Result result = loginAndRegisterService.registerStudent(registerParam);
+        return result;
     }
     @PostMapping("teacher")
     public Result doRegisterTeacher(@RequestBody RegisterParam registerParam)

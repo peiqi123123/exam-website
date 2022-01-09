@@ -1,0 +1,75 @@
+package com.whpu.module.user.controller;
+
+import com.whpu.module.exam.dao.pojo.ExamRecording;
+import com.whpu.module.exam.service.ExamRecordingService;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
+import com.whpu.module.loginAndResgiter.service.LoginAndRegisterService;
+import com.whpu.module.user.dao.pojo.SysStu;
+import com.whpu.module.user.service.SysStuService;
+import com.whpu.utils.UserThreadLocal;
+import com.whpu.vo.*;
+import com.whpu.vo.params.RegisterParam;
+import com.whpu.module.user.service.StuTeacherService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("api/teacher")
+@Transactional
+public class TeacherController {
+    @Autowired
+    private LoginAndRegisterService loginAndRegisterService;
+    @Autowired
+    private StuTeacherService stuTeacherService;
+    @Autowired
+    private SysStuService sysStuService;
+    @Autowired
+    private ExamRecordingService examRecordingService;
+
+    @PostMapping("addStudent")
+    public Result addStudent(@RequestBody RegisterParam registerParam) {
+        //①首先判断 参数是否有问题
+        if (registerParam.getAccount() == null ||
+                registerParam.getNickName() == null ||
+                registerParam.getPassword() == null) {
+            return Result.fail(ErrorCode.PARAMS_ERROR.getCode(), ErrorCode.PARAMS_ERROR.getMsg());
+        }
+        //② 将对应的学生添加到登录管理的user表中
+        Result result = loginAndRegisterService.registerStudent(registerParam);
+
+        if(result.getData()!=null) {
+            //③得到学生与老师的Id 添加到学生与老师的对应表中
+            User student = (User) result.getData();
+            // String teacherId = UserThreadLocal.get().getUserId();
+
+            String teacherId = "1463502680960798722";
+            stuTeacherService.addStudent(student.getUserId(), teacherId);
+
+            //④为学生新建一个学生的信息表
+            sysStuService.addStudentInfo(student.getUserId(), student.getNickName());
+        }
+        return result;
+    }
+
+    @GetMapping("getAllOwnStudentInfo")
+    public Result<GetAllStudentInfoVo> getAllStudent() {
+        //String teacherId = UserThreadLocal.get().getUserId();
+        String teacherId = "1463502680960798722";
+        List<String> allStudentId = stuTeacherService.getAllStudentId(teacherId);
+        List<SysStu> allStudentInfo = sysStuService.getAllStudentInfo(allStudentId);
+        GetAllStudentInfoVo getAllStudentInfoVo = new GetAllStudentInfoVo();
+        getAllStudentInfoVo.setAllStudentInfo(allStudentInfo);
+        return Result.success(getAllStudentInfoVo);
+    }
+
+    @GetMapping("getStudentExamInfo/{id}")
+    public Result<GetAllStudentInfoVo> getStudentExamInfo(@PathVariable String studentId) {
+        List<ExamRecording> allExamRecording = examRecordingService.getAllExamRecording(studentId);
+        GetExamRecordingInfo examRecordingInfo = new GetExamRecordingInfo();
+        examRecordingInfo.setAllExamRecording(allExamRecording);
+        return Result.success(examRecordingInfo);
+    }
+}

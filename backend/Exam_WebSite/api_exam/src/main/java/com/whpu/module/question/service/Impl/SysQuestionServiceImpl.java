@@ -22,6 +22,7 @@ import com.whpu.vo.ExercisePaperVo;
 import com.whpu.vo.QuestionVo;
 import com.whpu.vo.params.QuestionParam;
 import com.whpu.vo.params.TopicParam;
+import com.whpu.vo.params.TopicsForGetTopicPaperParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -142,22 +143,21 @@ public class SysQuestionServiceImpl implements SysQuestionService {
         exerciseRandomVo.setExamId(examRecordingId);
             //题目数量，如果前端没给就默认100
         exerciseRandomVo.setSize(SysQuestionNum);
-        //考试时长，一题一分钟
-        int examTime = questionVos.size()*60;
-        exerciseRandomVo.setExamTime(String.valueOf(examTime));
-        //考试总分，一题一分，默认给100分
-        exerciseRandomVo.setTotalPoints(questionVos.size());
+            //考试时长，默认给120分钟，7200秒
+        exerciseRandomVo.setExamTime("7200");
+            //考试总分，默认给100分
+        exerciseRandomVo.setTotalPoints(100);
         //题目类型
         return exerciseRandomVo;
         }
 
     @Override
-    public ExercisePaperVo selectTopicQuestions(TopicParam topicParam) {
+    public ExercisePaperVo selectTopicQuestions(TopicsForGetTopicPaperParam topicsForGetTopicPaperParam) {
         User user = UserThreadLocal.get();
 
        //根据提供的知识点类，将所有的知识点对应的题目找出来，然后选择其中的数量为，提供的题目数量
         List<SysQuestion> SysQuestions = new ArrayList<>();
-        topicParam.getTopics().forEach(topicId->
+        topicsForGetTopicPaperParam.getTopics().forEach(topicId->
         {
             List<SysQuestion> questionByTopics = sysQuestionTopicsMapper.findQuestionByTopics(topicId);
             SysQuestions.addAll(questionByTopics);
@@ -165,17 +165,17 @@ public class SysQuestionServiceImpl implements SysQuestionService {
         //如果根据知识点找到的题目 不足提供的题目数量 ，那么就提供能提供的题目
         //找到的数量多余需要的数量，那么就要在找到题目中随机出 需要的数量的题目
         String examRecordingId =null;
-        if(SysQuestions.size()<=topicParam.getQuestionNum())
+        if(SysQuestions.size()<=topicsForGetTopicPaperParam.getQuestionNum())
         {
             //添加考试的记录
            examRecordingId = examRecordingService.addExamRecordingService(SysQuestions.size(),"Topic");
         }
         else {
-            examRecordingId = examRecordingService.addExamRecordingService(topicParam.getQuestionNum(), "Topic");
+            examRecordingId = examRecordingService.addExamRecordingService(topicsForGetTopicPaperParam.getQuestionNum(), "Topic");
             //用set结构将随机出的 题目进行去重，然后将set变为我们要的题目集
             Set<SysQuestion> questionSet = new HashSet<>();
             Random r = new Random();
-            while(questionSet.size()<topicParam.getQuestionNum())
+            while(questionSet.size()<topicsForGetTopicPaperParam.getQuestionNum())
             {
                 int i = r.nextInt(SysQuestions.size()-1);
                 questionSet.add(SysQuestions.get(i));
@@ -227,11 +227,10 @@ public class SysQuestionServiceImpl implements SysQuestionService {
         //告诉你这是哪次考试
         exerciseRandomVo.setExamId(examRecordingId);
         //题目数量，如果前端没给就默认20
-        exerciseRandomVo.setSize(topicParam.getQuestionNum());
-        //考试时长，一题一分钟
-        int examTime = questionVos.size()*60;
-        exerciseRandomVo.setExamTime(String.valueOf(examTime));
-        //考试总分，一题一分，默认给100分
+        exerciseRandomVo.setSize(topicsForGetTopicPaperParam.getQuestionNum());
+        //考试时长，默认给120分钟，7200秒
+        exerciseRandomVo.setExamTime("7200");
+        //考试总分，默认给100分
         exerciseRandomVo.setTotalPoints(questionVos.size());
         return exerciseRandomVo;
     }
