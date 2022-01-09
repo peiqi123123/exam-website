@@ -8,12 +8,14 @@
     <div class="exam_title">{{ title }}</div>
     <div class="exam_info">
       <div class="score">总分：{{ totalScore }}</div>
-      <div class="dividing"></div>
-      <div class="accuracy">正确率：{{ `80%` }}</div>
+<!--      <div class="dividing"></div>-->
+<!--      <div class="accuracy">正确率：{{ `80%` }}</div>-->
     </div>
   </div>
 </template>
 <script setup>
+// prop:["itemList"]
+import {reactive} from "vue"
 import { formatMsgTime } from "@/utils/transformTime";
 const props = defineProps({
   item: {

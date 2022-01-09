@@ -25,9 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c70510e-3d9c-4815-80bb-09a058eb2b52" name="Default Changelist" comment="后端提交和阅卷的实现">
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/network/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/network/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="6c70510e-3d9c-4815-80bb-09a058eb2b52" name="Default Changelist" comment="后端提交和阅卷的实现" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -253,7 +251,7 @@
       <workItem from="1640958172571" duration="54000" />
       <workItem from="1640958253577" duration="133000" />
       <workItem from="1640958426349" duration="9176000" />
-      <workItem from="1641474029953" duration="31260000" />
+      <workItem from="1641474029953" duration="31516000" />
     </task>
     <task id="LOCAL-00001" summary="后端提交和阅卷的实现">
       <created>1637153781773</created>

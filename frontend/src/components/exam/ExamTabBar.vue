@@ -29,11 +29,12 @@
   </div>
 </template>
 <script setup>
-import { ref, watch, inject } from "vue";
+import { ref, watch, inject} from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { submitExercise } from "@/network/api/user";
 import { convertQuestions } from "@/utils/getGrades";
+
 const message = inject("message");
 const store = useStore();
 const Router = useRouter();
@@ -135,5 +136,10 @@ async function confirmSubmit() {
     font-size: 15px;
     font-weight: bolder;
   }
+}
+.go-home{
+  left: 12px;
+  top: 10px;
+  position: fixed;
 }
 </style>

@@ -8,7 +8,11 @@ const message = ElMessage;
 
 const instance = axios.create({
   baseURL: config.product.baseURL,
+<<<<<<< HEAD
    timeout: 3000,
+=======
+  //timeout: 3000,
+>>>>>>> 93c71e6e460861d78e73c13b34d908196eac5eb2
 });
 instance.interceptors.request.use(
   (config) => {

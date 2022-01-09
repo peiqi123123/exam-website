@@ -49,7 +49,7 @@ import config from "@/config";
 import { studentLogin } from "@/network/api/user";
 //表单数据
 const loginForm = ref({
-  account: "stu",
+  account: "admin",
   password: "123456",
 });
 //选择登录方式
