@@ -145,11 +145,11 @@ public class SysQuestionServiceImpl implements SysQuestionService {
         exerciseRandomVo.setSize(SysQuestionNum);
             //考试时长，默认给120分钟，7200秒
         exerciseRandomVo.setExamTime("7200");
-            //考试总分，默认给100分
-        exerciseRandomVo.setTotalPoints(100);
+            //考试总分，一题一分
+        exerciseRandomVo.setTotalPoints(questionVos.size());
         //题目类型
         return exerciseRandomVo;
-        }
+    }
 
     @Override
     public ExercisePaperVo selectTopicQuestions(TopicsForGetTopicPaperParam topicsForGetTopicPaperParam) {

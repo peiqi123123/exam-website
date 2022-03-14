@@ -73,27 +73,26 @@ public class StuSubmitServiceImpl implements StuSubmitService {
             } else {
                 //将错题插入错题库中
                 //首先查找 对应的题目是否存在，如果此错题已经存在，那么就不再添加
-                QueryWrapper<StuWrongQue> queryWrapper = new QueryWrapper<>();
+                /*QueryWrapper<StuWrongQue> queryWrapper = new QueryWrapper<>();
                 queryWrapper.eq("studentId", userId).eq("questionId", s.getQuestionId());
-                List<StuWrongQue> stuWrongQues = stuWrongQueMapper.selectList(queryWrapper);
+                List<StuWrongQue> stuWrongQues = stuWrongQueMapper.selectList(queryWrapper);*/
                 //如果不存在 就添加对应的错题题目
-                if (stuWrongQues.size() == 0) {
+                /*if (stuWrongQues.size() == 0) {*/
                     //添加错题
-                    stuAnsRecording.setJudgment(0);//错了
-                    StuWrongQue stuWrongQue = new StuWrongQue();
-                    stuWrongQue.setQuestionId(s.getQuestionId());
-                    stuWrongQue.setRecordingId(examRecordingId);
-                    stuWrongQue.setStudentId(userId);
-                    stuWrongQue.setStudentAns(s.getStuAnswer());
-                    stuWrongQueMapper.insert(stuWrongQue);
-                    falseNum++;
-                }
+                stuAnsRecording.setJudgment(0);//错了
+                StuWrongQue stuWrongQue = new StuWrongQue();
+                stuWrongQue.setQuestionId(s.getQuestionId());
+                stuWrongQue.setRecordingId(examRecordingId);
+                stuWrongQue.setStudentId(userId);
+                stuWrongQue.setStudentAns(s.getStuAnswer());
+                stuWrongQueMapper.insert(stuWrongQue);
+                falseNum++;
+                //}
             }
             stuAnsRecording.setStuAnswer(s.getStuAnswer());
             stuAnsRecordingMapper.update(stuAnsRecording, uw);
 
         }
-        ;
         //对考试记录进行更改操作
         //将是否完成改为完成，添加用时时长，添加分数，添加错题数
         UpdateWrapper<ExamRecording> eruw = new UpdateWrapper<>();

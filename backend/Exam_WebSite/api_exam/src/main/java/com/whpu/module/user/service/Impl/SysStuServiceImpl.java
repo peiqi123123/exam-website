@@ -26,7 +26,7 @@ import java.util.List;
 @Transactional
 public class SysStuServiceImpl extends ServiceImpl<SysStuMapper, SysStu> implements SysStuService {
 
-    @Autowired
+    @Autowired(required = false)
     public SysStuMapper sysStuMapper;
     @Autowired
     public UserMapper userMapper;
