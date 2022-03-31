@@ -32,7 +32,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/api/login", "/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**","/api/student/getSelfInfo/**");
+                .excludePathPatterns("/api/login", "/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
     }
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
