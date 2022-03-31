@@ -49,7 +49,7 @@ public class SysStuServiceImpl extends ServiceImpl<SysStuMapper, SysStu> impleme
     public SysStu getOwnStudentInfo(String studentId) {
 
             QueryWrapper<SysStu> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("studentId",studentId);
+            queryWrapper.eq("stu_id",studentId);
             SysStu sysStu = sysStuMapper.selectOne(queryWrapper);
 
         return sysStu;

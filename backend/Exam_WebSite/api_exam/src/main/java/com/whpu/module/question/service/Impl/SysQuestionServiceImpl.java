@@ -84,19 +84,19 @@ public class SysQuestionServiceImpl implements SysQuestionService {
     /**
      * 随机组卷
      */
-    public ExercisePaperVo selectRandomQuestion(int SysQuestionNum, String userId) {
+    public ExercisePaperVo selectRandomQuestion(int sysQuestionNum, String userId) {
         //添加考试的记录
-        String examRecordingId = examRecordingService.addExamRecordingService(SysQuestionNum,"Random");
+        String examRecordingId = examRecordingService.addExamRecordingService(sysQuestionNum,"Random");
         //选择题模块
-        if(SysQuestionNum ==0) {
-            SysQuestionNum = 20;
+        if(sysQuestionNum ==0) {
+            sysQuestionNum = 20;
         }
         //随机查到对应的选择题题目
         LambdaQueryWrapper<SysQuestion> qw = new LambdaQueryWrapper<>();
         qw.select(SysQuestion::getQuestionContent,SysQuestion::getAnalyse,SysQuestion::getAnsNum,
                 SysQuestion::getOptionA,SysQuestion::getOptionB,SysQuestion::getOptionC,SysQuestion::getOptionD,SysQuestion::getOptionE
         ,SysQuestion::getOptionF,SysQuestion::getOptionG,SysQuestion::getAnswer,SysQuestion::getQuestionId);
-        qw.last("ORDER BY RAND() LIMIT "+SysQuestionNum);
+        qw.last("ORDER BY RAND() LIMIT "+sysQuestionNum);
         List<SysQuestion> SysQuestions = sysQuestionMapper.selectList(qw);
         List<QuestionVo> questionVos= new ArrayList<QuestionVo>();
 
@@ -141,8 +141,8 @@ public class SysQuestionServiceImpl implements SysQuestionService {
             //判断题模块(还没做)
             //告诉你这是哪次考试
         exerciseRandomVo.setExamId(examRecordingId);
-            //题目数量，如果前端没给就默认100
-        exerciseRandomVo.setSize(SysQuestionNum);
+            //题目数量，如果前端没给就默认20
+        exerciseRandomVo.setSize(sysQuestionNum);
             //考试时长，默认给120分钟，7200秒
         exerciseRandomVo.setExamTime("7200");
             //考试总分，一题一分

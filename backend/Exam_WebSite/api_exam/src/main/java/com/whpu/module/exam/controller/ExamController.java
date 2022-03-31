@@ -53,7 +53,7 @@ public class ExamController {
 
     @ApiOperation(value = "获取首页所有考试记录的接口")
     @GetMapping("/exam/info")
-    public Result<List<ExamRecording>> getAllExamRecording(@RequestBody ExamRecordingPageParam examRecordingPageParam) {
+    public Result<List<ExamRecording>> getAllExamRecording(@RequestBody(required = false) ExamRecordingPageParam examRecordingPageParam) {
         //如果未给出 当前页面数，就默认是1
         if (examRecordingPageParam.getCurrentPage() == null) {
             examRecordingPageParam.setCurrentPage(1);

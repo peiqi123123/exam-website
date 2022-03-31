@@ -54,7 +54,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         System.out.println(token);
         if(StringUtils.isBlank(token))
         {
-           Result result =Result.fail(ErrorCode.NO_LOGIN.getCode(),ErrorCode.NO_LOGIN.getMsg());
+            Result result =Result.fail(ErrorCode.NO_LOGIN.getCode(),ErrorCode.NO_LOGIN.getMsg());
             response.setContentType("application/json;charset=utf-8");
             response.getWriter().print(JSON.toJSONString(result));
             return false;

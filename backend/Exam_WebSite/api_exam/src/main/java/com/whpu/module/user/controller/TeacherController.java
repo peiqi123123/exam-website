@@ -34,7 +34,7 @@ public class TeacherController {
     @Autowired
     private ExamRecordingService examRecordingService;
 
-    @PostMapping("addStudent")
+    @PostMapping("/addStudent")
     @ApiOperation("添加一个学生，并且这个学生从属于这个教师")
     public Result addStudent(@RequestBody RegisterParam registerParam) {
         //①首先判断 参数是否有问题

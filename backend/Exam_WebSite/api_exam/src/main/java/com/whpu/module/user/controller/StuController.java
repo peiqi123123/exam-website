@@ -22,7 +22,7 @@ public class StuController {
     private SysStuService sysStuService;
 
     @ApiOperation(value = "获取到自己的个人信息")
-    @GetMapping("getSelfInfo")
+    @GetMapping("/getSelfInfo")
     public Result<GetAllStudentInfoVo> getAllStudent() {
         String studentId = UserThreadLocal.get().getUserId();
         SysStu ownStudentInfo = sysStuService.getOwnStudentInfo(studentId);

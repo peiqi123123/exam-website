@@ -7,7 +7,7 @@ export function studentLogin(account, password, identity) {
   });
 }
 
-export function getExerciseQuestions(questionNum = 100) {
+export function getExerciseQuestions(questionNum = 10) {
   return axios.post("/exercise/random", {
     questionNum,
   });

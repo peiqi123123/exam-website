@@ -26,6 +26,7 @@ public class SysStu implements Serializable {
     /**
      * 学生Id
      */
+    @TableField("stu_id")
     private String stuId;
 
     /**

@@ -1,4 +1,4 @@
-package com.whpu.module.user.service.impl;
+package com.whpu.module.user.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.whpu.module.user.dao.pojo.StuTeacher;
