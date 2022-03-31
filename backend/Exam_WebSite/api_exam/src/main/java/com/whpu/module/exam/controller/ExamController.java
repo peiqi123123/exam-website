@@ -54,13 +54,16 @@ public class ExamController {
     @ApiOperation(value = "获取首页所有考试记录的接口")
     @GetMapping("/exam/info")
     public Result<List<ExamRecording>> getAllExamRecording(@RequestBody(required = false) ExamRecordingPageParam examRecordingPageParam) {
+        if (examRecordingPageParam == null) {
+            examRecordingPageParam = new ExamRecordingPageParam();
+        }
         //如果未给出 当前页面数，就默认是1
         if (examRecordingPageParam.getCurrentPage() == null) {
             examRecordingPageParam.setCurrentPage(1);
         }
         //如果当前分页数未给出，就默认是8
         if (examRecordingPageParam.getPageSize() == null) {
-            examRecordingPageParam.setCurrentPage(8);
+            examRecordingPageParam.setPageSize(8);
         }
         User user = UserThreadLocal.get();
         IPage<ExamRecording> allExamRecording = examRecordingService.getAllExamRecording(user.getUserId(), examRecordingPageParam.getPageSize(), examRecordingPageParam.getCurrentPage());
