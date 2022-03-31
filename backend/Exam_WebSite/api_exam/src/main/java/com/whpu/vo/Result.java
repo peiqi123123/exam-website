@@ -29,7 +29,7 @@ public class Result<T>implements Serializable {
 
     public static Result success(Object data)
     {
-        return new Result(true,201,"success",data);
+        return new Result(true,200,"success",data);
     }
 
     public static Result fail(int code,String msg)
