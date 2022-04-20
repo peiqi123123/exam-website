@@ -16,6 +16,8 @@ public class RegisterParam {
     private String password;
     @ApiModelProperty("新用户的名称")
     private String nickName;
+    @ApiModelProperty("所属教师ID，学生选填，其他身份不填")
+    private String teacherId;
 
     @ApiModelProperty("用户状态码，正常是1，禁用是0，默认是1")
     //用户状态码，正常是1，禁用是0，默认是1

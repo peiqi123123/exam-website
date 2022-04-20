@@ -17,4 +17,6 @@ public interface StuTeacherService extends IService<StuTeacher> {
     int addStudent(String studentId, String teacherId);
 
     List<String> getAllStudentId(String teacherId);
+
+    List<String> getAllTeachersIds();
 }

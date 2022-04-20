@@ -1,6 +1,9 @@
 package com.whpu.module.user.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.whpu.module.loginAndResgiter.dao.mapper.UserMapper;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.module.user.dao.pojo.StuTeacher;
 import com.whpu.module.user.dao.mapper.StuTeacherMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -26,6 +29,10 @@ public class StuTeacherServiceImpl extends ServiceImpl<StuTeacherMapper, StuTeac
 
     @Autowired
     private StuTeacherMapper stuTeacherMapper;
+
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public int addStudent(String studentId, String teacherId) {
         StuTeacher stuTeacher = new StuTeacher();
@@ -45,5 +52,17 @@ public class StuTeacherServiceImpl extends ServiceImpl<StuTeacherMapper, StuTeac
             studentIdList.add(s.getStuid());
         });
         return studentIdList;
+    }
+
+    @Override
+    public List<String> getAllTeachersIds() {
+        List<String> teacherIds = new ArrayList<>();
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("identity","teacher");
+        List<User> teachers = userMapper.selectList(wrapper);
+        teachers.forEach(s->{
+            teacherIds.add(s.getUserId());
+        });
+        return teacherIds;
     }
 }

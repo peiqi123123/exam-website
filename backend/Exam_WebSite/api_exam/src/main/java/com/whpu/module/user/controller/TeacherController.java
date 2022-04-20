@@ -49,7 +49,7 @@ public class TeacherController {
         if (result.getData() != null) {
             //③得到学生与老师的Id 添加到学生与老师的对应表中
             User student = (User) result.getData();
-             String teacherId = UserThreadLocal.get().getUserId();
+            String teacherId = UserThreadLocal.get().getUserId();
 
            //测试用的数据 String teacherId = "1463502680960798722";
             stuTeacherService.addStudent(student.getUserId(), teacherId);
@@ -73,11 +73,18 @@ public class TeacherController {
     }
 
     @ApiOperation("教师获取到某个学生的所有考试记录")
-    @GetMapping("getStudentExamInfo/{id}/{currentPage}/pageSize")
+    @GetMapping("getStudentExamInfo/{studentId}/{currentPage}/{pageSize}")
     public Result<GetAllStudentInfoVo> getStudentExamInfo(@PathVariable String studentId, @PathVariable Integer currentPage, @PathVariable Integer pageSize) {
         IPage<ExamRecording> allExamRecording = examRecordingService.getAllExamRecording(studentId, pageSize, currentPage);
         GetExamRecordingInfo examRecordingInfo = new GetExamRecordingInfo();
         examRecordingInfo.setAllExamRecording(allExamRecording);
         return Result.success(examRecordingInfo);
+    }
+
+    @ApiOperation("获取所有教师的ID，用于学生注册选择教师时使用")
+    @GetMapping("getTeachersIds")
+    public Result getTeachersIds(){
+        List<String> teacherIds = stuTeacherService.getAllTeachersIds();
+        return  Result.success(teacherIds);
     }
 }

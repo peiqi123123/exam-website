@@ -73,10 +73,11 @@ public class SysStuServiceImpl extends ServiceImpl<SysStuMapper, SysStu> impleme
         //②拿到信息后 修改学生信息
         sysStu.setTotalScore(sysStu.getTotalScore()+trueNum);
         sysStu.setWrongAnsNum(sysStu.getWrongAnsNum()+falseNum);
-        sysStu.setAccuracy((1.00)*sysStu.getTotalScore()/(sysStu.getTotalScore()+sysStu.getWrongAnsNum()));
+        sysStu.setAccuracy(
+                (1.00)*sysStu.getTotalScore()/(sysStu.getTotalScore()+sysStu.getWrongAnsNum())
+        );
         sysStu.setExerTimes(sysStu.getExerTimes()+1);
 
-        int i = sysStuMapper.updateById(sysStu);
-        return i;
+        return sysStuMapper.updateById(sysStu);
     }
 }

@@ -4,6 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.module.loginAndResgiter.service.LoginAndRegisterService;
 import com.whpu.module.loginAndResgiter.service.UserService;
+import com.whpu.module.user.dao.mapper.SysStuMapper;
+import com.whpu.module.user.dao.pojo.SysStu;
+import com.whpu.module.user.service.StuTeacherService;
+import com.whpu.module.user.service.SysStuService;
 import com.whpu.utils.JWTUtils;
 import com.whpu.vo.ErrorCode;
 import com.whpu.vo.Result;
@@ -34,6 +38,10 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
     private static final String salt = "123456@whpu";
     @Autowired
     private UserService userService;
+    @Autowired
+    private StuTeacherService stuTeacherService;
+    @Autowired
+    private SysStuService sysStuService;
 
     @Autowired
     private RedisTemplate<String,String> redisTemplate;
@@ -135,10 +143,17 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
         user.setRemark(registerParam.getRemark());
         user.setIdentity("student");
         Integer integer = userService.addUser(user);
+        //在学生记录表添加记录
+        sysStuService.addStudentInfo(user.getUserId(), registerParam.getNickName());
 
         //查看是否注册成功
         if(integer==1)
         {
+            if (registerParam.getTeacherId() != null){
+                String teacherId = registerParam.getTeacherId();
+                //在学生和教师映射表中添加学生和教师的映射关系
+                stuTeacherService.addStudent(user.getUserId(),teacherId);
+            }
             return Result.success(user);
         }
         else

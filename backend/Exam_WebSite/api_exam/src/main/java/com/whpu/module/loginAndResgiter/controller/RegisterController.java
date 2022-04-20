@@ -33,8 +33,7 @@ public class RegisterController {
                 registerParam.getPassword() == null) {
             return Result.fail(ErrorCode.PARAMS_ERROR.getCode(), ErrorCode.PARAMS_ERROR.getMsg());
         }
-        Result result = loginAndRegisterService.registerStudent(registerParam);
-        return result;
+        return loginAndRegisterService.registerStudent(registerParam);
     }
 
     @PostMapping("teacher")
