@@ -1,0 +1,16 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://101.43.47.172:3306/exam?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
+        username: root
+        password: '0920'
+    redis:
+        host: 101.43.47.172
+        port: 6379
+    cache:
+        redis:
+            time-to-live: 1800000  # 失效时间——毫秒（30分钟）
+
+mybatis-plus:
+    configuration:
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

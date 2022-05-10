@@ -34,7 +34,7 @@ public class AddQuestionByExcel {
 
     @ApiOperation(value = "通过Excel添加题目的接口(管理员权限使用的)")
     @PostMapping("addQuestion")
-    public Result addQuestionByExecl(@RequestBody MultipartFile file) throws IOException {
+    public Result addQuestionByExcel(@RequestBody MultipartFile file) throws IOException {
 
         //如果不是Excel文件就返回错误
         if (file == null || (!("xlsx".equals(file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1))))) {

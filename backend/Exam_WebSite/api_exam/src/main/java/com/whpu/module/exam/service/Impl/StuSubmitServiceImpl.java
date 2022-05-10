@@ -1,15 +1,14 @@
 package com.whpu.module.exam.service.Impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.whpu.module.question.dao.mapper.SysQuestionMapper;
 import com.whpu.module.exam.dao.mapper.ExamRecordingMapper;
 import com.whpu.module.exam.dao.mapper.StuAnsRecordingMapper;
-import com.whpu.module.question.dao.mapper.StuWrongQueMapper;
 import com.whpu.module.exam.dao.pojo.ExamRecording;
 import com.whpu.module.exam.dao.pojo.StuAnsRecording;
-import com.whpu.module.question.dao.pojo.StuWrongQue;
 import com.whpu.module.exam.service.StuSubmitService;
+import com.whpu.module.question.dao.mapper.StuWrongQueMapper;
+import com.whpu.module.question.dao.mapper.SysQuestionMapper;
+import com.whpu.module.question.dao.pojo.StuWrongQue;
 import com.whpu.module.user.service.SysStuService;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.AnsParam;

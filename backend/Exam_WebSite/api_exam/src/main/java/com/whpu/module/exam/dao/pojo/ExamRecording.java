@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @description
  * @author: 唉 烁
@@ -13,7 +15,7 @@ import lombok.Data;
  */
 @Data
 @TableName("stu_exam_recording")
-public class ExamRecording {
+public class ExamRecording implements Serializable {
     @TableId( value="examRecordingId", type = IdType.ID_WORKER_STR)
     private String examRecordingId;
     @TableField(value = "studentId")
