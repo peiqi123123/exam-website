@@ -27,13 +27,13 @@ public class Result<T>implements Serializable {
     @ApiModelProperty("返回的数据")
     private T data; //返回的数据
 
-    public static Result success(Object data)
+    public static <T> Result<T> success(T data)
     {
-        return new Result(true,200,"success",data);
+        return new Result<T>(true,200,"success",data);
     }
 
-    public static Result fail(int code,String msg)
+    public static <T> Result<T> fail(int code,String msg)
     {
-        return new Result(false,code,msg,null);
+        return new Result<T>(false,code,msg,null);
     }
 }

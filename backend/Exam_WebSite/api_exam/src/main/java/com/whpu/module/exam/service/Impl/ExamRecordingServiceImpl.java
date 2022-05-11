@@ -1,7 +1,5 @@
 package com.whpu.module.exam.service.Impl;
 
-
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -39,12 +37,12 @@ public class ExamRecordingServiceImpl implements ExamRecordingService {
         return examRecording.getExamRecordingId();
     }
     @Override
-    @Cacheable(value = "examRecordsCache", key = "#studentId + '_allExamRecords'")
-    public IPage<ExamRecording> getAllExamRecording(String studentId, Integer PageSize, Integer currentPage)
+    @Cacheable(value = "examRecordsCache", key = "#studentId + '_allExamRecords'+'_'+#pageSize+'_'+#currentPage")
+    public IPage<ExamRecording> getAllExamRecording(String studentId, Integer pageSize, Integer currentPage)
     {
         IPage<ExamRecording> page = new Page<>();
         page.setCurrent(currentPage);
-        page.setSize(PageSize);
+        page.setSize(pageSize);
         QueryWrapper<ExamRecording> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("studentId",studentId);
         queryWrapper.orderByDesc("submitTime");

@@ -1,11 +1,8 @@
 package com.whpu.module.user.controller;
 
-import com.whpu.module.exam.service.ExamRecordingService;
 import com.whpu.module.user.dao.pojo.SysStu;
-import com.whpu.module.user.service.StuTeacherService;
 import com.whpu.module.user.service.SysStuService;
 import com.whpu.utils.UserThreadLocal;
-import com.whpu.vo.GetAllStudentInfoVo;
 import com.whpu.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,7 +22,7 @@ public class StuController {
 
     @ApiOperation(value = "获取到自己的个人信息")
     @GetMapping("/getSelfInfo")
-    public Result<GetAllStudentInfoVo> getAllStudent() {
+    public Result<SysStu> getAllStudent() {
         String studentId = UserThreadLocal.get().getUserId();
         SysStu ownStudentInfo = sysStuService.getOwnStudentInfo(studentId);
         return Result.success(ownStudentInfo);

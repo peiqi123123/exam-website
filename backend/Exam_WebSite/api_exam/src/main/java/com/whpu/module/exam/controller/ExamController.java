@@ -2,21 +2,20 @@ package com.whpu.module.exam.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.whpu.module.exam.dao.pojo.ExamRecording;
-import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.module.exam.service.ExamRecordingService;
 import com.whpu.module.exam.service.StuAnsRecordingService;
 import com.whpu.module.exam.service.StuSubmitService;
+import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.ExamInfoVo;
 import com.whpu.vo.GetExamRecordingInfo;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.ExamRecordingPageParam;
 import com.whpu.vo.params.SubmitParam;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @description
@@ -53,7 +52,7 @@ public class ExamController {
 
     @ApiOperation(value = "获取首页所有考试记录的接口")
     @GetMapping("/exam/info")
-    public Result<List<ExamRecording>> getAllExamRecording(@RequestBody(required = false) ExamRecordingPageParam examRecordingPageParam) {
+    public Result<GetExamRecordingInfo> getAllExamRecording(@RequestBody(required = false) ExamRecordingPageParam examRecordingPageParam) {
         if (examRecordingPageParam == null) {
             examRecordingPageParam = new ExamRecordingPageParam();
         }

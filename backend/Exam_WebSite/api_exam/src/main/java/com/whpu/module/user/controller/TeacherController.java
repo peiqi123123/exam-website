@@ -6,15 +6,15 @@ import com.whpu.module.exam.service.ExamRecordingService;
 import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.module.loginAndResgiter.service.LoginAndRegisterService;
 import com.whpu.module.user.dao.pojo.SysStu;
+import com.whpu.module.user.service.StuTeacherService;
 import com.whpu.module.user.service.SysStuService;
 import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.*;
 import com.whpu.vo.params.RegisterParam;
-import com.whpu.module.user.service.StuTeacherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,17 +74,19 @@ public class TeacherController {
 
     @ApiOperation("教师获取到某个学生的所有考试记录")
     @GetMapping("getStudentExamInfo/{studentId}/{currentPage}/{pageSize}")
-    public Result<GetAllStudentInfoVo> getStudentExamInfo(@PathVariable String studentId, @PathVariable Integer currentPage, @PathVariable Integer pageSize) {
+    @Cacheable(value = "examRecordsCache", key = "#studentId + '_allExamRecords'+#pageSize+'_'+#currentPage")
+    public Result<IPage<ExamRecording>> getStudentExamInfo(@PathVariable String studentId, @PathVariable Integer currentPage, @PathVariable Integer pageSize) {
         IPage<ExamRecording> allExamRecording = examRecordingService.getAllExamRecording(studentId, pageSize, currentPage);
-        GetExamRecordingInfo examRecordingInfo = new GetExamRecordingInfo();
-        examRecordingInfo.setAllExamRecording(allExamRecording);
-        return Result.success(examRecordingInfo);
+        /*GetExamRecordingInfo examRecordingInfo = new GetExamRecordingInfo();
+        examRecordingInfo.setAllExamRecording(allExamRecording);*/
+        return Result.success(allExamRecording);
     }
 
     @ApiOperation("获取所有教师的ID，用于学生注册选择教师时使用")
     @GetMapping("getTeachersIds")
-    public Result getTeachersIds(){
+    public Result<TeacherIdsVo> getTeachersIds(){
         List<String> teacherIds = stuTeacherService.getAllTeachersIds();
-        return  Result.success(teacherIds);
+        TeacherIdsVo teacherIdsVo = new TeacherIdsVo(teacherIds);
+        return  Result.success(teacherIdsVo);
     }
 }

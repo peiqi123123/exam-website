@@ -4,14 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.whpu.module.loginAndResgiter.dao.pojo.User;
 import com.whpu.module.loginAndResgiter.service.LoginAndRegisterService;
 import com.whpu.module.loginAndResgiter.service.UserService;
-import com.whpu.module.user.dao.mapper.SysStuMapper;
-import com.whpu.module.user.dao.pojo.SysStu;
 import com.whpu.module.user.service.StuTeacherService;
 import com.whpu.module.user.service.SysStuService;
 import com.whpu.utils.JWTUtils;
 import com.whpu.vo.ErrorCode;
 import com.whpu.vo.Result;
-import com.whpu.vo.TokenVo;
 import com.whpu.vo.params.LoginParam;
 import com.whpu.vo.params.RegisterParam;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -55,7 +52,7 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
     @Override
     public Result<String> doLogin(LoginParam loginParam) {
 
-        /**
+        /*
          *  1，检查参数是否合法
          *  2，根据用户民和密码 查询用户，看这个用户是否存在
          *  3，不存在就登录失败
@@ -124,7 +121,6 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
     }
 
     @Override
-    @Transactional
     /**
      * 这是注册用户的service
      */
@@ -164,7 +160,6 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
         }
     }
     @Override
-    @Transactional
     public Result registerTeacher(RegisterParam registerParam) {
         //①首先查看要注册的账户的account是否已经存在
         //如果存在就返回 fail 不能进行注册
