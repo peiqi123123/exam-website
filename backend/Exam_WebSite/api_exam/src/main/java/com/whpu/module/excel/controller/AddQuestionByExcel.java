@@ -7,8 +7,6 @@ import com.whpu.module.excel.dao.SysQuestionForExcel;
 import com.whpu.module.excel.dao.SysQuestionForExcelReadListener;
 import com.whpu.module.excel.service.Impl.QuestionByExcelServiceImpl;
 import com.whpu.module.excel.service.QuestionByExcelService;
-import com.whpu.module.question.dao.pojo.QuestionTopics;
-import com.whpu.module.question.dao.pojo.SysQuestion;
 import com.whpu.vo.ErrorCode;
 import com.whpu.vo.Result;
 import com.whpu.vo.WrongExcelRowVo;
@@ -26,14 +24,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("excel")
+@RequestMapping("/excel")
 @Api(tags = "用于通过Excel添加试题")
 public class AddQuestionByExcel {
     @Autowired
     QuestionByExcelService questionByExcelService;
 
     @ApiOperation(value = "通过Excel添加题目的接口(管理员权限使用的)")
-    @PostMapping("addQuestion")
+    @PostMapping("/addQuestion")
     public Result addQuestionByExcel(@RequestBody MultipartFile file) throws IOException {
 
         //如果不是Excel文件就返回错误
@@ -57,7 +55,7 @@ public class AddQuestionByExcel {
             }
             questionByExcelService.addQuestionByExcel(data);
             for (String q : QuestionByExcelServiceImpl.notExistTopic) {
-                wrongExcelRowVoList.add(new WrongExcelRowVo(row, "知识点：“" + q+ "”不存在，请先添加对应的知识点"));
+                wrongExcelRowVoList.add(new WrongExcelRowVo(row, "知识点：" + q+ "”不存在，请先添加对应的知识点"));
             }
             QuestionByExcelServiceImpl.notExistTopic.clear();
         }
