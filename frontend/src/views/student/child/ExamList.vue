@@ -27,7 +27,7 @@ const examList = ref([]);
 async function init() {
   const res = await getExamList();
   // console.log("ExamList res: ", res);
-  examList.value = res.data
+  examList.value = res.data.allExamRecording.records
   return res.data
 }
 const result = init();
@@ -52,6 +52,9 @@ const Router = useRouter();
 async function toReview(exam) {
   const examRecordingId = exam.examRecordingId;
   Router.push(`/score/${examRecordingId}`);
+}
+components: {
+  ExamListItem
 }
 </script>
 <style lang="less" scoped></style>

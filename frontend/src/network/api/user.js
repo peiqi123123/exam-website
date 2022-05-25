@@ -28,7 +28,7 @@ export function beforeunload() {
 // 考试中途退出
 export function exerciseExit(questions) {
   console.log("exerciseExit=================>");
-  return fetch("http://localhost:8888/submit/exit", {
+  return fetch("http://localhost:8080/submit/exit", {
     method: "POST",
     body: JSON.stringify(questions),
     headers: { "Content-Type": "application/json" },
