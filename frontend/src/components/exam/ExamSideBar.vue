@@ -1,7 +1,7 @@
 <template>
   <div class="exam_slide_bar">
     <div class="title">
-      <div class="name">姓名：黄京旺</div>
+      <div class="name">姓名：{{userName}}</div>
     </div>
     <el-scrollbar ref="scrollbar" height="550px" always>
       <div class="tf" v-if="size !== 0">
@@ -19,6 +19,7 @@
 </template>
 <script setup>
 import SlideItem from "./SlideItem.vue";
+const userName = window.sessionStorage.getItem("userName");
 const props = defineProps({
   questions: {
     type: Object,

@@ -3,8 +3,8 @@
     <div class="avator">个人信息</div>
     <div class="float" v-show="flag === 1">
       <el-descriptions class="margin-top" :column="1">
-        <el-descriptions-item label="姓名">黄京旺</el-descriptions-item>
-        <el-descriptions-item label="ID">18100000000</el-descriptions-item>
+        <el-descriptions-item label="姓名">{{ stuInfo.data.nickName }}</el-descriptions-item>
+        <el-descriptions-item label="ID">{{ stuInfo.data.stuId }}</el-descriptions-item>
         <el-descriptions-item label="--">最近一次练习 --</el-descriptions-item>
         <el-descriptions-item label="练习类别">自主练习</el-descriptions-item>
         <el-descriptions-item label="分数">
@@ -20,6 +20,10 @@
 import { ref } from "vue";
 import { ElMessageBox } from "element-plus";
 import { useRouter } from "vue-router";
+import {getOwnInfo} from "../network/api/user";
+
+const userName = window.sessionStorage.getItem("userName");
+const stuInfo = await getOwnInfo();
 const Router = useRouter();
 function logout() {
   ElMessageBox.confirm("你确定要退出么?", {

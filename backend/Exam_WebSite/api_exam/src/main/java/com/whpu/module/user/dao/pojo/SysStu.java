@@ -33,7 +33,7 @@ public class SysStu implements Serializable {
      * 学生昵称
      */
     @TableField("nickName")
-    private String nickname;
+    private String nickName;
 
     /**
      * 总分
@@ -73,11 +73,11 @@ public class SysStu implements Serializable {
     }
 
     public String getNickname() {
-        return nickname;
+        return nickName;
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.nickName = nickname;
     }
 
     public Integer getTotalScore() {
@@ -117,7 +117,7 @@ public class SysStu implements Serializable {
         return "SysStu{" +
         "id=" + id +
         ", stuId=" + stuId +
-        ", nickname=" + nickname +
+        ", nickname=" + nickName +
         ", totalScore=" + totalScore +
         ", wrongAnsNum=" + wrongAnsNum +
         ", accuracy=" + accuracy +

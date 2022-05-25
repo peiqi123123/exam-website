@@ -3,7 +3,7 @@
     <el-card class="box-card">
       <div class="diagram" ref="diagram"></div>
       <div class="info">
-        <div class="name">姓名：黄京旺</div>
+        <div class="name">姓名：{{userName}}</div>
         <div class="total_score">得分：{{ scoreContext }}</div>
         <div class="start_time">开始时间：{{ startTime }}</div>
         <div class="end_time">总用时：{{ totalTime }}</div>
@@ -25,6 +25,8 @@ import { getGrades } from "@/utils/getGrades";
 import { format, timestamp } from "@/utils/transformTime";
 const route = useRoute();
 const store = useStore();
+const userName = window.sessionStorage.getItem("userName");
+
 // 考试ID
 // const examId = parseInt(route.params.id);
 const examId = route.params.id;

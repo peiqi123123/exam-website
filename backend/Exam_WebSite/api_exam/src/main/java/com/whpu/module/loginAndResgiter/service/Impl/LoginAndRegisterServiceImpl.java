@@ -14,6 +14,7 @@ import com.whpu.vo.params.LoginParam;
 import com.whpu.vo.params.RegisterParam;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -85,8 +86,10 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
 
         request.getSession().setAttribute("userName", user.getNickName());
         //System.out.println(request.getSession().getAttribute("userName")+ "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        LoginUserVo loginUserVo= new LoginUserVo(user.getAccount(), user.getUserId(), user.getNickName(), token);
-
+        //LoginUserVo loginUserVo= new LoginUserVo(user.getAccount(), user.getUserId(), user.getNickName(), token);
+        LoginUserVo loginUserVo= new LoginUserVo();
+        BeanUtils.copyProperties(user, loginUserVo);
+        loginUserVo.setToken(token);
         return Result.success(loginUserVo);
     }
 

@@ -48,3 +48,8 @@ export function getExerciseReview(examId) {
 export function getExamList() {
   return axios.get("exercise/exam/info");
 }
+
+//获取当前学生个人信息
+export function getOwnInfo() {
+  return axios.get("student/getSelfInfo");
+}
