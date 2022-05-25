@@ -4,8 +4,10 @@ import com.whpu.vo.Result;
 import com.whpu.vo.params.LoginParam;
 import com.whpu.vo.params.RegisterParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface LoginAndRegisterService {
-    Result doLogin(LoginParam loginParam);
+    Result doLogin(LoginParam loginParam, HttpServletRequest request);
 
     Result checkToken(String token);
 

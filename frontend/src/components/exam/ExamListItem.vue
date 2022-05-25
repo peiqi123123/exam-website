@@ -1,7 +1,7 @@
 <template>
   <div class="exam-list-item">
     <div class="exam_hint">
-      <div class="name">nickname</div>
+      <div class="name">{{ userName }}</div>
       <div class="dividing"></div>
       <div class="submit-time">{{ submitTime }}</div>
     </div>
@@ -17,6 +17,7 @@
 // prop:["itemList"]
 import {reactive} from "vue"
 import { formatMsgTime } from "@/utils/transformTime";
+const userName = window.sessionStorage.getItem("userName");
 const props = defineProps({
   item: {
     type: Object,

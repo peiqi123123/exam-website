@@ -8,6 +8,7 @@ import com.whpu.module.user.service.StuTeacherService;
 import com.whpu.module.user.service.SysStuService;
 import com.whpu.utils.JWTUtils;
 import com.whpu.vo.ErrorCode;
+import com.whpu.vo.LoginUserVo;
 import com.whpu.vo.Result;
 import com.whpu.vo.params.LoginParam;
 import com.whpu.vo.params.RegisterParam;
@@ -19,6 +20,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -50,7 +52,7 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
      * @return: com.whpu.vo.Result
      */
     @Override
-    public Result<String> doLogin(LoginParam loginParam) {
+    public Result<LoginUserVo> doLogin(LoginParam loginParam, HttpServletRequest request) {
 
         /*
          *  1，检查参数是否合法
@@ -80,7 +82,12 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
         }
         String token = JWTUtils.creatToken(user.getUserId());
         redisTemplate.opsForValue().set("Token_"+token, JSON.toJSONString(user),1, TimeUnit.DAYS);
-        return Result.success(token);
+
+        request.getSession().setAttribute("userName", user.getNickName());
+        //System.out.println(request.getSession().getAttribute("userName")+ "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        LoginUserVo loginUserVo= new LoginUserVo(user.getAccount(), user.getUserId(), user.getNickName(), token);
+
+        return Result.success(loginUserVo);
     }
 
     @Override
