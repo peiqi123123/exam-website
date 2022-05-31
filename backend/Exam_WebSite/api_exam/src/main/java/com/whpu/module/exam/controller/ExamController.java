@@ -10,7 +10,6 @@ import com.whpu.utils.UserThreadLocal;
 import com.whpu.vo.ExamInfoVo;
 import com.whpu.vo.GetExamRecordingInfo;
 import com.whpu.vo.Result;
-import com.whpu.vo.params.ExamRecordingPageParam;
 import com.whpu.vo.params.SubmitParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -51,9 +50,9 @@ public class ExamController {
     }
 
     @ApiOperation(value = "获取首页所有考试记录的接口")
-    @GetMapping("/exam/info")
-    public Result<GetExamRecordingInfo> getAllExamRecording(@RequestBody(required = false) ExamRecordingPageParam examRecordingPageParam) {
-        if (examRecordingPageParam == null) {
+    @GetMapping("/exam/info/{pageSize}/{currentPage}")
+    public Result<GetExamRecordingInfo> getAllExamRecording(@PathVariable("pageSize") int pageSize, @PathVariable("currentPage") int currentPage) {
+        /*if (examRecordingPageParam == null) {
             examRecordingPageParam = new ExamRecordingPageParam();
         }
         //如果未给出 当前页面数，就默认是1
@@ -63,9 +62,9 @@ public class ExamController {
         //如果当前分页数未给出，就默认是8
         if (examRecordingPageParam.getPageSize() == null) {
             examRecordingPageParam.setPageSize(8);
-        }
+        }*/
         User user = UserThreadLocal.get();
-        IPage<ExamRecording> allExamRecording = examRecordingService.getAllExamRecording(user.getUserId(), examRecordingPageParam.getPageSize(), examRecordingPageParam.getCurrentPage());
+        IPage<ExamRecording> allExamRecording = examRecordingService.getAllExamRecording(user.getUserId(), pageSize, currentPage);
 
         GetExamRecordingInfo getExamRecordingInfo = new GetExamRecordingInfo();
         getExamRecordingInfo.setAllExamRecording(allExamRecording);

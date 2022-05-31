@@ -45,8 +45,8 @@ export function getExerciseReview(examId) {
 }
 
 // 获取该学生考试列表
-export function getExamList() {
-  return axios.get("exercise/exam/info");
+export function getExamList(pageSize, currentPage) {
+  return axios.get(`exercise/exam/info/${pageSize}/${currentPage}`);
 }
 
 //获取当前学生个人信息
