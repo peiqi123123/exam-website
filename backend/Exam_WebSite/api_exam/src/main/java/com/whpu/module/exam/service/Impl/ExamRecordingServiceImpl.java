@@ -22,12 +22,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class ExamRecordingServiceImpl implements ExamRecordingService {
     @Autowired
     ExamRecordingMapper examRecordingMapper;
+
     /**
      * 创建一条考试记录，一般用于在考生开始考试的时候
      */
     @Override
     @CacheEvict(value = "examRecordsCache", allEntries = true)  //清除缓存
-    public String addExamRecordingService(Integer questionNum,String examType) {
+    public String addExamRecordingService(Integer questionNum, String examType) {
         ExamRecording examRecording = new ExamRecording();
         User user = UserThreadLocal.get();
         examRecording.setStudentId(user.getUserId());
@@ -36,15 +37,15 @@ public class ExamRecordingServiceImpl implements ExamRecordingService {
         examRecordingMapper.insert(examRecording);
         return examRecording.getExamRecordingId();
     }
+
     @Override
     @Cacheable(value = "examRecordsCache", key = "#studentId + '_allExamRecords'+'_'+#pageSize+'_'+#currentPage")
-    public IPage<ExamRecording> getAllExamRecording(String studentId, Integer pageSize, Integer currentPage)
-    {
+    public IPage<ExamRecording> getAllExamRecording(String studentId, Integer pageSize, Integer currentPage) {
         IPage<ExamRecording> page = new Page<>();
         page.setCurrent(currentPage);
         page.setSize(pageSize);
         QueryWrapper<ExamRecording> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("studentId",studentId);
+        queryWrapper.eq("studentId", studentId);
         queryWrapper.orderByDesc("submitTime");
         IPage<ExamRecording> iPage = examRecordingMapper.selectPage(page, queryWrapper);
         System.out.println(studentId);
