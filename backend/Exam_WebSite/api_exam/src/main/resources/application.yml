@@ -9,7 +9,7 @@ spring:
         port: 6379
     cache:
         redis:
-            time-to-live: 1800000  # 失效时间——毫秒（30分钟）
+            time-to-live: 1800000
 
 mybatis-plus:
     configuration:
